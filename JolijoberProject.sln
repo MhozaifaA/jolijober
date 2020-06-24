@@ -7,7 +7,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{C706C0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharedKernal", "SharedKernal", "{C7D1506A-8CAB-434B-978D-1DE15268A11B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JolijoberProject.Shared.SharedKernal", "JolijoberProject.Shared.SharedKernal\JolijoberProject.Shared.SharedKernal.csproj", "{CF79AF17-C93E-47E8-BFBD-22495A4BC0F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JolijoberProject.Shared.SharedKernal", "JolijoberProject.Shared.SharedKernal\JolijoberProject.Shared.SharedKernal.csproj", "{CF79AF17-C93E-47E8-BFBD-22495A4BC0F3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{1711F860-412C-4CCE-9DBE-839A3B546BD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JolijoberProject.Infrastructure.Model", "JolijoberProject.Infrastructure.Model\JolijoberProject.Infrastructure.Model.csproj", "{16542D44-26E7-4695-81F5-38E975DC3667}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JolijoberProject.Infrastructure.SqlServer", "JolijoberProject.Infrastructure.SqlServer\JolijoberProject.Infrastructure.SqlServer.csproj", "{48048BC7-DFF0-409C-AB72-CB2EA053F885}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +25,14 @@ Global
 		{CF79AF17-C93E-47E8-BFBD-22495A4BC0F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF79AF17-C93E-47E8-BFBD-22495A4BC0F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF79AF17-C93E-47E8-BFBD-22495A4BC0F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16542D44-26E7-4695-81F5-38E975DC3667}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16542D44-26E7-4695-81F5-38E975DC3667}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16542D44-26E7-4695-81F5-38E975DC3667}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16542D44-26E7-4695-81F5-38E975DC3667}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48048BC7-DFF0-409C-AB72-CB2EA053F885}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48048BC7-DFF0-409C-AB72-CB2EA053F885}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48048BC7-DFF0-409C-AB72-CB2EA053F885}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48048BC7-DFF0-409C-AB72-CB2EA053F885}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -26,6 +40,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{C7D1506A-8CAB-434B-978D-1DE15268A11B} = {C706C042-3705-4161-B292-D9D0845E0C40}
 		{CF79AF17-C93E-47E8-BFBD-22495A4BC0F3} = {C7D1506A-8CAB-434B-978D-1DE15268A11B}
+		{1711F860-412C-4CCE-9DBE-839A3B546BD6} = {C706C042-3705-4161-B292-D9D0845E0C40}
+		{16542D44-26E7-4695-81F5-38E975DC3667} = {1711F860-412C-4CCE-9DBE-839A3B546BD6}
+		{48048BC7-DFF0-409C-AB72-CB2EA053F885} = {1711F860-412C-4CCE-9DBE-839A3B546BD6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C8D6A25C-69AD-40E2-B5DB-853C3D55CABD}

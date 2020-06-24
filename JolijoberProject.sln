@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{C706C042-3705-4161-B292-D9D0845E0C40}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharedKernal", "SharedKernal", "{C7D1506A-8CAB-434B-978D-1DE15268A11B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JolijoberProject.Shared.SharedKernal", "JolijoberProject.Shared.SharedKernal\JolijoberProject.Shared.SharedKernal.csproj", "{CF79AF17-C93E-47E8-BFBD-22495A4BC0F3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF79AF17-C93E-47E8-BFBD-22495A4BC0F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF79AF17-C93E-47E8-BFBD-22495A4BC0F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF79AF17-C93E-47E8-BFBD-22495A4BC0F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF79AF17-C93E-47E8-BFBD-22495A4BC0F3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C7D1506A-8CAB-434B-978D-1DE15268A11B} = {C706C042-3705-4161-B292-D9D0845E0C40}
+		{CF79AF17-C93E-47E8-BFBD-22495A4BC0F3} = {C7D1506A-8CAB-434B-978D-1DE15268A11B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C8D6A25C-69AD-40E2-B5DB-853C3D55CABD}
+	EndGlobalSection
+EndGlobal

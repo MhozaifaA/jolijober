@@ -3,7 +3,7 @@
 </br>
 dotnetcore- web application  , real time application
 </br>
-**Tools :**  ``AspCore`` *Blazor* : ``Server-Side`` ``Client-Side webassembly``
+**Tools :**  ``AspCore`` ``SignalR`` *Blazor* : ``Server-Side`` ``Client-Side webassembly``
 </br>
 **Main programing languages :** ``C#`` ``Javascript``
 </br>

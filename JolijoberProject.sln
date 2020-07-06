@@ -11,9 +11,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JolijoberProject.Shared.Sha
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{1711F860-412C-4CCE-9DBE-839A3B546BD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JolijoberProject.Infrastructure.Model", "JolijoberProject.Infrastructure.Model\JolijoberProject.Infrastructure.Model.csproj", "{16542D44-26E7-4695-81F5-38E975DC3667}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JolijoberProject.Infrastructure.Model", "JolijoberProject.Infrastructure.Model\JolijoberProject.Infrastructure.Model.csproj", "{16542D44-26E7-4695-81F5-38E975DC3667}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JolijoberProject.Infrastructure.SqlServer", "JolijoberProject.Infrastructure.SqlServer\JolijoberProject.Infrastructure.SqlServer.csproj", "{48048BC7-DFF0-409C-AB72-CB2EA053F885}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JolijoberProject.Infrastructure.SqlServer", "JolijoberProject.Infrastructure.SqlServer\JolijoberProject.Infrastructure.SqlServer.csproj", "{48048BC7-DFF0-409C-AB72-CB2EA053F885}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EE4AB16C-4FCA-4BA9-8E2B-8450BCBE6421}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{5A692739-CA10-4885-9F88-EFB98F0D0416}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jolijober", "Jolijober\Jolijober.csproj", "{449DA519-0480-41D2-8642-5E2F9732E472}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BlazorReturn", "BlazorReturn", "{5C2559C6-FFCF-45AA-A805-DC635FB74D6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jolijoberblazor.Server", "Jolijoberblazor\Server\Jolijoberblazor.Server.csproj", "{E20DE2FE-35C0-4ABC-9916-944789651734}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jolijoberblazor.Client", "Jolijoberblazor\Client\Jolijoberblazor.Client.csproj", "{A0E221FA-90B3-4B11-9047-79D3A61ABEAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jolijoberblazor.Shared", "Jolijoberblazor\Shared\Jolijoberblazor.Shared.csproj", "{66B94E56-3B6D-416B-A36A-A68AF8CA055C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +47,22 @@ Global
 		{48048BC7-DFF0-409C-AB72-CB2EA053F885}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48048BC7-DFF0-409C-AB72-CB2EA053F885}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48048BC7-DFF0-409C-AB72-CB2EA053F885}.Release|Any CPU.Build.0 = Release|Any CPU
+		{449DA519-0480-41D2-8642-5E2F9732E472}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{449DA519-0480-41D2-8642-5E2F9732E472}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{449DA519-0480-41D2-8642-5E2F9732E472}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{449DA519-0480-41D2-8642-5E2F9732E472}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E20DE2FE-35C0-4ABC-9916-944789651734}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E20DE2FE-35C0-4ABC-9916-944789651734}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E20DE2FE-35C0-4ABC-9916-944789651734}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E20DE2FE-35C0-4ABC-9916-944789651734}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0E221FA-90B3-4B11-9047-79D3A61ABEAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0E221FA-90B3-4B11-9047-79D3A61ABEAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0E221FA-90B3-4B11-9047-79D3A61ABEAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0E221FA-90B3-4B11-9047-79D3A61ABEAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66B94E56-3B6D-416B-A36A-A68AF8CA055C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66B94E56-3B6D-416B-A36A-A68AF8CA055C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66B94E56-3B6D-416B-A36A-A68AF8CA055C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66B94E56-3B6D-416B-A36A-A68AF8CA055C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -43,6 +73,12 @@ Global
 		{1711F860-412C-4CCE-9DBE-839A3B546BD6} = {C706C042-3705-4161-B292-D9D0845E0C40}
 		{16542D44-26E7-4695-81F5-38E975DC3667} = {1711F860-412C-4CCE-9DBE-839A3B546BD6}
 		{48048BC7-DFF0-409C-AB72-CB2EA053F885} = {1711F860-412C-4CCE-9DBE-839A3B546BD6}
+		{5A692739-CA10-4885-9F88-EFB98F0D0416} = {EE4AB16C-4FCA-4BA9-8E2B-8450BCBE6421}
+		{449DA519-0480-41D2-8642-5E2F9732E472} = {5A692739-CA10-4885-9F88-EFB98F0D0416}
+		{5C2559C6-FFCF-45AA-A805-DC635FB74D6D} = {EE4AB16C-4FCA-4BA9-8E2B-8450BCBE6421}
+		{E20DE2FE-35C0-4ABC-9916-944789651734} = {5C2559C6-FFCF-45AA-A805-DC635FB74D6D}
+		{A0E221FA-90B3-4B11-9047-79D3A61ABEAF} = {5C2559C6-FFCF-45AA-A805-DC635FB74D6D}
+		{66B94E56-3B6D-416B-A36A-A68AF8CA055C} = {5C2559C6-FFCF-45AA-A805-DC635FB74D6D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C8D6A25C-69AD-40E2-B5DB-853C3D55CABD}

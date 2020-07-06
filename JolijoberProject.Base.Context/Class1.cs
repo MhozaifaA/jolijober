@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace JolijoberProject.Infrastructure.Model
+namespace JolijoberProject.Base.Context
 {
     public class Class1
     {

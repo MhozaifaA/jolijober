@@ -19,15 +19,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EE4AB16C-4FC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{5A692739-CA10-4885-9F88-EFB98F0D0416}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jolijober", "Jolijober\Jolijober.csproj", "{449DA519-0480-41D2-8642-5E2F9732E472}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jolijober", "Jolijober\Jolijober.csproj", "{449DA519-0480-41D2-8642-5E2F9732E472}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BlazorReturn", "BlazorReturn", "{5C2559C6-FFCF-45AA-A805-DC635FB74D6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jolijoberblazor.Server", "Jolijoberblazor\Server\Jolijoberblazor.Server.csproj", "{E20DE2FE-35C0-4ABC-9916-944789651734}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jolijoberblazor.Server", "Jolijoberblazor\Server\Jolijoberblazor.Server.csproj", "{E20DE2FE-35C0-4ABC-9916-944789651734}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jolijoberblazor.Client", "Jolijoberblazor\Client\Jolijoberblazor.Client.csproj", "{A0E221FA-90B3-4B11-9047-79D3A61ABEAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jolijoberblazor.Client", "Jolijoberblazor\Client\Jolijoberblazor.Client.csproj", "{A0E221FA-90B3-4B11-9047-79D3A61ABEAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jolijoberblazor.Shared", "Jolijoberblazor\Shared\Jolijoberblazor.Shared.csproj", "{66B94E56-3B6D-416B-A36A-A68AF8CA055C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jolijoberblazor.Shared", "Jolijoberblazor\Shared\Jolijoberblazor.Shared.csproj", "{66B94E56-3B6D-416B-A36A-A68AF8CA055C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BoundedContext", "BoundedContext", "{FFC83C20-2A76-41B4-83E6-DA2BA87CB3AB}"
 EndProject
@@ -35,13 +35,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Main", "Main", "{328F69D4-1
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Security", "Security", "{ECFBE7B1-6538-48DE-99AB-822510BFC562}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JolijoberProject.Security.Repository", "JolijoberProject.Security.Repository\JolijoberProject.Security.Repository.csproj", "{F91F7996-8C4A-4DCB-B642-6185603F773D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JolijoberProject.Security.Repository", "JolijoberProject.Security.Repository\JolijoberProject.Security.Repository.csproj", "{F91F7996-8C4A-4DCB-B642-6185603F773D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JolijoberProject.Main.Repository", "JolijoberProject.Main.Repository\JolijoberProject.Main.Repository.csproj", "{F7E8E0B8-E91F-464E-8C49-719986BB7E43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JolijoberProject.Main.Repository", "JolijoberProject.Main.Repository\JolijoberProject.Main.Repository.csproj", "{F7E8E0B8-E91F-464E-8C49-719986BB7E43}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Base", "Base", "{BF51C1C1-C4AF-44C4-A553-DC9765AF418D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JolijoberProject.Base.Context", "JolijoberProject.Base.Context\JolijoberProject.Base.Context.csproj", "{A399ADC2-6AB0-4E7A-90FE-D72F1D0F04CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JolijoberProject.Base.Context", "JolijoberProject.Base.Context\JolijoberProject.Base.Context.csproj", "{A399ADC2-6AB0-4E7A-90FE-D72F1D0F04CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

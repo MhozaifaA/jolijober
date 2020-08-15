@@ -28,6 +28,7 @@ namespace Jolijober
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddServerSideBlazor();
             services.AddControllersWithViews();
 
             services.AddDbContext<JolijoberDbContext>(options =>
@@ -90,6 +91,8 @@ namespace Jolijober
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Account}/{action=signin}/{id?}");
+                endpoints.MapBlazorHub();
+                // endpoints.MapFallbackToController("Blazor", "Home");
             });
         }
     }

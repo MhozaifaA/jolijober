@@ -5402,3 +5402,24 @@ a:hover {
     transform: scale(1.0);
   }
 }
+
+
+
+
+
+/* =============== Hzo =============== */
+
+.default-btn {
+	color: #ffffff;
+	font-size: 16px;
+	background-color: #169365;
+	padding: 12px 27px;
+	border: 0;
+	font-weight: 500;
+	margin-top: 30px;
+	cursor: pointer;
+}
+
+.default-btn:hover {
+	color: #ffffff;
+}

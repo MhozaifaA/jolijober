@@ -13,6 +13,13 @@ namespace JolijoberProject.Shared.SharedKernal.ExtensionMethod
             return s.Contains(at)?s:s+at;
         }
 
+
+        public static string RemoveHostUri(this string uri)
+        {
+            return new Uri(uri).PathAndQuery;
+        }
+
+
         #endregion
 
         #region -   Enumrable   -

@@ -6,6 +6,7 @@ using JolijoberProject.Infrastructure.Model.Security;
 using JolijoberProject.Infrastructure.SqlServer.DataBase;
 using JolijoberProject.Security.Repository.Interfaces;
 using JolijoberProject.Security.Repository.Repositores;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +33,13 @@ namespace Jolijober
         {
             services.AddServerSideBlazor();
             services.AddControllersWithViews();
+
+            //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            //       .AddCookie(options =>
+            //       {
+            //           options.LoginPath = "/Account/Login";
+            //           options.LogoutPath = "/Account/Login";
+            //         });
 
             services.AddDbContext<JolijoberDbContext>(options =>
            {
@@ -60,6 +68,8 @@ namespace Jolijober
             //services.AddMvc(options =>
             //{
             //    options.EnableEndpointRouting = false;
+            //}).AddRazorPagesOptions(options => {
+            //    options.Conventions.AddAreaPageRoute("Identity", "/Account/SignIn", "/Account/SignIn");
             //}).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);  // use Latest for Update
 
             services.AddRazorPages();
@@ -92,7 +102,7 @@ namespace Jolijober
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Account}/{action=signin}/{id?}");
+                    pattern:"{controller=Account}/{action=Login}" );
                 endpoints.MapBlazorHub();
                  endpoints.MapFallbackToController("Blazor", "Home");
             });

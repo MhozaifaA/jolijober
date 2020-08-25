@@ -1,6 +1,7 @@
 ﻿using Jolijober.ViewModel;
 using JolijoberProject.Security.Repository.DataTransferObjects;
 using JolijoberProject.Security.Repository.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -17,15 +18,18 @@ namespace Jolijober.Controllers
             AccountRepository = accountRepository;
         }
 
-        public IActionResult SignIn(string returnUrl)
+        [AllowAnonymous]
+        public IActionResult Login(string returnUrl)//SignIn
         {
             // in Layout  use Base "/" for blazor soo in returnUrl Ignor "/"
             ViewBag.returnUrl = returnUrl == "/" ? null : returnUrl;
+
             return View();
         }
 
+        [AllowAnonymous]
         [HttpPost]
-        public async Task<IActionResult> SignIn(SignInViewModel signIn, string returnUrl)
+        public async Task<IActionResult> Login(SignInViewModel signIn, string returnUrl)
         {
 
             if (!ModelState.IsValid)
@@ -45,7 +49,7 @@ namespace Jolijober.Controllers
                 return View(signIn);
             }
             if (String.IsNullOrEmpty(returnUrl == "/" ? null : returnUrl))
-                return Redirect("/Home/Index");
+                return Redirect("/Index");
             else return Redirect(returnUrl ?? "/");
         }
 

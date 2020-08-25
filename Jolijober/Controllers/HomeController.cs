@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Jolijober.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Jolijober.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -34,9 +36,9 @@ namespace Jolijober.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        //public IActionResult Blazor()
-        //{
-        //    return View("_Host");
-        //}
+        public IActionResult Blazor()
+        {
+            return View("_Host");
+        }
     }
 }

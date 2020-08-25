@@ -4,7 +4,10 @@ using System.Text;
 
 namespace JolijoberProject.Shared.SharedKernal.EnumClass
 {
-    class Class1
+    public enum AccountTypes
     {
+        User,
+        Company,
+        Visitor
     }
 }

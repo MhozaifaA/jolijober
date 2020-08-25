@@ -1,0 +1,57 @@
+﻿@page "/"
+@namespace Jolijober.Views.Home
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Jolijober</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <base href="~/" />
+    <link rel="stylesheet" type="text/css" href="template/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="template/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="template/css/line-awesome.css">
+    <link rel="stylesheet" type="text/css" href="template/css/line-awesome-font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="template/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="template/lib/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="template/lib/slick/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="template/css/style.css">
+    <link rel="stylesheet" type="text/css" href="template/css/responsive.css">
+</head>
+<body>
+    <div class="wrapper">
+         <app>
+             <component type="typeof(App)" render-mode="ServerPrerendered" />
+         </app>
+    </div>
+
+    <div id="blazor-error-ui">
+        <environment include="Staging,Production">
+            An error has occurred. This application may no longer respond until reloaded.
+        </environment>
+        <environment include="Development">
+            An unhandled exception has occurred. See browser dev tools for details.
+        </environment>
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+
+
+
+
+
+    <script src="_framework/blazor.server.js"></script>
+
+    <script type="text/javascript" src="template/js/jquery.min.js"></script>
+    <script type="text/javascript" src="template/js/popper.js"></script>
+    <script type="text/javascript" src="template/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="template/lib/slick/slick.min.js"></script>
+    <script type="text/javascript" src="template/js/script.js"></script>
+</body>
+</html>

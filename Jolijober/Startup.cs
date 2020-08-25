@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using JolijoberProject.Infrastructure.Model.Security;
 using JolijoberProject.Infrastructure.SqlServer.DataBase;
+using JolijoberProject.Security.Repository.Interfaces;
+using JolijoberProject.Security.Repository.Repositores;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -37,16 +39,15 @@ namespace Jolijober
                options.UseSqlServer(Configuration.GetConnectionString("LocalConnection"));
            });
 
-
             services.AddIdentity<AccountUser, AccountRole>(identity =>
             {
                 //identity.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+!?/|\\[]{}()*$#%^&~";
                 //identity.Password.RequiredLength = Convert.ToInt32(Configuration["PasswordLength"]);
-                //identity.Password.RequireNonAlphanumeric = false;
-                //identity.Password.RequireLowercase = false;
-                //identity.Password.RequireUppercase = false;
-                //identity.Password.RequireDigit = false;
-                //identity.Password.RequiredUniqueChars = 0;
+               identity.Password.RequireNonAlphanumeric = false;
+               identity.Password.RequireLowercase = false;
+               identity.Password.RequireUppercase = false;
+               identity.Password.RequireDigit = false;
+               identity.Password.RequiredUniqueChars = 0;
                 ////identity.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(0);
                 ////identity.Lockout.MaxFailedAccessAttempts = 5;
                 //identity.Lockout.AllowedForNewUsers = false;
@@ -54,6 +55,7 @@ namespace Jolijober
           .AddEntityFrameworkStores<JolijoberDbContext>().
           AddDefaultTokenProviders();
 
+            services.AddScoped<IAccountRepository,AccountRepository>();
 
             //services.AddMvc(options =>
             //{
@@ -92,7 +94,7 @@ namespace Jolijober
                     name: "default",
                     pattern: "{controller=Account}/{action=signin}/{id?}");
                 endpoints.MapBlazorHub();
-                // endpoints.MapFallbackToController("Blazor", "Home");
+                 endpoints.MapFallbackToController("Blazor", "Home");
             });
         }
     }

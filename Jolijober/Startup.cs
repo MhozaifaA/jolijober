@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using JolijoberProject.Infrastructure.Model.Security;
+using JolijoberProject.Infrastructure.MongoDB;
+using JolijoberProject.Infrastructure.MongoDB.DataBase;
 using JolijoberProject.Infrastructure.SqlServer.DataBase;
+using JolijoberProject.Main.Repository.Interface;
+using JolijoberProject.Main.Repository.Repositores;
 using JolijoberProject.Security.Repository.Interfaces;
 using JolijoberProject.Security.Repository.Repositores;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -16,6 +20,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 
 namespace Jolijober
 {
@@ -31,6 +36,19 @@ namespace Jolijober
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+
+            services.Configure<JolijoberDatabaseSettings>(
+                Configuration.GetSection(nameof(JolijoberDatabaseSettings)));
+
+            services.AddSingleton<IJolijoberDatabaseSettings>(sp =>
+                sp.GetRequiredService<IOptions<JolijoberDatabaseSettings>>().Value);
+
+            services.AddSingleton<JolijoberService>();
+
+            services.AddSingleton<IIdentityRepository, IdentityRepository>();
+
+
             services.AddServerSideBlazor();
             services.AddControllersWithViews();
 

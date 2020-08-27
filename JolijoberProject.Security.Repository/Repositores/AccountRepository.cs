@@ -1,4 +1,4 @@
-﻿using JolijoberProject.Base.Context;
+﻿using JolijoberProject.Base.Context.SqlServer;
 using JolijoberProject.Infrastructure.Model.Security;
 using JolijoberProject.Infrastructure.SqlServer.DataBase;
 using JolijoberProject.Security.Repository.DataTransferObjects;

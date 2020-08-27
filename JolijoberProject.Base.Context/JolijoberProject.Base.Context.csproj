@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="PluralizeService.Core" Version="1.2.19339.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JolijoberProject.Infrastructure.MongoDB\JolijoberProject.Infrastructure.MongoDB.csproj" />
     <ProjectReference Include="..\JolijoberProject.Infrastructure.SqlServer\JolijoberProject.Infrastructure.SqlServer.csproj" />
   </ItemGroup>
 

@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\JolijoberProject.Base.Context\JolijoberProject.Base.Context.csproj" />
+    <ProjectReference Include="..\JolijoberProject.Infrastructure.Model\JolijoberProject.Infrastructure.Model.csproj" />
+  </ItemGroup>
+
 </Project>

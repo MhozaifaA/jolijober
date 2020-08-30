@@ -62,13 +62,7 @@ $(window).on("load", function () {
         return false;
     });
 
-    //  ============= COVER GAP FUNCTION =========
-
-    var gap = $(".container").offset().left;
-    $(".cover-sec > a, .chatbox-list").css({
-        "right": gap
-    });
-
+    
     //  ============= OVERVIEW EDIT FUNCTION =========
 
     $(document).on("click", ".overview-open", function () {
@@ -243,48 +237,67 @@ $(window).on("load", function () {
         e.stopPropagation();
     });
 
+
+    this.window.initscript = () => {
+
+
+        //  ============= COVER GAP FUNCTION =========
+
+        var gap = $(".container").offset().left;
+        $(".cover-sec > a, .chatbox-list").css({
+            "right": gap
+        });
+
+
     //  ============= PORTFOLIO SLIDER FUNCTION =========
 
-    $('.profiles-slider').slick({
-        slidesToShow: 3,
-        slck: true,
-        slidesToScroll: 1,
-        prevArrow: '<span class="slick-previous"></span>',
-        nextArrow: '<span class="slick-nexti"></span>',
-        autoplay: true,
-        dots: false,
-        autoplaySpeed: 2000,
-        responsive: [
-            {
-                breakpoint: 1200,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: false
+
+        $('.profiles-slider').slick({
+            slidesToShow: 3,
+            slick: true,
+            slidesToScroll: 1,
+            prevArrow: '<span class="slick-previous"></span>',
+            nextArrow: '<span class="slick-nexti"></span>',
+            autoplay: true,
+            dots: false,
+            autoplaySpeed: 2000,
+            responsive: [
+                {
+                    breakpoint: 1200,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        dots: false
+                    }
+                },
+                {
+                    breakpoint: 991,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
                 }
-            },
-            {
-                breakpoint: 991,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2
-                }
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-            // You can unslick at a given breakpoint now by adding:
-            // settings: "unslick"
-            // instead of a settings object
-        ]
+                // You can unslick at a given breakpoint now by adding:
+                // settings: "unslick"
+                // instead of a settings object
+            ]
 
 
-    });
+        });
+
+
+
+
+
+    }
 
 
 

@@ -43,7 +43,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Base", "Base", "{BF51C1C1-C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JolijoberProject.Base.Context", "JolijoberProject.Base.Context\JolijoberProject.Base.Context.csproj", "{A399ADC2-6AB0-4E7A-90FE-D72F1D0F04CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JolijoberProject.Infrastructure.MongoDB", "JolijoberProject.Infrastructure.MongoDB\JolijoberProject.Infrastructure.MongoDB.csproj", "{266E8FE6-5C30-4C01-BE4C-332766BBFB70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JolijoberProject.Infrastructure.MongoDB", "JolijoberProject.Infrastructure.MongoDB\JolijoberProject.Infrastructure.MongoDB.csproj", "{266E8FE6-5C30-4C01-BE4C-332766BBFB70}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

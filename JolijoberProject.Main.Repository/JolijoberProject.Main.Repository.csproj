@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MongoDB.Entities" Version="14.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\JolijoberProject.Base.Context\JolijoberProject.Base.Context.csproj" />
     <ProjectReference Include="..\JolijoberProject.Infrastructure.Model\JolijoberProject.Infrastructure.Model.csproj" />
   </ItemGroup>

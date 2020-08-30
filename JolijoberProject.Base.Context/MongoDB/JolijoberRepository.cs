@@ -28,7 +28,7 @@ namespace JolijoberProject.Base.Context.MongoDB
     /// </summary>
     /// <typeparam name="T1"></typeparam>
     /// <typeparam name="T2"></typeparam>
-    public class JolijoberRepository<T1,T2> where T1 : BaseEntity where T2 : BaseEntity
+    public class JolijoberRepository<T1,T2> where T1 :BaseEntity  where T2 :BaseEntity
     {
         protected readonly IMongoCollection<T1> Context1;
         protected readonly IMongoCollection<T2> Context2;
@@ -47,7 +47,7 @@ namespace JolijoberProject.Base.Context.MongoDB
     /// <typeparam name="T1"></typeparam>
     /// <typeparam name="T2"></typeparam>
     /// <typeparam name="T3"></typeparam>
-    public class JolijoberRepository<T1, T2,T3> where T1 : BaseEntity where T2 : BaseEntity where T3 : BaseEntity
+    public class JolijoberRepository<T1, T2,T3> where T1 :BaseEntity where T2 :BaseEntity where T3 :BaseEntity
     {
         protected readonly IMongoCollection<T1> Context1;
         protected readonly IMongoCollection<T2> Context2;
@@ -70,7 +70,7 @@ namespace JolijoberProject.Base.Context.MongoDB
     /// <typeparam name="T2"></typeparam>
     /// <typeparam name="T3"></typeparam>
     /// <typeparam name="T4"></typeparam>
-    public class JolijoberRepository<T1, T2, T3,T4> where T1 : BaseEntity where T2 : BaseEntity where T3 : BaseEntity where T4 : BaseEntity
+    public class JolijoberRepository<T1, T2, T3,T4> where T1 :BaseEntity where T2 :BaseEntity where T3 :BaseEntity where T4 :BaseEntity
     {
         protected readonly IMongoCollection<T1> Context1;
         protected readonly IMongoCollection<T2> Context2;

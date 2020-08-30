@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="MongoDB.Driver" Version="2.11.1" />
-    <PackageReference Include="MongoDB.Entities" Version="14.5.0" />
+    <PackageReference Include="PluralizeService.Core" Version="1.2.19339.3" />
   </ItemGroup>
 
   <ItemGroup>

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using JolijoberProject.Infrastructure.MongoDB.Seed;
 using JolijoberProject.Infrastructure.SqlServer.Seed;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -34,6 +35,7 @@ namespace Jolijober
             {
                 var services = scope.ServiceProvider;
                 await AccountSeedDB.InitializeAsync(services);
+                await JolijoberSeedDB.InitializeAsync(services);
             }
         }
     }

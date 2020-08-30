@@ -18,8 +18,4 @@
     <ProjectReference Include="..\JolijoberProject.Security.Repository\JolijoberProject.Security.Repository.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Components\" />
-  </ItemGroup>
-
 </Project>

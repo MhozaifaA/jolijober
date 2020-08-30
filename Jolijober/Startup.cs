@@ -47,6 +47,7 @@ namespace Jolijober
             services.AddSingleton<JolijoberService>();
 
             services.AddSingleton<IIdentityRepository, IdentityRepository>();
+            services.AddSingleton<IPostRepository, PostRepository>();
 
 
             services.AddServerSideBlazor();

@@ -6,7 +6,12 @@ using System.Text;
 
 namespace JolijoberProject.Infrastructure.Model.Base.MongoDB
 {
-    public abstract class BaseEntity
+
+    public interface  IBaseEntity
+    {
+        public string Id { get; set; }
+    }
+    public abstract class BaseEntity: IBaseEntity
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

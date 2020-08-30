@@ -32,6 +32,13 @@ namespace JolijoberProject.Main.Repository.Repositores
                 SureName = x.SureName
             }));
             return list;
+
+            return await Context.AsQueryable().Select(x => new IdentityDto()
+            {
+                Id = x.Id,
+                FirstName = x.FisrtName,
+                SureName = x.SureName
+            }).ToListAsync();
         }
     }
 }

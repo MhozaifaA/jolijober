@@ -1,6 +1,7 @@
 ﻿using JolijoberProject.Security.Repository.DataTransferObjects;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,5 +22,12 @@ namespace JolijoberProject.Security.Repository.Interfaces
         /// <param name="createAccountDto"></param>
         /// <returns> will return null if faild  </returns>
         Task<CreateAccountDto> SignUpAsync(CreateAccountDto createAccountDto);
+
+        /// <summary>
+        /// sign out 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> login view with signin data </returns>
+        Task<bool> SignOutAsync(string? id=null);
     }
 }

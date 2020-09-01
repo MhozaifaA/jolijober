@@ -233,7 +233,7 @@ $(window).on("load", function () {
      $(document).on("click", "html", function () {
         $(".forum-links").removeClass("active");
     });
-     $(document).on("click", ".forum-links-btn > a, .forum-links", function () {
+     $(document).on("click", ".forum-links-btn > a, .forum-links", function (e) {
         e.stopPropagation();
     });
 

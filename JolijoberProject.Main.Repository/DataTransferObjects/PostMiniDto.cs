@@ -6,6 +6,8 @@ namespace JolijoberProject.Main.Repository.DataTransferObjects
 {
     public class PostMiniDto
     {
+        public string Id{ get; set; }
+        public string Descreption { get; set; }
         public DateTime Date { get; set; }
         public string Title { get; set; }
         public string[] Tags { get; set; }

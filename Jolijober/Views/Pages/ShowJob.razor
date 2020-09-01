@@ -1,4 +1,5 @@
 ﻿@page "/ShowJob"
+
 @using Jolijober.Views.Components
 @using JolijoberProject.Main.Repository.Interface
 @using JolijoberProject.Main.Repository.DataTransferObjects
@@ -30,40 +31,19 @@
                 <div class="col-lg-8">
                     <div class="forum-questions">
 
-                        @if (posts != null && posts.Count>0)
+                        @if (posts != null && posts.Count > 0)
                         {
                             foreach (var post in posts)
                             {
-                                <div class="usr-question">
-                                    <div class="usr_img">
-                                        <img src="http://via.placeholder.com/60x60" alt="">
-                                    </div>
-                                    <div class="usr_quest">
-                                        <h3>@post.Title</h3>
-                                        <ul class="react-links">
-                                            <li><a href="javascript:void(0)" title=""><i class="fa fa-heart"></i> Vote @post.Likes</a></li>
-                                            <li><a href="javascript:void(0)" title=""><i class="fa fa-comment"></i> Comments  @post.Comments</a></li>
-                                            <li><a href="javascript:void(0)" title=""><i class="fa fa-eye"></i> Views  @post.Views</a></li>
-                                        </ul>
-                                        <ul class="quest-tags">
-                                            @foreach (var item in @post.Tags)
-                                            {
-                                                <li><a href="javascript:void(0)" title="">item</a></li>
-                                            }
-
-                                        </ul>
-                                    </div><!--usr_quest end-->
-                                    <span class="quest-posted-time"><i class="fa fa-clock-o"></i>@post.Date</span>
-                                </div><!--usr-question end-->
+                                <PostMini post="post" />
                             }
-
                         }
 
 
                     </div><!--forum-questions end-->
 
-                    <PaginationTable Radius="3" TotaPagesQuantity="TotaPagesQuantity" CurrentPage="CurrentPage" SelectedPage="SelectedPage"/>
-                 
+                    <PaginationTable Radius="3" TotaPagesQuantity="TotaPagesQuantity" CurrentPage="CurrentPage" SelectedPage="SelectedPage" />
+
 
 
                 </div>
@@ -149,7 +129,7 @@
     List<PostMiniDto> postsPage;
     List<PostMiniDto> posts;
     public const int Quantity = 7;
-    private int CurrentPage=1;
+    private int CurrentPage = 1;
     private int TotaPagesQuantity;
 
     protected override async Task OnInitializedAsync()
@@ -158,14 +138,14 @@
         LoadPosts();
     }
 
-    private void LoadPosts(int page=1)
+    private void LoadPosts(int page = 1)
     {
-        posts = postsPage.ToPaginate(new Pagination() { Page= page, Quantity= Quantity });
+        posts = postsPage.ToPaginate(new Pagination() { Page = page, Quantity = Quantity });
         double count = postsPage.Count;
         TotaPagesQuantity = (int)Math.Ceiling(count / Quantity);
     }
 
-    private  void SelectedPage(int page)
+    private void SelectedPage(int page)
     {
         posts.Clear();
         CurrentPage = page;

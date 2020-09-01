@@ -1,0 +1,34 @@
+﻿<script src="_framework/blazor.server.js"></script>
+
+
+<script>
+
+
+        var blazor = window.Blazor;
+
+        Blazor.defaultReconnectionHandler._reconnectCallback = function (d) {
+            document.location.reload();
+        }
+
+        //new MutationObserver((mutations, observer) => {
+        //    if (document.querySelector('#components-reconnect-modal')) {
+        //        // Now every 10 seconds, see if the server appears to be back, and if so, reload
+        //        async function attemptReload() {
+        //            await fetch(''); // Check the server really is back
+        //            location.reload();
+        //        }
+        //        observer.disconnect();
+        //        attemptReload();
+        //        setInterval(attemptReload, 10000);
+        //    }
+        //}).observe(document.body, { childList: true, subtree: true });
+</script>
+
+<script type="text/javascript" src="template/js/jquery.min.js"></script>
+<script type="text/javascript" src="template/js/popper.js"></script>
+<script type="text/javascript" src="template/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="template/js/jquery.range-min.js"></script>
+<script type="text/javascript" src="template/js/jquery.mCustomScrollbar.js"></script>
+<script type="text/javascript" src="template/lib/slick/slick.min.js"></script>
+<script type="text/javascript" src="template/js/script.js"></script>
+<script type="text/javascript" src="template/js/jquery.mousewheel.min.js"></script>

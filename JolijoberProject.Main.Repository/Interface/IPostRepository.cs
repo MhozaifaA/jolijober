@@ -10,5 +10,6 @@ namespace JolijoberProject.Main.Repository.Interface
     public  interface IPostRepository
     {
         Task<List<PostMiniDto>> GetPostsMiniAsync();
+        Task<PostMiniDto> GetPostByIdMiniAsync(string id);
     }
 }

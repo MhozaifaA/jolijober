@@ -6,7 +6,7 @@
             <li @onclick="@(() => SelectedPageInternal(link))"
                 style="cursor: pointer;"
                 class="page-item @(link.Enabled ? null : "disabled") @(link.Active ? "active" : null)">
-                <a class="page-link @(link.Text=="pvr"?"pvr":"") @(link.Enabled ? null : "disabled") @(link.Active ? "active" : null)" href="javascript:void(0)" >@link.Text</a>
+                <a class="page-link @(link.Text=="pvr"||link.Page==CurrentPage?"pvr":"") @(link.Enabled ? null : "disabled") @(link.Active ? "active" : null)" href="javascript:void(0)" >@link.Text</a>
             </li>
         }
     </ul>

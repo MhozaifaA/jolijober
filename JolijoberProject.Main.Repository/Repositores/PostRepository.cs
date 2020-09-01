@@ -17,13 +17,40 @@ namespace JolijoberProject.Main.Repository.Repositores
 {
     public class PostRepository : JolijoberRepository<Post>, IPostRepository
     {
-        public PostRepository(JolijoberService context) : base(context) 
-        {}
+        public PostRepository(JolijoberService context) : base(context)
+        { }
+
+        public async Task<PostMiniDto> GetPostByIdMiniAsync(string id)
+        {
+            var post = await Context.Find(post => post.Id == id).SingleOrDefaultAsync<Post>();
+            return new PostMiniDto()
+            {
+                Date = post.Date,
+                Title = post.Title,
+                Tags = post.Tags,
+                Views = post.Views,
+                Comments = post.Comments,
+                Likes = post.Likes,
+                Descreption = post.Descreption,
+                Id = post.Id
+            };
+
+
+        }
 
         public async Task<List<PostMiniDto>> GetPostsMiniAsync()
         {
-            return await Context.AsQueryable().Select(p=> new PostMiniDto() { Date=p.Date,
-                Title=p.Title,Tags=p.Tags,Views=p.Views,Comments=p.Comments,Likes=p.Likes  }).ToListAsync();
+            return await Context.AsQueryable().Select(post => new PostMiniDto()
+            {
+                Date = post.Date,
+                Title = post.Title,
+                Tags = post.Tags,
+                Views = post.Views,
+                Comments = post.Comments,
+                Likes = post.Likes,
+                Descreption = post.Descreption,
+                Id = post.Id
+            }).ToListAsync();
         }
     }
 }

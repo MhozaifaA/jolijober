@@ -1,0 +1,20 @@
+﻿@using JolijoberProject.Main.Repository.DataTransferObjects
+
+<div class="usr-question">
+    <div class="usr_img">
+        <img src="http://via.placeholder.com/60x60" alt="">
+    </div>
+    <div class="usr_quest">
+        <h3>@post.Title</h3>
+        <ul class="react-links">
+            <li><a href="javascript:void(0)" title=""><i class="fa fa-heart"></i> Vote @post.Likes</a></li>
+            <li><a href="javascript:void(0)" title=""><i class="fa fa-comment"></i> Comments  @post.Comments</a></li>
+            <li><a href="/ShowJob/Details/@post.Id" title=""><i class="fa fa-eye"></i> Views  @post.Views</a></li>
+        </ul>
+        <Tags PostTags="post.Tags"/>
+    </div><!--usr_quest end-->
+    <span class="quest-posted-time"><i class="fa fa-clock-o"></i>@post.Date</span>
+</div><!--usr-question end-->
+@code {
+    [Parameter] public PostMiniDto post { get; set; }
+}

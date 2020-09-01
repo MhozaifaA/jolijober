@@ -4,6 +4,6 @@
     protected override void OnAfterRender(bool firstRender)
     {
         //?returnUrl={Uri.EscapeDataString(Navigation.Uri.RemoveHostUri()
-        Navigation.NavigateTo($"Account/login");
+        Navigation.NavigateTo($"Account/login",false);
     }
 }

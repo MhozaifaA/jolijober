@@ -13,6 +13,7 @@ using JolijoberProject.Security.Repository.Repositores;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -26,12 +27,14 @@ namespace Jolijober
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
+            _env = env;
         }
 
         public IConfiguration Configuration { get; }
+        public IWebHostEnvironment _env { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -51,6 +54,15 @@ namespace Jolijober
 
 
             services.AddServerSideBlazor();
+
+            //.AddCircuitOptions(o =>
+            // {
+            //     if (_env.IsDevelopment()) //only add details when debugging
+            //     {
+            //         o.DetailedErrors = true;
+            //     }
+            // });
+
             services.AddControllersWithViews();
 
             //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -91,6 +103,18 @@ namespace Jolijober
             //    options.Conventions.AddAreaPageRoute("Identity", "/Account/SignIn", "/Account/SignIn");
             //}).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);  // use Latest for Update
 
+
+            // GDPR
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                // This lambda determines whether user consent for non-essential 
+                // cookies is needed for a given request.
+                options.CheckConsentNeeded = context => true;
+                // requires using Microsoft.AspNetCore.Http;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+
+
             services.AddRazorPages();
 
 
@@ -111,6 +135,7 @@ namespace Jolijober
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseCookiePolicy();
 
             app.UseRouting();
 

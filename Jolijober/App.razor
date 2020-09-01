@@ -1,11 +1,11 @@
 ﻿@using Microsoft.AspNetCore.Components.Routing
 @using Jolijober.Views.Shared;
-@inject IJSRuntime JSRuntime;
+@inject IJSRuntime JsRuntime;
 
 <CascadingAuthenticationState>
     <Router AppAssembly="typeof(Program).Assembly">
         <Found Context="routeData">
-            @if (routeData.PageType == typeof(Jolijober.Views.Pages.ShowJob))
+            @if (routeData.PageType == typeof(Jolijober.Views.Pages.ShowJob) || routeData.PageType == typeof(Jolijober.Views.Pages.DetailsShowJob))
             {
                 <RouteView RouteData="@routeData" DefaultLayout="@typeof(ShowLayout)" />
             }
@@ -37,6 +37,6 @@
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
-           await JSRuntime.InvokeVoidAsync("initscript");
+           await JsRuntime.InvokeVoidAsync("initscript");
     }
 }

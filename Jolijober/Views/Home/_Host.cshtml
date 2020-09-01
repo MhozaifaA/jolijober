@@ -1,9 +1,14 @@
 ﻿@page "/"
 @namespace Jolijober.Views.Home
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using Jolijober.Util
 @{
     Layout = null;
 }
+
+
+<!--green #19a974  <--- default #e75348-->
+<!--green dark #169365 <---  default #e44d3a-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,20 +19,12 @@
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <base href="~/" />
-    <link rel="stylesheet" type="text/css" href="template/css/animate.css">
-    <link rel="stylesheet" type="text/css" href="template/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="template/css/jquery.range.css">
-    <link rel="stylesheet" type="text/css" href="template/css/line-awesome.css">
-    <link rel="stylesheet" type="text/css" href="template/css/line-awesome-font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="template/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="template/lib/slick/slick.css">
-    <link rel="stylesheet" type="text/css" href="template/lib/slick/slick-theme.css">
-    <link rel="stylesheet" type="text/css" href="template/css/style.css">
-    <link rel="stylesheet" type="text/css" href="template/css/responsive.css">
 
+    <partial name="@ViewPath._SharedStyles" />
 </head>
 <body>
     <div class="wrapper">
+        <partial name="@ViewPath._CookieConsentPartial" />
         <app>
             <component type="typeof(App)" render-mode="ServerPrerendered" />
         </app>
@@ -38,25 +35,14 @@
             An error has occurred. This application may no longer respond until reloaded.
         </environment>
         <environment include="Development">
-            An unhandled exception has occurred. See browser dev tools for details.
+            <img  href=""  src="~/template/images/svg/undraw_page_not_found_su7k.svg" class="reload rounded mx-auto d-block float-none" style="cursor: pointer;" />
         </environment>
-        <a href="" class="reload">Reload</a>
-        <a class="dismiss">🗙</a>
+        <div class="mx-auto text-center d-block">
+            <p href="" style="cursor: pointer;" class="reload display-2">Go to login page</p>
+            <a class="dismiss btn fa fa-2x fa-refresh reload w-50 " href="" style="background: #169365;color: white;"></a>
+        </div>
     </div>
 
-
-
-
-
-    <script src="_framework/blazor.server.js"></script>
-
-    <script type="text/javascript" src="template/js/jquery.min.js"></script>
-    <script type="text/javascript" src="template/js/popper.js"></script>
-    <script type="text/javascript" src="template/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="template/js/jquery.range-min.js"></script>
-    <script type="text/javascript" src="template/js/jquery.mCustomScrollbar.js"></script>
-    <script type="text/javascript" src="template/lib/slick/slick.min.js"></script>
-    <script type="text/javascript" src="template/js/script.js"></script>
-    <script type="text/javascript" src="template/js/jquery.mousewheel.min.js"></script>
+    <partial name="@ViewPath._SharedScripts" />
 </body>
 </html>

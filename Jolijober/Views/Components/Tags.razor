@@ -1,0 +1,14 @@
+﻿<ul class="quest-tags">
+    @if (PostTags != null)
+    {
+        @foreach (var item in PostTags)
+        {
+            <li><a href="javascript:void(0)" title="">item</a></li>
+        }
+    }
+</ul>
+
+@code {
+    [Parameter]
+    public string[] PostTags { get; set; }
+}

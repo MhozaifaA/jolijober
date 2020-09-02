@@ -1,7 +1,7 @@
 ﻿using JolijoberProject.Infrastructure.MongoDB;
 using JolijoberProject.Infrastructure.MongoDB.DataBase;
 using JolijoberProject.Main.Repository.DataTransferObjects;
-using JolijoberProject.Main.Repository.Interface;
+using JolijoberProject.Main.Repository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;

@@ -16,7 +16,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JolijoberProject.Security.Repository.Repositores
+namespace JolijoberProject.Security.Repository.Repositories
 {
     public class AccountRepository : JolijoberRepository, IAccountRepository
     {

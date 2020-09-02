@@ -2,7 +2,7 @@
 using JolijoberProject.Infrastructure.Model.Main;
 using JolijoberProject.Infrastructure.MongoDB.DataBase;
 using JolijoberProject.Main.Repository.DataTransferObjects;
-using JolijoberProject.Main.Repository.Interface;
+using JolijoberProject.Main.Repository.Interfaces;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
@@ -12,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JolijoberProject.Main.Repository.Repositores
+namespace JolijoberProject.Main.Repository.Repositories
 {
     public class IdentityRepository: JolijoberRepository<Identity>, IIdentityRepository
     {

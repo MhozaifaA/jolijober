@@ -2,14 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using JolijoberProject.Hub.SignalR.Repositories;
 using JolijoberProject.Infrastructure.Model.Security;
 using JolijoberProject.Infrastructure.MongoDB;
 using JolijoberProject.Infrastructure.MongoDB.DataBase;
 using JolijoberProject.Infrastructure.SqlServer.DataBase;
-using JolijoberProject.Main.Repository.Interface;
-using JolijoberProject.Main.Repository.Repositores;
+using JolijoberProject.Main.Repository.Interfaces;
+using JolijoberProject.Main.Repository.Repositories;
 using JolijoberProject.Security.Repository.Interfaces;
-using JolijoberProject.Security.Repository.Repositores;
+using JolijoberProject.Security.Repository.Repositories;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -104,6 +105,13 @@ namespace Jolijober
             //}).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);  // use Latest for Update
 
 
+
+
+            services.AddSignalR(hubOptions =>
+            {
+                hubOptions.EnableDetailedErrors = true;
+            });
+
             // GDPR
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -149,6 +157,7 @@ namespace Jolijober
                     pattern:"{controller=Account}/{action=Login}" );
                 endpoints.MapBlazorHub();
                  endpoints.MapFallbackToController("Blazor", "Home");
+                endpoints.MapHub<JolijoberHub>("/JolijoberHub/Notify");
             });
         }
     }

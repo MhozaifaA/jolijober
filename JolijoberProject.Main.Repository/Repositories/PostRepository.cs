@@ -1,7 +1,7 @@
 ﻿using JolijoberProject.Base.Context.MongoDB;
 using JolijoberProject.Infrastructure.Model.Main;
 using JolijoberProject.Infrastructure.MongoDB.DataBase;
-using JolijoberProject.Main.Repository.Interface;
+using JolijoberProject.Main.Repository.Interfaces;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using System;
@@ -13,7 +13,7 @@ using MongoDB.Bson;
 using System.Linq;
 using JolijoberProject.Main.Repository.DataTransferObjects;
 
-namespace JolijoberProject.Main.Repository.Repositores
+namespace JolijoberProject.Main.Repository.Repositories
 {
     public class PostRepository : JolijoberRepository<Post>, IPostRepository
     {

@@ -32,6 +32,7 @@ namespace Jolijober
         {
             Configuration = configuration;
             _env = env;
+
         }
 
         public IConfiguration Configuration { get; }
@@ -53,7 +54,7 @@ namespace Jolijober
             services.AddSingleton<IIdentityRepository, IdentityRepository>();
             services.AddSingleton<IPostRepository, PostRepository>();
 
-
+            services.AddResponseCompression();
             services.AddServerSideBlazor();
 
             //.AddCircuitOptions(o =>
@@ -83,11 +84,11 @@ namespace Jolijober
             {
                 //identity.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+!?/|\\[]{}()*$#%^&~";
                 //identity.Password.RequiredLength = Convert.ToInt32(Configuration["PasswordLength"]);
-               identity.Password.RequireNonAlphanumeric = false;
-               identity.Password.RequireLowercase = false;
-               identity.Password.RequireUppercase = false;
-               identity.Password.RequireDigit = false;
-               identity.Password.RequiredUniqueChars = 0;
+                identity.Password.RequireNonAlphanumeric = false;
+                identity.Password.RequireLowercase = false;
+                identity.Password.RequireUppercase = false;
+                identity.Password.RequireDigit = false;
+                identity.Password.RequiredUniqueChars = 0;
                 ////identity.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(0);
                 ////identity.Lockout.MaxFailedAccessAttempts = 5;
                 //identity.Lockout.AllowedForNewUsers = false;
@@ -95,7 +96,7 @@ namespace Jolijober
           .AddEntityFrameworkStores<JolijoberDbContext>().
           AddDefaultTokenProviders();
 
-            services.AddScoped<IAccountRepository,AccountRepository>();
+            services.AddScoped<IAccountRepository, AccountRepository>();
 
             //services.AddMvc(options =>
             //{
@@ -154,10 +155,10 @@ namespace Jolijober
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern:"{controller=Account}/{action=Login}" );
+                    pattern: "{controller=Account}/{action=Login}");
                 endpoints.MapBlazorHub();
-                 endpoints.MapFallbackToController("Blazor", "Home");
                 endpoints.MapHub<JolijoberHub>("/JolijoberHub/Notify");
+                endpoints.MapFallbackToController("Blazor", "Home");
             });
         }
     }

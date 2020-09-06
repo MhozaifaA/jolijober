@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 
 namespace JolijoberProject.Security.Repository.Repositories
 {
-    public class AccountRepository : JolijoberRepository, IAccountRepository
+    public class AccountRepository : JolijoberRepository, IAccountRepository ,IDisposable
     {
         #region -   Constructor   -
 
@@ -111,5 +111,31 @@ namespace JolijoberProject.Security.Repository.Repositories
         #endregion
 
 
+        #region -   Dispose   -
+
+        private bool disposed = false;
+        /// <summary>
+        /// Implements the dipose pattern.
+        /// </summary>
+        /// <param name="disposing"><c>True</c> when disposing.</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+                if (disposing)
+                  Context.Dispose();
+            this.disposed = true;
+        }
+
+        /// <summary>
+        /// Implement <see cref="IDisposable"/>.
+        /// </summary>
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
+        }
+
+        #endregion
     }
 }

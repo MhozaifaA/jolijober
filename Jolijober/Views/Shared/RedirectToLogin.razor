@@ -1,9 +1,17 @@
 @inject NavigationManager Navigation
 @using JolijoberProject.Shared.SharedKernal.ExtensionMethod
+
+<img href="" src="template/images/svg/undraw_page_not_found_su7k.svg" class="reload rounded mx-auto d-block float-none" style="cursor: pointer;" />
+<div class="mx-auto text-center d-block">
+    <p href="" style="cursor: pointer;" class="reload display-2">Go to login page</p>
+    <a class="dismiss btn fa fa-2x fa-refresh reload w-50 " href="Account/login" style="background: #169365;color: white;"></a>
+</div>
+
+
 @code {
     protected override void OnAfterRender(bool firstRender)
     {
         //?returnUrl={Uri.EscapeDataString(Navigation.Uri.RemoveHostUri()
-        Navigation.NavigateTo($"Account/login",false);
+        Navigation.NavigateTo($"Account/login", true);
     }
 }

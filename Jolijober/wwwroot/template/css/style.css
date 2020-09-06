@@ -526,8 +526,8 @@ nav > ul > li > a:hover {
 .user-account {
 	float: right;
 	width: 110px;
-	border-left: 1px solid #dd3e2b;
-	border-right: 1px solid #dd3e2b;
+	border-left: 1px solid #0F6747;
+	border-right: 1px solid #0F6747;
 	box-sizing: border-box;
 	position: relative;
 }

@@ -6,9 +6,10 @@
     Layout = null;
 }
 
-
+<!--colorbook-->
 <!--green #19a974  <--- default #e75348-->
-<!--green dark #169365 <---  default #e44d3a-->
+<!--green dark  #169365 <---  default #e44d3a-->
+<!--green darker #0F6747 <---  default #dd3e2b-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,24 +24,21 @@
     <partial name="@ViewPath._SharedStyles" />
 </head>
 <body>
-    <div class="wrapper">
-        <partial name="@ViewPath._CookieConsentPartial" />
-        <app>
+    <partial name="@ViewPath._CookieConsentPartial" />
+    <app>
+        <div class="wrapper">
             <component type="typeof(App)" render-mode="ServerPrerendered" />
-        </app>
-    </div>
+        </div>
+    </app>
 
     <div id="blazor-error-ui">
         <environment include="Staging,Production">
             An error has occurred. This application may no longer respond until reloaded.
         </environment>
         <environment include="Development">
-            <img  href=""  src="~/template/images/svg/undraw_page_not_found_su7k.svg" class="reload rounded mx-auto d-block float-none" style="cursor: pointer;" />
+            <h1>...</h1>
         </environment>
-        <div class="mx-auto text-center d-block">
-            <p href="" style="cursor: pointer;" class="reload display-2">Go to login page</p>
-            <a class="dismiss btn fa fa-2x fa-refresh reload w-50 " href="" style="background: #169365;color: white;"></a>
-        </div>
+
     </div>
 
     <partial name="@ViewPath._SharedScripts" />

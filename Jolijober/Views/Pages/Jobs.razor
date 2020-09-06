@@ -1,0 +1,43 @@
+﻿@page "/Jobs"
+
+<CallJavascript />
+
+<Search />
+
+
+<main>
+    <div class="main-section">
+        <div class="container">
+            <div class="main-section-data">
+                <div class="row">
+                    <div class="col-lg-3">
+
+                     <Filter/>
+
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="main-ws-sec">
+                            <div class="posts-section">
+
+                                <JobPost/>
+                                <!--post   ..  no-margin-->
+                                <Bounce />
+
+                            </div><!--posts-section end-->
+                        </div><!--main-ws-sec end-->
+                    </div>
+
+                    <div class="col-lg-3">
+                        <div class="right-sidebar">
+
+                            <Cards Title="Top Jobs" />
+                            <Cards Title="Most Viewed This Week" />
+
+                        </div><!--right-sidebar end-->
+                    </div>
+                </div>
+            </div><!-- main-section-data end-->
+        </div>
+    </div>
+</main>

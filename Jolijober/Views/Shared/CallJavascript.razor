@@ -1,0 +1,41 @@
+﻿@inject IJSRuntime JsRuntime;
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+            await InvokeJs("initscript", "initrange");
+
+        //await TryCatch(async () =>
+        //{
+        //    if (firstRender)
+        //        await TryCatch(async () => await JsRuntime.InvokeVoidAsync("initscript"),
+        //            async () => await JsRuntime.InvokeVoidAsync("initrange"));
+        //});
+    }
+
+    private async Task InvokeJs(params string[] funs)
+    {
+        foreach (var fun in funs)
+        {
+            try
+            {
+                await JsRuntime.InvokeVoidAsync(fun);
+            }
+            catch (Exception)
+            {
+                continue;
+            }
+        }
+    }
+
+
+
+    //private async Task TryCatch(params Action[] actions)
+    //{
+    //    foreach (var action in actions)
+    //        try
+    //        { await this.InvokeAsync(() => action.Invoke()); }
+    //        catch (Exception) { continue; }
+    //}
+}

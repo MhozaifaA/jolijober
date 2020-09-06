@@ -55,15 +55,13 @@ namespace Jolijober
             services.AddSingleton<IPostRepository, PostRepository>();
 
             services.AddResponseCompression();
-            services.AddServerSideBlazor();
-
-            //.AddCircuitOptions(o =>
-            // {
-            //     if (_env.IsDevelopment()) //only add details when debugging
-            //     {
-            //         o.DetailedErrors = true;
-            //     }
-            // });
+            services.AddServerSideBlazor().AddCircuitOptions(o =>
+             {
+                 if (_env.IsDevelopment()) //only add details when debugging
+                 {
+                     o.DetailedErrors = true;
+                 }
+             });
 
             services.AddControllersWithViews();
 

@@ -19,4 +19,8 @@
     <ProjectReference Include="..\JolijoberProject.Security.Repository\JolijoberProject.Security.Repository.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\template\images\via\" />
+  </ItemGroup>
+
 </Project>

@@ -82,29 +82,29 @@
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffeeeeee', endColorstr='#ffdddddd', GradientType=0);
 }
-.theme-green .back-bar .selected-bar {
-  border-radius: 2px;
-  background-color: #d23838;
-  background-image: -moz-linear-gradient(top, #d23838, #d23838);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#d23838), to(#d23838));
-  background-image: -webkit-linear-gradient(top, #d23838, #d23838);
-  background-image: -o-linear-gradient(top, #d23838, #d23838);
-  background-image: linear-gradient(to bottom, #d23838, #d23838);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d23838', endColorstr='#d23838', GradientType=0);
-}
-.theme-green .back-bar .pointer {
-  width: 14px;
-  height: 14px;
-  top: -5px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  border-radius: 10px;
-  background-color: #d23838;
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffeeeeee', endColorstr='#ffdddddd', GradientType=0);
-}
+    .theme-green .back-bar .selected-bar {
+        border-radius: 2px;
+        background-color: #19a974;
+        background-image: -moz-linear-gradient(top, #19a974, #19a974);
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#19a974), to(#19a974));
+        background-image: -webkit-linear-gradient(top, #19a974, #19a974);
+        background-image: -o-linear-gradient(top, #19a974,#19a974);
+        background-image: linear-gradient(to bottom,#19a974, #19a974);
+        background-repeat: repeat-x;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#19a974', endColorstr='#19a974', GradientType=0);
+    }
+    .theme-green .back-bar .pointer {
+        width: 14px;
+        height: 14px;
+        top: -5px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        border-radius: 10px;
+        background-color: #19a974; /*# #d23838*/
+        background-repeat: repeat-x;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffeeeeee', endColorstr='#ffdddddd', GradientType=0);
+    }
 .theme-green .back-bar .pointer-label {
   color: #999;
 }

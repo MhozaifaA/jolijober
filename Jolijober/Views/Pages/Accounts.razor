@@ -1,0 +1,72 @@
+﻿@page "/Profiles"
+@page "/Companies"
+
+@inject NavigationManager Navigation
+
+<CallJavascript />
+
+<section class="companies-info">
+    <div class="container">
+        <div class="company-title">
+            <h3>See All</h3>
+        </div><!--company-title end-->
+        <div class="companies-list">
+            <div class="row">
+
+                @if (IsProfiles)
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                        <div class="company_profile_info">
+                            <div class="company-up-info">
+                                <img src="template/images/via/91x91.png" alt="">
+                                <h3>John Doe</h3>
+                                <h4>Graphic Designer</h4>
+                                <ul>
+                                    <li><a href="javascript:void(0)" title="" class="follow">Follow</a></li>
+                                    <li><a href="javascript:void(0)" title="" class="message-us"><i class="fa fa-envelope"></i></a></li>
+                                    <li><a href="javascript:void(0)" title="" class="hire-us">Hire</a></li>
+                                </ul>
+                            </div>
+                            <a href="/Profile" title="" class="view-more-pro">View Profile</a>
+                        </div><!--company_profile_info end-->
+                    </div>
+
+                }
+                else
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="company_profile_info">
+                            <div class="company-up-info">
+                                <img src="template/images/via/90x90.png" alt="">
+                                <h3>Facebook Inc.</h3>
+                                <h4>Establish Feb, 2004</h4>
+                                <ul>
+                                    <li><a href="javascript:void(0)" title="" class="follow">Follow</a></li>
+                                    <li><a href="javascript:void(0)" title="" class="message-us"><i class="fa fa-envelope"></i></a></li>
+                                </ul>
+                            </div>
+                            <a href="/Company" title="" class="view-more-pro">View Profile</a>
+                        </div><!--company_profile_info end-->
+                    </div>
+                }
+
+
+
+
+
+
+            </div>
+        </div><!--companies-list end-->
+        <Bounce />
+    </div>
+</section><!--companies-info end-->
+
+@code {
+
+    public bool IsProfiles { get; set; }
+    protected override void OnAfterRender(bool firstRender)
+    {
+            IsProfiles = Navigation.Uri.Contains("Profiles");
+            StateHasChanged();
+    }
+}

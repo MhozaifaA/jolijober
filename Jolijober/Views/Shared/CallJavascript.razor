@@ -4,7 +4,7 @@
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
-            await InvokeJs("initscript", "initrange");
+            await InvokeJs("initscript", "initrange", "datepicker");
 
         //await TryCatch(async () =>
         //{

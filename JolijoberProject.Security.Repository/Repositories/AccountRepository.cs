@@ -5,6 +5,7 @@ using JolijoberProject.Infrastructure.MongoDB.DataBase;
 using JolijoberProject.Infrastructure.SqlServer.DataBase;
 using JolijoberProject.Security.Repository.DataTransferObjects;
 using JolijoberProject.Security.Repository.Interfaces;
+using JolijoberProject.Shared.SharedKernal.EnumClass;
 using JolijoberProject.Shared.SharedKernal.ExtensionMethod;
 using Microsoft.AspNetCore.Identity;
 using MongoDB.Driver;
@@ -18,7 +19,7 @@ using System.Threading.Tasks;
 
 namespace JolijoberProject.Security.Repository.Repositories
 {
-    public class AccountRepository : JolijoberRepository, IAccountRepository ,IDisposable
+    public class AccountRepository : JolijoberRepository, IAccountRepository, IDisposable
     {
         #region -   Constructor   -
 
@@ -81,8 +82,13 @@ namespace JolijoberProject.Security.Repository.Repositories
 
             var result = await UserManager.CreateAsync(accountUser, createAccountDto.Password);
 
-            if (result == IdentityResult.Success)
+             string NameRole = createAccountDto.AccountType switch { AccountTypes.User => Roles.User.ToString(), AccountTypes.Company => Roles.Company.ToString(), _ => "" };
+
+            var resultrole= await UserManager.AddToRoleAsync(accountUser, NameRole);
+
+            if (result == IdentityResult.Success &&  resultrole.Succeeded)
             {
+
                 createAccountDto.TextFaild = true.ToString();
 
                 contextmongodb.InsertOne(new Identity()
@@ -90,8 +96,8 @@ namespace JolijoberProject.Security.Repository.Repositories
                     FisrtName = accountUser.Email,
                     SureName = string.Empty,
                     SecurId = accountUser.Id,
-                    Type= accountUser.AccountType,
-                    Country= createAccountDto.Country
+                    Type = accountUser.AccountType,
+                    Country = createAccountDto.Country
                 });
 
             }
@@ -102,9 +108,9 @@ namespace JolijoberProject.Security.Repository.Repositories
             return createAccountDto;
         }
 
-        public async Task<bool> SignOutAsync(string? id= null)
+        public async Task<bool> SignOutAsync(string? id = null)
         {
-            await  SignInManager.SignOutAsync();
+            await SignInManager.SignOutAsync();
             return true;
         }
 
@@ -122,7 +128,7 @@ namespace JolijoberProject.Security.Repository.Repositories
         {
             if (!disposed)
                 if (disposing)
-                  Context.Dispose();
+                    Context.Dispose();
             this.disposed = true;
         }
 

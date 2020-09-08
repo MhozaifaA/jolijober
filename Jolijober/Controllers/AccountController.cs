@@ -28,7 +28,7 @@ namespace Jolijober.Controllers
         {
             // in Layout  use Base "/" for blazor soo in returnUrl Ignor "/"
             ViewBag.returnUrl = returnUrl == "/" ? null : returnUrl;
-
+         
             return View();
         }
 
@@ -54,7 +54,7 @@ namespace Jolijober.Controllers
                 return View(signIn);
             }
             if (String.IsNullOrEmpty(returnUrl == "/" ? null : returnUrl))
-                return Redirect("/Index");
+                return result.AccountType==AccountTypes.User?Redirect("/Index"): Redirect("/Company"); // id
             else return Redirect(returnUrl ?? "/");
         }
 

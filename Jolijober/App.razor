@@ -1,6 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Components.Routing
-@using Jolijober.Views.Shared;
-@inject IJSRuntime JsRuntime;
+@using JolijoberProject.Shared.SharedKernal.ExtensionMethod
+
+@inject NavigationManager Navigation
 
 <CascadingAuthenticationState>
     <Router AppAssembly="typeof(Program).Assembly">
@@ -27,7 +28,7 @@
         </Found>
         <NotFound>
             @*<LayoutView Layout="@typeof(MainLayout)">*@
-            <RedirectToLogin />
+            <RedirectToLogin IsAuth="false" UrlReferrer="@Navigation.Uri.RemoveHostUri(true)" />
             @*</LayoutView>*@
         </NotFound>
     </Router>

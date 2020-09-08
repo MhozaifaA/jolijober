@@ -1,17 +1,40 @@
 @inject NavigationManager Navigation
 @using JolijoberProject.Shared.SharedKernal.ExtensionMethod
 
-<img href="" src="template/images/svg/undraw_page_not_found_su7k.svg" class="reload rounded mx-auto d-block float-none" style="cursor: pointer;" />
-<div class="mx-auto text-center d-block">
-    <p href="" style="cursor: pointer;" class="reload display-2">Go to login page</p>
-    <a class="dismiss btn fa fa-2x fa-refresh reload w-50 " href="Account/login" style="background: #169365;color: white;"></a>
+@if (IsAuth)
+{
+    <img @onclick="GoTo" href="" src="template/images/svg/undraw_winter_magic_5xu2.svg" class="reload rounded mx-auto d-block float-none" style="cursor: pointer;" />
+}
+else
+{
+    <img @onclick="GoTo" href="" src="template/images/svg/undraw_page_not_found_su7k.svg" class="reload rounded mx-auto d-block float-none" style="cursor: pointer;" />
+}
+
+<div @onclick="GoTo" class="mx-auto text-center d-block">
+    <p @onclick="GoTo" href="" style="cursor: pointer;" class="reload display-2">@(IsAuth? "401 UnAuthorize" : "404 NotFound") <br /> Go to @returnUrl</p>
+    <a @onclick="GoTo" class="dismiss btn fa fa-2x fa-refresh reload w-50 " href="Account/login" style="background: #169365;color: white;"></a>
 </div>
 
-
 @code {
+    /// <summary>
+    /// <c>True return from unAuth False return from notFound </c>
+    /// </summary>
+    [Parameter] public bool IsAuth { get; set; }
+
+
+    [Parameter] public string UrlReferrer { get; set; }
+    private string returnUrl { get; set; }
+
     protected override void OnAfterRender(bool firstRender)
     {
         //?returnUrl={Uri.EscapeDataString(Navigation.Uri.RemoveHostUri()
-        Navigation.NavigateTo($"Account/login", true);
+        //  GotTo();
+        if (firstRender)
+        {
+         returnUrl = IsAuth ? Uri.EscapeDataString(Navigation.Uri.RemoveHostUri(true)) : UrlReferrer;
+         StateHasChanged();
+        }
     }
+
+    private void GoTo() => Navigation.NavigateTo($"Account/Login?returnUrl={returnUrl}", true);
 }

@@ -12,23 +12,32 @@ namespace JolijoberProject.Infrastructure.SqlServer.Seed
 {
     public static class AccountSeedDB
     {
-        public static async Task InitializeAsync (IServiceProvider services)
+        public static async Task InitializeAsync(IServiceProvider services)
         {
             var userManager = (UserManager<AccountUser>)services.GetService(typeof(UserManager<AccountUser>));
             var roleManager = (RoleManager<AccountRole>)services.GetService(typeof(RoleManager<AccountRole>));
             var context = (JolijoberDbContext)services.GetService(typeof(JolijoberDbContext));
+            
+            foreach (var role in Enum.GetNames(typeof(Roles)))
+            {
+               if (!await roleManager.RoleExistsAsync(role))
+                    await roleManager.CreateAsync(new AccountRole() { Name = role });
+            }
 
 
             var defaultuser = await userManager.FindByNameAsync("Hozaifa");
-            if (defaultuser is null )
+            if (defaultuser is null)
             {
-                AccountUser accountUser = new AccountUser() {
+                AccountUser accountUser = new AccountUser()
+                {
                     UserName = "Hozaifa",
                     Email = "Hozaifa".ParsToJolijoberEmail(),
                     AccountType = AccountTypes.User,
                 };
 
-              var result= await userManager.CreateAsync(accountUser,"123456");
+                await userManager.CreateAsync(accountUser, "123456");
+
+                await userManager.AddToRoleAsync(accountUser, Roles.User.ToString());
             }
 
 
@@ -42,9 +51,10 @@ namespace JolijoberProject.Infrastructure.SqlServer.Seed
                     AccountType = AccountTypes.Company,
                 };
 
-                var result = await userManager.CreateAsync(accountUser, "123456");
-
+                 await userManager.CreateAsync(accountUser, "123456");
+                 await userManager.AddToRoleAsync(accountUser, Roles.Company.ToString());
             }
+
 
         }
     }

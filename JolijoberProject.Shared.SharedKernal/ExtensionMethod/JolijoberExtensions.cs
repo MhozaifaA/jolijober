@@ -1,4 +1,5 @@
-﻿using JolijoberProject.Shared.SharedKernal.SharedDto;
+﻿using JolijoberProject.Shared.SharedKernal.EnumClass;
+using JolijoberProject.Shared.SharedKernal.SharedDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,11 +17,23 @@ namespace JolijoberProject.Shared.SharedKernal.ExtensionMethod
         }
 
 
-        public static string RemoveHostUri(this string uri)
+        public static string RemoveHostUri(this string uri, bool skipDash=false)
         {
-            return new Uri(uri).PathAndQuery;
+            return new Uri(uri).PathAndQuery.Substring(skipDash?1:0);
         }
 
+        public static bool IsContainRole(this string uri, Roles role)
+        {
+            switch (role)
+            {
+                case Roles.User:
+                    return !(uri.Contains("Company") || uri.Contains("Companies"));
+                case Roles.Company:
+                    return uri.Contains("Company") || uri.Contains("Companies");
+                default:
+                    return false;
+            }
+        }
 
         #endregion
 

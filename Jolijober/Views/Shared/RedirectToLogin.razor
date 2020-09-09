@@ -39,6 +39,7 @@ else
            // returnUrl=await JsRuntime.InvokeAsync<string>("getUrlReferrer");
             StateHasChanged();
         }
+        await Task.CompletedTask;
     }
 
     private void GoTo() => Navigation.NavigateTo($"Account/Login?returnUrl={returnUrl}", true);

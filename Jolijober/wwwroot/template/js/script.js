@@ -239,8 +239,6 @@ $(window).on("load", function () {
 
 
     this.window.initscript = () => {
-
-
         //  ============= COVER GAP FUNCTION =========
 
         var gap = $(".container").offset().left;
@@ -248,9 +246,7 @@ $(window).on("load", function () {
             "right": gap
         });
 
-
     //  ============= PORTFOLIO SLIDER FUNCTION =========
-
 
         $('.profiles-slider').slick({
             slidesToShow: 3,
@@ -292,13 +288,12 @@ $(window).on("load", function () {
 
 
         });
-
-
-
-
-
     }
 
+    // used in RedirectToLogin
+    this.window.getUrlReferrer = () => {
+        return document.referrer;
+    }
 
 
 

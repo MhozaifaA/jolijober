@@ -1,4 +1,5 @@
 @inject NavigationManager Navigation
+@*@inject IJSRuntime JsRuntime*@
 @using JolijoberProject.Shared.SharedKernal.ExtensionMethod
 
 @if (IsAuth)
@@ -25,14 +26,18 @@ else
     [Parameter] public string UrlReferrer { get; set; }
     private string returnUrl { get; set; }
 
-    protected override void OnAfterRender(bool firstRender)
+    
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         //?returnUrl={Uri.EscapeDataString(Navigation.Uri.RemoveHostUri()
         //  GotTo();
         if (firstRender)
         {
-         returnUrl = IsAuth ? Uri.EscapeDataString(Navigation.Uri.RemoveHostUri(true)) : UrlReferrer;
-         StateHasChanged();
+            returnUrl = IsAuth ? Uri.EscapeDataString(Navigation.Uri.RemoveHostUri(true)) : UrlReferrer;
+
+           // returnUrl=await JsRuntime.InvokeAsync<string>("getUrlReferrer");
+            StateHasChanged();
         }
     }
 

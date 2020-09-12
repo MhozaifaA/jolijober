@@ -41,6 +41,29 @@ namespace JolijoberProject.Main.Repository.Repositories
             }).ToListAsync();
         }
 
+        public async Task<ProfileDto> GetProfile(string Id)
+        {
+
+            //await Context.Indexes.CreateOneAsync(
+            //    Builders<Identity>.IndexKeys
+            //        .Ascending(i => i.SecurId),
+            //    new CreateIndexOptions<Identity>
+            //    {
+            //        Unique = true,
+            //    });
+
+            var identity = await Context.AsQueryable().FirstOrDefaultAsync(identity => identity.SecurId == Id);
+            return new ProfileDto()
+            {
+                FirstName = identity.FisrtName,
+                SureName = identity.SureName,
+                CoverImagePath = identity.CoverImagePath,
+                ProfileImagePath = identity.ProfileImagePath,
+                Following= identity.Following?.Select(x=>x.ToString()).ToArray(),
+                Followers= identity.Followers?.Select(x=>x.ToString()).ToArray(),
+            };
+        }
+
 
         private bool disposed = false;
         /// <summary>

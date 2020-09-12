@@ -1,0 +1,31 @@
+﻿@using JolijoberProject.Shared.SharedKernal.ExtensionMethod
+
+
+<ul>
+    @((MarkupString)Tree)
+</ul>
+
+
+
+@code {
+
+    public string Tree { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            if (i + 1 <= fixStar)
+                Tree += "<li><i class=\"fa fa-star\"></i></li>";
+            else if (fixStar - i == 0.5)
+                Tree += "<li><i class=\"fa fa-star-half-o\"></i></li>";
+            else
+                Tree += "<li><i class=\"fa fa-star-o\"></i></li>";
+        }
+
+        base.OnParametersSet();
+    }
+
+    [Parameter] public double Star { get; set; }
+    private double fixStar => Star.FixToHalf();
+}

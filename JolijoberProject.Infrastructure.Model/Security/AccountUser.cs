@@ -13,7 +13,10 @@ namespace JolijoberProject.Infrastructure.Model.Security
         public DateTimeOffset? DateDeleted { get; set; }
 
         #endregion
-
+        /// <summary>
+        ///  mongodb_Id  <c>ObjectId</c>  identity collection
+        /// </summary>
+        public string SecurId { get; set; } // mongodb_Id
         public AccountTypes AccountType { get; set; }
 
     }

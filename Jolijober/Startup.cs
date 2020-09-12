@@ -23,6 +23,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using Tewr.Blazor.FileReader;
 
 namespace Jolijober
 {
@@ -124,7 +125,11 @@ namespace Jolijober
 
             services.AddRazorPages();
 
-
+            services.AddFileReaderService();
+            //.AddHubOptions(o =>
+            // {
+            //     o.MaximumReceiveMessageSize = 10 * 1024 * 1024; // 10MB
+            // });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

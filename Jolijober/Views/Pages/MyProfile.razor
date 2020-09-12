@@ -1,5 +1,8 @@
 ﻿@page "/MyProfile"
-<CallJavascript/>
+
+
+<CallJavascript />
+
 
 <section class="cover-sec">
     <img src="template/images/via/1600x400.png" alt="">
@@ -20,53 +23,44 @@
                                     <a href="javascript:void(0)" title=""><i class="fa fa-camera"></i></a>
                                 </div><!--user-pro-img end-->
                                 <div class="user_pro_status">
-                                    <ul class="flw-hr">
+                                    @*<ul class="flw-hr">
                                         <li><a href="javascript:void(0)" title="" class="flww"><i class="la la-plus"></i> Follow</a></li>
                                         <li><a href="javascript:void(0)" title="" class="hre">Hire</a></li>
-                                    </ul>
+                                    </ul>*@
                                     <ul class="flw-status">
                                         <li>
                                             <span>Following</span>
-                                            <b>34</b>
+                                            <b>@(ProfileDto?.Following?.Length??0)</b>
                                         </li>
                                         <li>
                                             <span>Followers</span>
-                                            <b>155</b>
+                                            <b>@(ProfileDto?.Followers?.Length??0)</b>
                                         </li>
                                     </ul>
                                 </div><!--user_pro_status end-->
                                 <ul class="social_links">
                                     <li><a href="javascript:void(0)" title=""><i class="la la-globe"></i> www.example.com</a></li>
                                     <li><a href="javascript:void(0)" title=""><i class="fa fa-facebook-square"></i> Http://www.facebook.com/john...</a></li>
-                                    <li><a href="javascript:void(0)" title=""><i class="fa fa-twitter"></i> Http://www.Twitter.com/john...</a></li>
-                                    <li><a href="javascript:void(0)" title=""><i class="fa fa-google-plus-square"></i> Http://www.googleplus.com/john...</a></li>
-                                    <li><a href="javascript:void(0)" title=""><i class="fa fa-behance-square"></i> Http://www.behance.com/john...</a></li>
-                                    <li><a href="javascript:void(0)" title=""><i class="fa fa-pinterest"></i> Http://www.pinterest.com/john...</a></li>
-                                    <li><a href="javascript:void(0)" title=""><i class="fa fa-instagram"></i> Http://www.instagram.com/john...</a></li>
-                                    <li><a href="javascript:void(0)" title=""><i class="fa fa-youtube"></i> Http://www.youtube.com/john...</a></li>
                                 </ul>
                             </div><!--user_profile end-->
 
-                          <Suggestion Title="People Viewed Profil"/>
+                            <Suggestion Title="People Viewed Profil" />
 
                         </div><!--main-left-sidebar end-->
                     </div>
                     <div class="col-lg-6">
                         <div class="main-ws-sec">
                             <div class="user-tab-sec">
-                                <h3>John Doe</h3>
+                                <h3>@ProfileDto?.FullName</h3>
 
                                 <div class="star-descp">
-                                    <span>Graphic Designer at Self Employed</span>
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star-half-o"></i></li>
-                                    </ul>
-                                    <a href="javascript:void(0)" title="">Status</a>
+                                    <span>@ProfileDto?.Headline</span>
+
+                                   <Stars Star="3.2"/>
+
+                                    @*<a href="javascript:void(0)" title="">Status</a>*@
                                 </div><!--star-descp end-->
+
 
                                 <div class="tab-feed st2">
                                     <ul>
@@ -108,13 +102,15 @@
                                         </li>
                                     </ul>
                                 </div><!-- tab-feed end-->
+
+
                             </div><!--user-tab-sec end-->
 
                             <div class="product-feed-tab current" id="feed-dd">
                                 <div class="posts-section">
 
-                                    <JobPost/>
-                                    <Bounce/>
+                                    <JobPost />
+                                    <Bounce />
 
                                 </div><!--posts-section end-->
                             </div><!--product-feed-tab end-->
@@ -162,8 +158,8 @@
 
                             <div class="product-feed-tab" id="saved-jobs">
                                 <div class="posts-section">
-                                        <JobPost/>
-                                    <Bounce/>
+                                    <JobPost />
+                                    <Bounce />
 
                                 </div><!--posts-section end-->
                             </div><!--product-feed-tab end-->
@@ -171,8 +167,8 @@
 
                             <div class="product-feed-tab" id="my-bids">
                                 <div class="posts-section">
-                                 <ProjectPost/>
-                                    <Bounce/>
+                                    <ProjectPost />
+                                    <Bounce />
                                 </div><!--posts-section end-->
                             </div><!--product-feed-tab end-->
 
@@ -194,7 +190,7 @@
                                                     <a href="javascript:void(0)" title=""><img src="template/images/all-out.png" alt=""></a>
                                                 </div><!--gallery_pt end-->
                                             </div>
-            
+
                                         </div>
                                     </div><!--gallery_pf end-->
                                 </div><!--portfolio-gallery-sec end-->
@@ -452,6 +448,3 @@
     </div><!--overview-edit end-->
 </div><!--overview-box end-->
 
-@code {
-
-}

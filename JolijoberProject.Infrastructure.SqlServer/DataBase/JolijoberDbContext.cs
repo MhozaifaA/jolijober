@@ -18,6 +18,15 @@ namespace JolijoberProject.Infrastructure.SqlServer.DataBase
 
         }
 
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Entity<AccountUser>()
+                .HasIndex(u => u.SecurId)
+                .IsUnique();
+        }
+
         #endregion
 
         #region -   Main    -

@@ -2,6 +2,9 @@
 using JolijoberProject.Shared.SharedKernal.SharedDto;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -37,6 +40,15 @@ namespace JolijoberProject.Shared.SharedKernal.ExtensionMethod
 
         #endregion
 
+        #region -   Math   -
+
+        public static double FixToHalf(this double d)
+        {
+          return Math.Round(d * 2, MidpointRounding.AwayFromZero) / 2;
+        }
+
+        #endregion
+
         #region -   Enumrable   -
 
         public static string ToLineString(this IEnumerable<string> list,string separator=",")
@@ -59,6 +71,42 @@ namespace JolijoberProject.Shared.SharedKernal.ExtensionMethod
             return queryable
                 .Skip(skip)
                 .Take(pagination.Quantity).ToList();
+        }
+
+        #endregion
+
+
+        #region -   Compression   -
+
+        public static bool TryQualityCompression(MemoryStream inputStream, long quality, out string newbase64)
+        {
+            try
+            {
+                Image image;
+                image = Image.FromStream(inputStream);
+
+                var jpegEncoder = ImageCodecInfo.GetImageDecoders()
+                  .First(c => c.FormatID == ImageFormat.Jpeg.Guid);
+
+                var encoderParameters = new EncoderParameters(1);
+                encoderParameters.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, quality); // here % Quality
+                                                                                                                    // Byte[] outputBytes;
+                using (var outputStream = new MemoryStream())
+                {
+                    image.Save(outputStream, jpegEncoder, encoderParameters);
+                    newbase64 = $"data:image/jpg;base64,{Convert.ToBase64String(outputStream.ToArray())}";
+
+                }
+                image.Dispose();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                newbase64 = "";
+                return false;
+            }
+
         }
 
         #endregion

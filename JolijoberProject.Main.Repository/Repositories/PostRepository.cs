@@ -17,7 +17,7 @@ namespace JolijoberProject.Main.Repository.Repositories
 {
     public class PostRepository : JolijoberRepository<Post>, IPostRepository
     {
-        public PostRepository(JolijoberService context) : base(context)
+        public PostRepository(JolijoberService service) : base(service)
         { }
 
         public async Task<PostMiniDto> GetPostByIdMiniAsync(string id)

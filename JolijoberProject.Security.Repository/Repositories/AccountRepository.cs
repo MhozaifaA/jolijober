@@ -91,15 +91,22 @@ namespace JolijoberProject.Security.Repository.Repositories
 
                 createAccountDto.TextFaild = true.ToString();
 
-                contextmongodb.InsertOne(new Identity()
+
+                Identity identity = new Identity()
                 {
                     FisrtName = accountUser.Email,
                     SureName = string.Empty,
                     SecurId = accountUser.Id,
                     Type = accountUser.AccountType,
                     Country = createAccountDto.Country
-                });
+                };
 
+                 await contextmongodb.InsertOneAsync(identity);
+
+               // Context.Attach(accountUser);
+                accountUser.SecurId = identity.Id;
+               // Context.Entry(accountUser).Property(a => a.SecurId).IsModified = true;
+                await Context.SaveChangesAsync();
             }
             else
             {

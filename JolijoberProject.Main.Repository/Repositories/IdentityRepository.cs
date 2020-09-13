@@ -59,7 +59,9 @@ namespace JolijoberProject.Main.Repository.Repositories
                 SureName = identity.SureName,
                 CoverImagePath = identity.CoverImagePath,
                 ProfileImagePath = identity.ProfileImagePath,
-                Following= identity.Following?.Select(x=>x.ToString()).ToArray(),
+                Headline= identity.Headline,
+                Overview=identity.Overview,
+                Following = identity.Following?.Select(x=>x.ToString()).ToArray(),
                 Followers= identity.Followers?.Select(x=>x.ToString()).ToArray(),
             };
         }

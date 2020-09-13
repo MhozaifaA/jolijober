@@ -1,0 +1,13 @@
+﻿
+@inject IJSRuntime JsRuntime
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+
+
+        //setSelectedLang
+        await JsRuntime.InvokeVoidAsync("getSelectedLang");
+
+    }
+}

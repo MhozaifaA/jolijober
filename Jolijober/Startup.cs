@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using Jolijober.Util.Translate;
 using JolijoberProject.Hub.SignalR.Repositories;
 using JolijoberProject.Infrastructure.Model.Security;
 using JolijoberProject.Infrastructure.MongoDB;
@@ -17,7 +19,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -130,6 +134,9 @@ namespace Jolijober
             // {
             //     o.MaximumReceiveMessageSize = 10 * 1024 * 1024; // 10MB
             // });
+
+            services.AddSingleton<IAppTranslate, AppTranslate>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -145,6 +152,8 @@ namespace Jolijober
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
@@ -162,6 +171,7 @@ namespace Jolijober
                 endpoints.MapBlazorHub();
                 endpoints.MapHub<JolijoberHub>("/JolijoberHub/Notify");
                 endpoints.MapFallbackToController("Blazor", "Home");
+               // endpoints.MapFallbackToPage("/_Host");
             });
         }
     }

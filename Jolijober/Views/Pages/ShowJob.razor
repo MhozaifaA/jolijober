@@ -5,151 +5,157 @@
 @using JolijoberProject.Main.Repository.DataTransferObjects
 @using JolijoberProject.Shared.SharedKernal.SharedDto
 @using JolijoberProject.Shared.SharedKernal.ExtensionMethod
+@using Jolijober.Util.Translate
 @inject IPostRepository _postRepository
 
-<section class="forum-sec">
-    <div class="container">
-        <div class="forum-links">
-            <ul>
-                <li class="active"><a href="javascript:void(0)" title="">Latest</a></li>
-                <li><a href="javascript:void(0)" title="">Unanswered</a></li>
-                <li><a href="javascript:void(0)" title="">Treading</a></li>
-                <li><a href="javascript:void(0)" title="">Popular This Week</a></li>
-                <li><a href="javascript:void(0)" title="">Popular of Month</a></li>
-            </ul>
-        </div><!--forum-links end-->
-        <div class="forum-links-btn">
-            <a href="javascript:void(0)" title=""><i class="fa fa-bars"></i></a>
-        </div>
-    </div>
-</section>
 
-<section class="forum-page">
-    <div class="container">
-        <div class="forum-questions-sec">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="forum-questions">
-
-                        @if (posts != null && posts.Count > 0)
-                        {
-                            foreach (var post in posts)
-                            {
-                                <PostMini post="post" />
-                            }
-                        }
-
-
-                    </div><!--forum-questions end-->
-
-                    <PaginationTable Radius="3" TotaPagesQuantity="TotaPagesQuantity" CurrentPage="CurrentPage" SelectedPage="SelectedPage" />
-
-
-
-                </div>
-                <div class="col-lg-4">
-                    <div class="widget widget-user">
-                        <h3 class="title-wd">Top Company of the Week</h3>
-                        <ul>
-                            <li>
-                                <div class="usr-msg-details">
-                                    <div class="usr-ms-img">
-                                        <img src="template/images/via/50x50.png" alt="">
-                                    </div>
-                                    <div class="usr-mg-info">
-                                        <h3>Jessica William</h3>
-                                        <p>Graphic Designer </p>
-                                    </div><!--usr-mg-info end-->
-                                </div>
-                                <span><img src="/template/images/price1.png" alt="">1185</span>
-                            </li>
-                            <li>
-                                <div class="usr-msg-details">
-                                    <div class="usr-ms-img">
-                                        <img src="template/images/via/50x50.png" alt="">
-                                    </div>
-                                    <div class="usr-mg-info">
-                                        <h3>John Doe</h3>
-                                        <p>PHP Developer</p>
-                                    </div><!--usr-mg-info end-->
-                                </div>
-                                <span><img src="/template/images/price2.png" alt="">1165</span>
-                            </li>
-                            <li>
-                                <div class="usr-msg-details">
-                                    <div class="usr-ms-img">
-                                        <img src="template/images/via/50x50.png" alt="">
-                                    </div>
-                                    <div class="usr-mg-info">
-                                        <h3>Poonam</h3>
-                                        <p>Wordpress Developer </p>
-                                    </div><!--usr-mg-info end-->
-                                </div>
-                                <span><img src="/template/images/price3.png" alt="">1120</span>
-                            </li>
-                            <li>
-                                <div class="usr-msg-details">
-                                    <div class="usr-ms-img">
-                                        <img src="template/images/via/50x50.png" alt="">
-                                    </div>
-                                    <div class="usr-mg-info">
-                                        <h3>Bill Gates</h3>
-                                        <p>C & C++ Developer </p>
-                                    </div><!--usr-mg-info end-->
-                                </div>
-                                <span><img src="/template/images/price4.png" alt="">1009</span>
-                            </li>
-                        </ul>
-                    </div><!--widget-user end-->
-                    <div class="widget widget-adver">
-                        <img src="template/images/undraw_career_progress_ivdb.png" alt="">
-                    </div><!--widget-adver end-->
-                </div>
+    <section class="forum-sec">
+        <div class="container">
+            <div class="forum-links">
+                <ul>
+                    <li class="active"><a href="javascript:void(0)" title=""> @Translate["Latest"]</a></li>
+                    <li><a href="javascript:void(0)" title="">Unanswered</a></li>
+                    <li><a href="javascript:void(0)" title="">Treading</a></li>
+                    <li><a href="javascript:void(0)" title="">Popular This Week</a></li>
+                    <li><a href="javascript:void(0)" title="">Popular of Month</a></li>
+                </ul>
+            </div><!--forum-links end-->
+            <div class="forum-links-btn">
+                <a href="javascript:void(0)" title=""><i class="fa fa-bars"></i></a>
             </div>
-        </div><!--forum-questions-sec end-->
-    </div>
-</section><!--forum-page end-->
+        </div>
+    </section>
 
-<div class="overview-box" id="question-box">
-    <div class="overview-edit">
-        <h3>Ask a Question</h3>
-        <form>
-            <input type="text" name="question" placeholder="Type Question Here">
-            <input type="text" name="tags" placeholder="Tags">
-            <textarea placeholder="Description"></textarea>
-            <button type="submit" class="save">Submit</button>
-            <button type="submit" class="cancel">Cancel</button>
-        </form>
-        <a href="javascript:void(0)" title="" class="close-box"><i class="la la-close"></i></a>
-    </div><!--overview-edit end-->
-</div><!--overview-box end-->
+    <section class="forum-page">
+        <div class="container">
+            <div class="forum-questions-sec">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="forum-questions">
 
-@code {
+                            @if (posts != null && posts.Count > 0)
+                            {
+                                foreach (var post in posts)
+                                {
+                                    <PostMini post="post" />
+                                }
+                            }
 
-    List<PostMiniDto> postsPage;
-    List<PostMiniDto> posts;
-    public const int Quantity = 7;
-    private int CurrentPage = 1;
-    private int TotaPagesQuantity;
 
-    protected override async Task OnInitializedAsync()
-    {
-        postsPage = await _postRepository.GetPostsMiniAsync();
-        LoadPosts();
+                        </div><!--forum-questions end-->
+
+                        <PaginationTable Radius="3" TotaPagesQuantity="TotaPagesQuantity" CurrentPage="CurrentPage" SelectedPage="SelectedPage" />
+
+
+
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="widget widget-user">
+                            <h3 class="title-wd">Top Company of the Week</h3>
+                            <ul>
+                                <li>
+                                    <div class="usr-msg-details">
+                                        <div class="usr-ms-img">
+                                            <img src="template/images/via/50x50.png" alt="">
+                                        </div>
+                                        <div class="usr-mg-info">
+                                            <h3>Jessica William</h3>
+                                            <p>Graphic Designer </p>
+                                        </div><!--usr-mg-info end-->
+                                    </div>
+                                    <span><img src="/template/images/price1.png" alt="">1185</span>
+                                </li>
+                                <li>
+                                    <div class="usr-msg-details">
+                                        <div class="usr-ms-img">
+                                            <img src="template/images/via/50x50.png" alt="">
+                                        </div>
+                                        <div class="usr-mg-info">
+                                            <h3>John Doe</h3>
+                                            <p>PHP Developer</p>
+                                        </div><!--usr-mg-info end-->
+                                    </div>
+                                    <span><img src="/template/images/price2.png" alt="">1165</span>
+                                </li>
+                                <li>
+                                    <div class="usr-msg-details">
+                                        <div class="usr-ms-img">
+                                            <img src="template/images/via/50x50.png" alt="">
+                                        </div>
+                                        <div class="usr-mg-info">
+                                            <h3>Poonam</h3>
+                                            <p>Wordpress Developer </p>
+                                        </div><!--usr-mg-info end-->
+                                    </div>
+                                    <span><img src="/template/images/price3.png" alt="">1120</span>
+                                </li>
+                                <li>
+                                    <div class="usr-msg-details">
+                                        <div class="usr-ms-img">
+                                            <img src="template/images/via/50x50.png" alt="">
+                                        </div>
+                                        <div class="usr-mg-info">
+                                            <h3>Bill Gates</h3>
+                                            <p>C & C++ Developer </p>
+                                        </div><!--usr-mg-info end-->
+                                    </div>
+                                    <span><img src="/template/images/price4.png" alt="">1009</span>
+                                </li>
+                            </ul>
+                        </div><!--widget-user end-->
+                        <div class="widget widget-adver">
+                            <img src="template/images/undraw_career_progress_ivdb.png" alt="">
+                        </div><!--widget-adver end-->
+                    </div>
+                </div>
+            </div><!--forum-questions-sec end-->
+        </div>
+    </section><!--forum-page end-->
+
+    <div class="overview-box" id="question-box">
+        <div class="overview-edit">
+            <h3>Ask a Question</h3>
+            <form>
+                <input type="text" name="question" placeholder="Type Question Here">
+                <input type="text" name="tags" placeholder="Tags">
+                <textarea placeholder="Description"></textarea>
+                <button type="submit" class="save">Submit</button>
+                <button type="submit" class="cancel">Cancel</button>
+            </form>
+            <a href="javascript:void(0)" title="" class="close-box"><i class="la la-close"></i></a>
+        </div><!--overview-edit end-->
+    </div><!--overview-box end-->
+
+    @code {
+
+     [Inject]  public IAppTranslate Translate { get; set; }
+
+
+        List<PostMiniDto> postsPage;
+        List<PostMiniDto> posts;
+        public const int Quantity = 7;
+        private int CurrentPage = 1;
+        private int TotaPagesQuantity;
+
+        protected override async Task OnInitializedAsync()
+        {
+            postsPage = await _postRepository.GetPostsMiniAsync();
+            LoadPosts();
+
+        }
+
+        private void LoadPosts(int page = 1)
+        {
+            posts = postsPage.ToPaginate(new Pagination() { Page = page, Quantity = Quantity });
+            double count = postsPage.Count;
+            TotaPagesQuantity = (int)Math.Ceiling(count / Quantity);
+        }
+
+        private void SelectedPage(int page)
+        {
+            posts.Clear();
+            CurrentPage = page;
+            LoadPosts(page);
+        }
+
     }
-
-    private void LoadPosts(int page = 1)
-    {
-        posts = postsPage.ToPaginate(new Pagination() { Page = page, Quantity = Quantity });
-        double count = postsPage.Count;
-        TotaPagesQuantity = (int)Math.Ceiling(count / Quantity);
-    }
-
-    private void SelectedPage(int page)
-    {
-        posts.Clear();
-        CurrentPage = page;
-        LoadPosts(page);
-    }
-
-}

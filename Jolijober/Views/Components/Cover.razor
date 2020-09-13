@@ -1,0 +1,44 @@
+﻿@using Tewr.Blazor.FileReader
+@using System.IO;
+@inject IFileReaderService fileReaderService;
+
+<section class="cover-sec">
+    <img src="template/images/via/1600x400.png" alt="">
+    <input type="file" @ref=inputTypeFileElement @onchange="(x)=>CheckChanged(x)"/>
+    <a @onclick=ReadFile href="javascript:void(0)" title="">
+        <i class="fa fa-camera"></i> Change Image
+    </a>
+</section>
+
+@code {
+
+    public string MyProperty { get; set; }
+    private void CheckChanged(ChangeEventArgs x)
+    {
+        var asda = x;
+    }
+
+    private ElementReference inputTypeFileElement;
+
+    public async Task ReadFile()
+    {
+        foreach (var file in await fileReaderService.CreateReference(inputTypeFileElement).EnumerateFilesAsync())
+        {
+
+            //// Read into buffer and act (uses less memory)
+            //await using (Stream stream = await file.OpenReadAsync())
+            //{
+            //    // Do (async) stuff with stream...
+            //    await stream.ReadAsync(buffer, ...);
+
+            //    }
+
+            //// Read file fully into memory and act
+            //using (MemoryStream memoryStream = await file.CreateMemoryStreamAsync(4096))
+            //{
+            //    // Sync calls are ok once file is in memory
+            //    memoryStream.Read(buffer, ...)
+            //    }
+        }
+    }
+}

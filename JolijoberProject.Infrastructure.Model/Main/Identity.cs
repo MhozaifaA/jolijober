@@ -28,6 +28,8 @@ namespace JolijoberProject.Infrastructure.Model.Main
 
         public string Headline { get; set; }
 
+        public string Overview { get; set; }
+
         public string CoverImagePath { get; set; }
         public string ProfileImagePath { get; set; }
 

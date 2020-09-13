@@ -4,10 +4,7 @@
 <CallJavascript />
 
 
-<section class="cover-sec">
-    <img src="template/images/via/1600x400.png" alt="">
-    <a href="javascript:void(0)" title=""><i class="fa fa-camera"></i> Change Image</a>
-</section>
+<Cover/>
 
 
 <main>
@@ -56,7 +53,7 @@
                                 <div class="star-descp">
                                     <span>@ProfileDto?.Headline</span>
 
-                                   <Stars Star="3.2"/>
+                                    <Stars Star="3.2" />
 
                                     @*<a href="javascript:void(0)" title="">Status</a>*@
                                 </div><!--star-descp end-->
@@ -106,7 +103,12 @@
 
                             </div><!--user-tab-sec end-->
 
+                        
+
                             <div class="product-feed-tab current" id="feed-dd">
+
+                                <PostActionBar />
+
                                 <div class="posts-section">
 
                                     <JobPost />

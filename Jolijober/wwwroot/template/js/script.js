@@ -296,6 +296,22 @@ $(window).on("load", function () {
     }
 
 
+    this.window.setSelectedLang=(lang)=>
+    {
+        //    direction: rtl;
+       // text - align: right;
+        localStorage.setItem("lang", lang);
+    }
+
+    this.window.getSelectedLang = (lang) => {
+        localStorage.getItem("lang");
+    }
+
+    //this.window.loadImage = (input) => {
+
+    //    input.
+
+    //}
 
 
 });

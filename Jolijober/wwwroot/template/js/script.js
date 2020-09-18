@@ -307,6 +307,24 @@ $(window).on("load", function () {
         localStorage.getItem("lang");
     }
 
+
+    window.blazorExtensions = {
+
+        WriteCookie: function (name, value, days) {
+
+            var expires;
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toGMTString();
+            }
+            else {
+                expires = "";
+            }
+            document.cookie = name + "=" + value + expires + "; path=/";
+        }
+    }
+
     //this.window.loadImage = (input) => {
 
     //    input.

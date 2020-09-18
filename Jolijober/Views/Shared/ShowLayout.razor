@@ -1,26 +1,27 @@
 ﻿@inherits LayoutComponentBase
+@inject AppTranslate Translate
 
 <header>
     <div class="container">
         <div class="header-data">
           
             <div class="forum-bar">
-                <h2>Jobs</h2>
+                <h2>@Translate["Jobs"]</h2>
                 <ul>
-                    <li><a href="javascript:void(0)" title="">Tags</a></li>
-                    <li><a href="javascript:void(0)" title="">Users</a></li>
-                    <li><a href="#" title="" class="ask-question">Ask a question</a></li>
+                    <li><a href="javascript:void(0)" title="">@Translate["Tags"]</a></li>
+                    <li><a href="javascript:void(0)" title="">@Translate["Users"]</a></li>
+                    <li><a href="#" title="" class="ask-question">@Translate["Ask a question"]</a></li>
                 </ul>
             </div><!--search-bar end-->
             <div class="login_register">
                 <ul>
-                    <li><a href="/" title="">Login</a></li>
-                    <li><a href="/" title="">Register</a></li>
+                    <li><a href="/" title="">@Translate["Login"]</a></li>
+                    <li><a href="/" title="">@Translate["Register"]</a></li>
                 </ul>
             </div><!--login_register end-->
             <div class="search-bar st2">
                 <form>
-                    <input type="text" name="search" placeholder="Search...">
+                    <input type="text" name="search" placeholder="@Translate["Search..."]">
                     <button type="submit"><i class="la la-search"></i></button>
                 </form>
             </div><!--search-bar end-->
@@ -36,9 +37,9 @@
     <div class="footy-sec mn no-margin">
         <div class="container">
             <ul>
-                <li><a href="javascript:void(0)" title="">Privacy Policy</a></li>
-                <li><a href="javascript:void(0)" title="">Language</a></li>
-                <li><a href="javascript:void(0)" title="">Copyright Policy</a></li>
+                <li><a href="javascript:void(0)" title="">@Translate["Privacy Policy"]</a></li>
+                <li><a href="javascript:void(0)" title="">@Translate["Language"]</a></li>
+                <li><a href="javascript:void(0)" title="">@Translate["Copyright Policy"]</a></li>
             </ul>
             <p>Copyright 2020</p>
         </div>

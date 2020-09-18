@@ -33,7 +33,6 @@
 
 
 
-
 /* ================================================================================== 
 								Fonts
 ===================================================================================== */
@@ -412,6 +411,23 @@ nav ul ul {
 	visibility: hidden;
 	z-index: 999999;
 }
+
+
+selectLang nav ul ul {
+	position: absolute;
+	top: 100%;
+	margin-top: -110px !important;
+	left: 0;
+	width: 200px;
+	background-color: #169365;
+	text-align: left;
+	padding: 20px 0 10px 0;
+	opacity: 0;
+	visibility: hidden;
+	z-index: 999999;
+}
+
+
 nav ul ul li {
 	padding: 0;
 	float: left;

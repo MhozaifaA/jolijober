@@ -7,17 +7,35 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Collections;
 using System.Resources;
+using Microsoft.AspNetCore.Http;
+using Microsoft.JSInterop;
 
 namespace Jolijober.Util.Translate
 {
-    public class AppTranslate : IAppTranslate
+    public class AppTranslate //: IAppTranslate
     {
+
         public IReadOnlyDictionary<string, string> Translate { get; }
 
-        public AppTranslate()
+        protected string Language { get; set; }
+
+        public string this[string i]
         {
-            Translate = new ReadOnlyDictionary<string, string>(new Dictionary<string, string>() {
-            { "Category", "مومو" },
+            get { return Language == "ar" ? (Translate.GetValueOrDefault(i) ?? i) : i; }
+        }
+
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+
+        public AppTranslate(IHttpContextAccessor httpContextAccessor )
+        {
+            _httpContextAccessor = httpContextAccessor;
+
+            WriteCookie();
+
+            Translate = new ReadOnlyDictionary<string, string>(new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase) {
+            { "Jolijober", "منصة توظيف" },
+            { "Category", "نوع" },
             { "Company", "شركة"},
             { "Company Name", "اسم الشركة"},
             { "Country", "البلد"},
@@ -25,20 +43,20 @@ namespace Jolijober.Util.Translate
             { "get a job now!", "احصل على وظيفة الآن!"},
             { "Get Started", "ابداء"},
             { "Jolijober, is a global freelancing platform and social networking where businesses and independent" +
-            " professionals connect and collaborate remotely", "Jolijober ، هي عبارة عن منصة عالمية للعمل الحر وشبكات اجتماعية حيث تتواصل الشركات والمهنيون المستقلون ويتعاونون عن بُعد"},
+            " professionals connect and collaborate remotely", "منصة توظيف ، هي عبارة عن منصة عالمية للعمل الحر وشبكات اجتماعية حيث تتواصل الشركات والمهنيون المستقلون ويتعاونون عن بُعد"},
             { "Language", "اللغة"},
             { "Login Via Social Account", "تسجيل الدخول عبر الحسابات"},
             { "Password", "كلمة المرور"},
-            { "Privacy Policy", "سياسة خاصة"},
+            { "Privacy Policy", "سياسة الخصوصية"},
             { "Remember me", "تذكرنى"},
             { "Repeat Password", "أعد كلمة المرور"},
             { "Sign in", "تسجيل الدخول"},
             { "Sign up", "أنشئ حساب"},
             { "User", "مستخدم"},
             { "UserName", "اسم المتسخدم"},
-            { "Yes, I understand and agree to the JolijoberTerms & Conditions.", "نعم ، أفهم وأوافق على شروط وأحكام jolijober"},
+            { "Yes, I understand and agree to the JolijoberTerms & Conditions.", "نعم ، أفهم وأوافق على شروط وأحكام منصة توظيف"},
             { "Ask a question", "طرح سؤال"},
-            { "Comment", "التعليقات"},
+            { "Comments", "التعليقات"},
             { "Jobs", "وظائف"},
             { "Latest", "آخر"},
             { "Login", "تسجيل الدخول"},
@@ -47,7 +65,7 @@ namespace Jolijober.Util.Translate
             { "Popular This Week", "الأكثر تفاعلا هذا الاسبوع"},
             { "Previous", "السابق"},
             { "Register", "تسجيل"},
-            { "Search...", "بحث..."},
+            { "Search...", "...بحث"},
             { "Tags", "العلامات"},
             { "Top Company of the Week", "أفضل الشركات هذا الأسبوع"},
             { "Treading", "الدوس"},
@@ -55,8 +73,26 @@ namespace Jolijober.Util.Translate
             { "Users", "المستخدمون"},
             { "Views", "مشاهدة"},
             { "Vote", "التصويت"},
-
             });
         }
+
+
+        private void WriteCookie()
+        {
+            Language = _httpContextAccessor.HttpContext.Request.Cookies[nameof(Translate)];
+            if (string.IsNullOrEmpty(Language))
+            {
+                //  _JSRuntime.InvokeAsync<string>("blazorExtensions.WriteCookie", nameof(Translate), "en", "").GetAwaiter().GetResult();
+                     CookieOptions option = new CookieOptions();
+                    option.Expires = DateTime.Now.AddMinutes(30*24*60);
+
+
+                _httpContextAccessor.HttpContext.Response.Cookies.Append(nameof(Translate), "en", option);
+
+                Language = "en";
+            }
+
+        }
+
     }
 }

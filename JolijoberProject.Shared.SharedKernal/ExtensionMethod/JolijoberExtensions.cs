@@ -110,5 +110,11 @@ namespace JolijoberProject.Shared.SharedKernal.ExtensionMethod
         }
 
         #endregion
+
+        #region -   Cookies   -
+        
+
+
+        #endregion
     }
 }

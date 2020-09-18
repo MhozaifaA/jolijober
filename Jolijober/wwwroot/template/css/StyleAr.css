@@ -1,0 +1,103 @@
+﻿
+
+@font-face {
+	font-family: cairo;
+	src: url(/template/fonts/cairo/Cairo-Regular.ttf) format("truetype");
+}
+
+
+
+
+
+body {
+	-moz-transform: scaleX(-1) !important;
+	-o-transform: scaleX(-1) !important;
+	-webkit-transform: scaleX(-1) !important;
+	transform: scaleX(-1) !important;
+	filter: FlipH !important;
+	-ms-filter: "FlipH" !important;
+	font-family: cairo !important;
+}
+
+
+p, a, h1, h2, span, h3, h4, h5, h6, text, i, form, img {
+	-moz-transform: scaleX(-1) !important;
+	-o-transform: scaleX(-1) !important;
+	-webkit-transform: scaleX(-1) !important;
+	transform: scaleX(-1) !important;
+	filter: FlipH !important;
+	-ms-filter: "FlipH" !important;
+}
+
+
+.fa {
+	-moz-transform: scaleX(1) !important;
+	-o-transform: scaleX(1) !important;
+	-webkit-transform: scaleX(1) !important;
+	transform: scaleX(1) !important;
+	filter: FlipH-1 !important;
+	-ms-filter: "FlipH-1" !important;
+}
+
+
+input {
+	text-align: right !important;
+}
+
+.arFlip {
+	-moz-transform: scaleX(-1) !important;
+	-o-transform: scaleX(-1) !important;
+	-webkit-transform: scaleX(-1) !important;
+	transform: scaleX(-1) !important;
+	filter: FlipH !important;
+	-ms-filter: "FlipH" !important;
+}
+
+.arFlip-1 {
+	-moz-transform: scaleX(1) !important;
+	-o-transform: scaleX(1) !important;
+	-webkit-transform: scaleX(1) !important;
+	transform: scaleX(1) !important;
+	filter: FlipH-1 !important;
+	-ms-filter: "FlipH-1" !important;
+}
+
+
+.arAlign {
+	text-align: right !important;
+}
+
+.arRight {
+	right: 0 !important;
+}
+
+
+.sign_in_sec h3:before {
+	content: '' !important;
+	position: absolute !important;
+	bottom: 0 !important;
+	right: 0 !important;
+	left: 240px !important;
+	width: 30px !important;
+	height: 2px !important;
+	background-color: #169365 !important;
+	-moz-transform: scaleX(-1) !important;
+	-o-transform: scaleX(-1) !important;
+	-webkit-transform: scaleX(-1) !important;
+	transform: scaleX(-1) !important;
+	filter: FlipH !important;
+	-ms-filter: "FlipH" !important;
+}
+
+
+
+
+.search-bar form button {
+	position: absolute !important;
+	top: 0 !important;
+	left: 0 !important;
+	background-color: #efefef !important;
+	width: 38px !important;
+	height: 100% !important;
+	border: 0 !important;
+}

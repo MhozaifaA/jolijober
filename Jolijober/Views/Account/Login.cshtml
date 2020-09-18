@@ -1,10 +1,13 @@
-﻿@using Jolijober.ViewModel; 
+﻿@using Jolijober.ViewModel;
+@using Jolijober.Util.Translate;
 @using JolijoberProject.Shared.SharedKernal.EnumClass;
-@{ 
+@{
     Layout = "";
     SignUpViewModel signupvm = new SignUpViewModel();
 }
 @model SignInViewModel
+
+@inject AppTranslate Translate
 
 
 <!DOCTYPE html>
@@ -24,7 +27,13 @@
     <link rel="stylesheet" type="text/css" href="template/lib/slick/slick.css">
     <link rel="stylesheet" type="text/css" href="template/lib/slick/slick-theme.css">
     <link rel="stylesheet" type="text/css" href="template/css/style.css">
-    <link rel="stylesheet" type="text/css" href="template/css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="template/css/responsive.css"> 
+
+    @if (ViewData[nameof(Translate)] as string =="ar")
+    {
+     <link rel="stylesheet" type="text/css" href="template/css/StyleAr.css">
+    }
+
 </head>
 
 <!--green #19a974  <--- default #e75348-->
@@ -32,8 +41,7 @@
 <!--Jolijober  <---  Workwise -->
 
 <body class="sign-in">
-
-
+    
     <div class="wrapper">
 
 
@@ -45,40 +53,41 @@
                             <div class="cmp-info">
                                 <div class="cm-logo">
                                     <!-- <img src="template/images/cm-logo.png" alt=""> -->
-                                    <h1 class="h1 mb-3 pl-2 pt-2" style="
-                                        border-left: 5px solid #19a974;
+                                    <h1  class="h1 mb-3 pl-2 pt-2 arAlign" style="
                                         border-top: 5px solid #19a974;
                                         border-style: dotted;">
-                                        Jolijober
+                                        @Translate["Jolijober"]
                                     </h1>
-                                    <p>Jolijober,  is a global freelancing platform and social networking where businesses and independent professionals connect and collaborate remotely</p>
+                                    <p class="arAlign">@Translate["Jolijober, is a global freelancing platform and social networking where businesses and independent professionals connect and collaborate remotely"]</p>
 
-                                    <a class="btn default-btn" href="/ShowJob">get a job now!</a>
+                                    <a class="btn default-btn" href="/ShowJob">@Translate["get a job now!"]</a>
                                 </div><!--cm-logo end-->
-                                <img src="template/images/cm-main-img.png" alt=""> 
+                                <img src="template/images/cm-main-img.png" alt="">
                             </div><!--cmp-info end-->
                         </div>
                         <div class="col-lg-6">
                             <div class="login-sec">
                                 <ul class="sign-control">
-                                    <li data-tab="tab-1" class="current"><a href="#" title="">Sign in</a></li>
-                                    <li data-tab="tab-2"><a href="#" title="">Sign up</a></li>
+                                    <li data-tab="tab-1" class="current"><a href="javascript:void(0)" title="">@Translate["Sign in"]</a></li>
+                                    <li data-tab="tab-2"><a href="javascript:void(0)" title="">@Translate["Sign up"]</a></li>
                                 </ul>
                                 <div class="sign_in_sec current" id="tab-1">
 
-                                    <h3>Sign in</h3>
-                                    <form asp-controller="Account" asp-action="Login"  method="post">
+                                    <h3 class="arAlign">
+                                        @Translate["Sign in"]
+                                    </h3>
+                                    <form asp-controller="Account" asp-action="Login" method="post">
                                         <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
                                         <div class="row">
                                             <div class="col-lg-12 no-pdd">
                                                 <div class="sn-field">
-                                                    <input type="text" asp-for="UserName" placeholder="Username">
+                                                    <input type="text" asp-for="UserName" placeholder="@Translate["Username"]">
                                                     <i class="la la-user"></i>
                                                 </div><!--sn-field end-->
                                             </div>
                                             <div class="col-lg-12 no-pdd">
                                                 <div class="sn-field">
-                                                    <input type="password" autocomplete="off" asp-for="Password" placeholder="Password">
+                                                    <input type="password" autocomplete="off" asp-for="Password" placeholder="@Translate["Password"]">
                                                     <i class="la la-lock"></i>
                                                 </div>
                                             </div>
@@ -89,22 +98,24 @@
                                                         <label for="c1">
                                                             <span></span>
                                                         </label>
-                                                        <small>Remember me</small>
+                                                        <small>@Translate["Remember me"]</small>
                                                     </div><!--fgt-sec end-->
-                                                    <a href="" title="">Forgot Password?</a>
+                                                    <a class="arFlip-1" href="" title="">@Translate["Forgot Password?"]</a>
                                                 </div>
                                             </div>
                                             <div class="text-danger" asp-validation-summary="ModelOnly"></div>
                                             <div class="col-lg-12 no-pdd">
-                                                <button type="submit" value="submit">Sign in</button>
+                                                <button type="submit" value="submit">@Translate["Sign in"]</button>
                                             </div>
                                         </div>
                                     </form>
                                     <div class="login-resources">
-                                        <h4>Login Via Social Account</h4>
+                                        <h4>
+                                            @Translate["Login Via Social Account"]
+                                        </h4>
                                         <ul>
-                                            <li><a href="#" title="" class="fb"><i class="fa fa-facebook"></i>Login Via Facebook</a></li>
-                                            <li><a href="#" title="" class="tw"><i class="fa fa-twitter"></i>Login Via Twitter</a></li>
+                                            <li><a href="javascript:void(0)" title="" class="fb"><i class="fa fa-facebook"></i>Login Via Facebook</a></li>
+                                            <li><a href="javascript:void(0)" title="" class="tw"><i class="fa fa-twitter"></i>Login Via Twitter</a></li>
                                         </ul>
                                     </div><!--login-resources end-->
                                 </div><!--sign_in_sec end-->
@@ -113,34 +124,34 @@
                                         <i class="fa fa-long-arrow-left"></i>
                                         <h2>hzo@jolijober.com</h2>
                                         <ul>
-                                            <li data-tab="tab-3" class="current"><a href="#" title="">User</a></li>
-                                            <li data-tab="tab-4"><a href="#" title="">Company</a></li>
+                                            <li data-tab="tab-3" class="current"><a href="javascript:void(0)" title="">@Translate["User"]</a></li>
+                                            <li data-tab="tab-4"><a href="javascript:void(0)" title="">@Translate["Company"]</a></li>
                                         </ul>
                                     </div><!--signup-tab end-->
                                     <div class="dff-tab current" id="tab-3">
-                                        <form  method="post" asp-controller="Account"  asp-action="Register" asp-route-account="@AccountTypes.User">
+                                        <form method="post" asp-controller="Account" asp-action="Register" asp-route-account="@AccountTypes.User">
                                             <div class="row">
                                                 <div class="col-lg-12 no-pdd">
                                                     <div class="sn-field">
-                                                        <input type="text" name="UserName" asp-for="@signupvm.UserName" placeholder="UserName">
+                                                        <input type="text" name="UserName" asp-for="@signupvm.UserName" placeholder="@Translate["UserName"]">
                                                         <i class="la la-user"></i>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 no-pdd">
                                                     <div class="sn-field">
-                                                        <input type="text" name="Country" asp-for="@signupvm.Country" placeholder="Country">
+                                                        <input type="text" name="Country" asp-for="@signupvm.Country" placeholder="@Translate["Country"]">
                                                         <i class="la la-globe"></i>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 no-pdd">
                                                     <div class="sn-field">
-                                                        <input type="password" autocomplete="off" name="Passward" asp-for="@signupvm.Passward" placeholder="Password">
+                                                        <input type="password" autocomplete="off" name="Passward" asp-for="@signupvm.Passward" placeholder="@Translate["Password"]">
                                                         <i class="la la-lock"></i>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 no-pdd">
                                                     <div class="sn-field">
-                                                        <input type="password" autocomplete="off" name="ConfirmPassword" asp-for="@signupvm.ConfirmPassword" placeholder="Repeat Password">
+                                                        <input type="password" autocomplete="off" name="ConfirmPassword" asp-for="@signupvm.ConfirmPassword" placeholder="@Translate["Repeat Password"]">
                                                         <i class="la la-lock"></i>
                                                     </div>
                                                 </div>
@@ -151,36 +162,36 @@
                                                             <label for="c2">
                                                                 <span></span>
                                                             </label>
-                                                            <small>Yes, I understand and agree to the JolijoberTerms & Conditions.</small>
+                                                            <small>@Translate["Yes, I understand and agree to the JolijoberTerms & Conditions."]</small>
                                                         </div><!--fgt-sec end-->
                                                     </div>
                                                 </div>
-                                                <div class="text-danger">@ViewData["SignUpErorrUser"]</div> 
+                                                <div class="text-danger">@ViewData["SignUpErorrUser"]</div>
                                                 <div class="col-lg-12 no-pdd">
-                                                    <button type="submit" value="submit">Get Started</button>
+                                                    <button type="submit" value="submit">@Translate["Get Started"]</button>
                                                 </div>
                                             </div>
                                         </form>
                                     </div><!--dff-tab end-->
                                     <div class="dff-tab" id="tab-4">
-                                        <form  asp-controller="Account"  asp-action="Register" asp-route-account="@AccountTypes.Company" method="post">
+                                        <form asp-controller="Account" asp-action="Register" asp-route-account="@AccountTypes.Company" method="post">
                                             <div class="row">
                                                 <div class="col-lg-12 no-pdd">
                                                     <div class="sn-field">
-                                                        <input type="text" name="UserName" asp-for="@signupvm.UserName" placeholder="Company Name">
+                                                        <input type="text" name="UserName" asp-for="@signupvm.UserName" placeholder="@Translate["Company Name"]">
                                                         <i class="la la-building"></i>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 no-pdd">
                                                     <div class="sn-field">
-                                                        <input type="text" name="Country" asp-for="@signupvm.Country" placeholder="Country">
+                                                        <input type="text" name="Country" asp-for="@signupvm.Country" placeholder="@Translate["Country"]">
                                                         <i class="la la-globe"></i>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 no-pdd">
                                                     <div class="sn-field">
                                                         <select>
-                                                            <option>Category</option>
+                                                            <option>@Translate["Category"]</option>
                                                         </select>
                                                         <i class="la la-dropbox"></i>
                                                         <span><i class="fa fa-ellipsis-h"></i></span>
@@ -188,13 +199,13 @@
                                                 </div>
                                                 <div class="col-lg-12 no-pdd">
                                                     <div class="sn-field">
-                                                        <input type="password" autocomplete="off" name="Passward" asp-for="@signupvm.Passward" placeholder="Password">
+                                                        <input type="password" autocomplete="off" name="Passward" asp-for="@signupvm.Passward" placeholder="@Translate["Password"]">
                                                         <i class="la la-lock"></i>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 no-pdd">
                                                     <div class="sn-field">
-                                                        <input type="password" autocomplete="off" name="ConfirmPassword" asp-for="@signupvm.ConfirmPassword" placeholder="Repeat Password">
+                                                        <input type="password" autocomplete="off" name="ConfirmPassword" asp-for="@signupvm.ConfirmPassword" placeholder="@Translate["Repeat Password"]">
                                                         <i class="la la-lock"></i>
                                                     </div>
                                                 </div>
@@ -205,13 +216,13 @@
                                                             <label for="c3">
                                                                 <span></span>
                                                             </label>
-                                                            <small>Yes, I understand and agree to the JolijoberTerms & Conditions.</small>
+                                                            <small>@Translate["Yes, I understand and agree to the JolijoberTerms & Conditions."]</small>
                                                         </div><!--fgt-sec end-->
                                                     </div>
                                                 </div>
                                                 <div class="text-danger">@ViewData["SignUpErorrCompany"]</div>
                                                 <div class="col-lg-12 no-pdd">
-                                                    <button type="submit" value="submit">Get Started</button>
+                                                    <button type="submit" value="submit">@Translate["Get Started"]</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -224,10 +235,21 @@
             </div><!--signin-popup end-->
             <div class="footy-sec">
                 <div class="container">
-                    <ul>
-                        <li><a href="#" title="">Privacy Policy</a></li>
-                        <li><a href="#" title="">Language</a></li>
-                    </ul>
+                    <selectLang>
+                        <nav >
+                            <ul>
+                                <li><a href="javascript:void(0)" title="">@Translate["Privacy Policy"]</a></li>
+                                <li>
+                                    <a href="javascript:void(0)" title="">@Translate["Language"]</a>
+
+                                    <ul>
+                                        <li><a  href="/Translate/en" title="">English</a></li>
+                                        <li><a  href="/Translate/ar" title="">العربية</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </selectLang>
                     <p><img src="template/images/copy-icon.png" alt="">Use template by Joiljober 2020 - </p>
                     <!--Copyright Workwise 2018 -->
                 </div>
@@ -244,5 +266,15 @@
     <script type="text/javascript" src="template/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="template/lib/slick/slick.min.js"></script>
     <script type="text/javascript" src="template/js/script.js"></script>
+    @*<script>
+
+        $.ajax({
+            url: "test.html",
+            context: document.body
+        }).done(function () {
+            $(this).addClass("done");
+        });
+
+    </script>*@
 </body>
 </html>

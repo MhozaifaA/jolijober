@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Jolijober.Util.Translate;
+using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace Jolijober.Views.Components
 {
     public partial class PaginationTable
     {
-
+        [Inject] public AppTranslate Translate{ get; set; }
         [Parameter] public int CurrentPage { get; set; } = 1;
         [Parameter] public int TotaPagesQuantity { get; set; }
         [Parameter] public int Radius { get; set; } = 3;
@@ -51,7 +52,7 @@ namespace Jolijober.Views.Components
 
        //     links.Add(new LinkModel(1, isPreviousPageLinkEnabled, "«"));
 
-            links.Add(new LinkModel(previousPage, isPreviousPageLinkEnabled, "Previous"));
+            links.Add(new LinkModel(previousPage, isPreviousPageLinkEnabled, Translate["Previous"]));
 
             for (int i = 1; i <= TotaPagesQuantity; i++)
             {
@@ -64,7 +65,7 @@ namespace Jolijober.Views.Components
             var isNextPageLinkEnabled = CurrentPage != TotaPagesQuantity;
             var nextPage = CurrentPage + 1;
 
-            links.Add(new LinkModel(nextPage, isNextPageLinkEnabled, "Next"));
+            links.Add(new LinkModel(nextPage, isNextPageLinkEnabled, Translate["Next"]));
 
            // links.Add(new LinkModel(TotaPagesQuantity, isNextPageLinkEnabled, "»"));
         }

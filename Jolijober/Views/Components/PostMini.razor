@@ -1,15 +1,17 @@
 ﻿@using JolijoberProject.Main.Repository.DataTransferObjects
+@inject AppTranslate Translate
+
 
 <div class="usr-question">
     <div class="usr_img">
         <img src="template/images/via/60x60.png" alt="">
     </div>
     <div class="usr_quest">
-        <h3>@post.Title</h3>
+        <h3 class="arAlign">@post.Title</h3>
         <ul class="react-links">
-            <li><a href="javascript:void(0)" title=""><i class="fa fa-heart"></i> Vote @post.Likes</a></li>
-            <li><a href="javascript:void(0)" title=""><i class="fa fa-comment"></i> Comments  @post.Comments</a></li>
-            <li><a href="/ShowJob/Details/@post.Id" title=""><i class="fa fa-eye"></i> Views  @post.Views</a></li>
+            <li><a href="javascript:void(0)" title=""><i class="fa fa-heart"></i> @Translate["Vote"] @post.Likes</a></li>
+            <li><a href="javascript:void(0)" title=""><i class="fa fa-comment"></i> @Translate["Comments"]  @post.Comments</a></li>
+            <li><a href="/ShowJob/Details/@post.Id" title=""><i class="fa fa-eye"></i> @Translate["Views"] @post.Views</a></li>
         </ul>
         <Tags PostTags="post.Tags"/>
     </div><!--usr_quest end-->

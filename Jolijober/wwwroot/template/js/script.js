@@ -308,6 +308,12 @@ $(window).on("load", function () {
     }
 
 
+  
+
+ 
+
+   
+
     window.blazorExtensions = {
 
         WriteCookie: function (name, value, days) {
@@ -322,7 +328,23 @@ $(window).on("load", function () {
                 expires = "";
             }
             document.cookie = name + "=" + value + expires + "; path=/";
+
+            // swap file to translate
+           // fixLang(value);
+
+          // let value = getCookie("Translate");
+
+            if (value == "en") {
+                removejscssfile("template/css/StyleAr.css", "css");
+               // createjscssfile("template/css/StyleAr.css", "css");
+            } else // ar
+            {
+                $('head').append(createjscssfile("template/css/StyleAr.css", "css"));
+             //   createjscssfile("template/css/StyleAr.css", "css");
+            }
+           
         }
+
     }
 
     //this.window.loadImage = (input) => {
@@ -333,6 +355,67 @@ $(window).on("load", function () {
 
 
 });
+
+
+
+$(document).ready(() => {
+
+   let value = getCookie("Translate");
+
+   if (value == "en") {
+       removejscssfile("template/css/StyleAr.css", "css");
+   } else // ar
+   {
+       $('head').append(createjscssfile("template/css/StyleAr.css", "css"));
+   }
+});
+
+
+
+function replacejscssfile(oldfilename, newfilename, filetype) {
+    var targetelement = (filetype == "js") ? "script" : (filetype == "css") ? "link" : "none" //determine element type to create nodelist using
+    var targetattr = (filetype == "js") ? "src" : (filetype == "css") ? "href" : "none" //determine corresponding attribute to test for
+    var allsuspects = document.getElementsByTagName(targetelement)
+    for (var i = allsuspects.length; i >= 0; i--) { //search backwards within nodelist for matching elements to remove
+        if (allsuspects[i] && allsuspects[i].getAttribute(targetattr) != null && allsuspects[i].getAttribute(targetattr).indexOf(oldfilename) != -1) {
+            var newelement = createjscssfile(newfilename, filetype)
+            allsuspects[i].parentNode.replaceChild(newelement, allsuspects[i])
+        }
+    }
+}
+
+
+function createjscssfile(filename, filetype) {
+    if (filetype == "js") { //if filename is a external JavaScript file
+        var fileref = document.createElement('script')
+        fileref.setAttribute("type", "text/javascript")
+        fileref.setAttribute("src", filename)
+    }
+    else if (filetype == "css") { //if filename is an external CSS file
+        var fileref = document.createElement("link")
+        fileref.setAttribute("rel", "stylesheet")
+        fileref.setAttribute("type", "text/css")
+        fileref.setAttribute("href", filename)
+    }
+    return fileref
+}
+
+function removejscssfile(filename, filetype) {
+    var targetelement = (filetype == "js") ? "script" : (filetype == "css") ? "link" : "none" //determine element type to create nodelist from
+    var targetattr = (filetype == "js") ? "src" : (filetype == "css") ? "href" : "none" //determine corresponding attribute to test for
+    var allsuspects = document.getElementsByTagName(targetelement)
+    for (var i = allsuspects.length; i >= 0; i--) { //search backwards within nodelist for matching elements to remove
+        if (allsuspects[i] && allsuspects[i].getAttribute(targetattr) != null && allsuspects[i].getAttribute(targetattr).indexOf(filename) != -1)
+            allsuspects[i].parentNode.removeChild(allsuspects[i]) //remove element by calling parentNode.removeChild()
+    }
+}
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
 
 //$(document).ready(() => {
 

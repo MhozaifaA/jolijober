@@ -1,10 +1,12 @@
 ﻿@inherits LayoutComponentBase
 @inject AppTranslate Translate
+@inject IJSRuntime JSRuntime
+@inject NavigationManager Navigation
 
 <header>
     <div class="container">
         <div class="header-data">
-          
+
             <div class="forum-bar">
                 <h2>@Translate["Jobs"]</h2>
                 <ul>
@@ -36,12 +38,35 @@
 <footer>
     <div class="footy-sec mn no-margin">
         <div class="container">
-            <ul>
-                <li><a href="javascript:void(0)" title="">@Translate["Privacy Policy"]</a></li>
-                <li><a href="javascript:void(0)" title="">@Translate["Language"]</a></li>
-                <li><a href="javascript:void(0)" title="">@Translate["Copyright Policy"]</a></li>
-            </ul>
+            <selectLang>
+                <nav>
+
+                    <ul>
+                        <li><a href="javascript:void(0)" title="">@Translate["Privacy Policy"]</a></li>
+                        <li>
+                            <a href="javascript:void(0)" title="">@Translate["Language"]</a>
+                            <ul>
+                                <li><a href="javascript:void(0)" @onclick="@(()=>TranslateLang("en"))" title="">English</a></li>
+                                <li><a href="javascript:void(0)" @onclick="@(()=>TranslateLang("ar"))" title="">العربية</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="javascript:void(0)" title="">@Translate["Copyright Policy"]</a></li>
+                    </ul>
+                </nav>
+            </selectLang>
             <p>Copyright 2020</p>
         </div>
     </div>
 </footer>
+
+@code
+{
+
+    private async Task TranslateLang(string lang)
+    {
+        await JSRuntime.InvokeVoidAsync("blazorExtensions.WriteCookie", "Translate", lang, 30);
+         Navigation.NavigateTo(Navigation.Uri, true);
+    }
+
+
+}

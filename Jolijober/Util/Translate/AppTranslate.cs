@@ -21,7 +21,7 @@ namespace Jolijober.Util.Translate
 
         public string this[string i]
         {
-            get { return Language == "ar" ? (Translate.GetValueOrDefault(i) ?? i) : i; }
+            get { return _httpContextAccessor.HttpContext.Request.Cookies[nameof(Translate)] == "ar" ? (Translate.GetValueOrDefault(i) ?? i) : i; }
         }
 
         private readonly IHttpContextAccessor _httpContextAccessor;
@@ -73,6 +73,7 @@ namespace Jolijober.Util.Translate
             { "Users", "المستخدمون"},
             { "Views", "مشاهدة"},
             { "Vote", "التصويت"},
+            { "Copyright Policy", "سياسة حقوق النشر"},
             });
         }
 

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Jolijober.Util.Translate;
 using JolijoberProject.Hub.SignalR.Repositories;
@@ -142,6 +143,12 @@ namespace Jolijober
             // {
             //     o.MaximumReceiveMessageSize = 10 * 1024 * 1024; // 10MB
             // });
+
+            services.AddScoped(sp =>
+             new HttpClient
+             {
+                 BaseAddress = new Uri("https://localhost:44349")
+             });
 
             services.AddHttpContextAccessor();
                services.AddTransient<AppTranslate>();

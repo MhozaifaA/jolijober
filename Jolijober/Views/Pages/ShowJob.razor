@@ -6,7 +6,7 @@
 @using JolijoberProject.Shared.SharedKernal.SharedDto
 @using JolijoberProject.Shared.SharedKernal.ExtensionMethod
 @using Jolijober.Util.Translate
-@using Microsoft.AspNetCore.Http;
+
 @inject IPostRepository _postRepository
 
 <section class="forum-sec">
@@ -99,7 +99,7 @@
 
     [Inject] public AppTranslate Translate { get; set; }
 
-    [Inject] public IHttpContextAccessor _httpContextAccessor { get; set; }
+  
 
 
     List<PostMiniDto> postsPage;

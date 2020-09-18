@@ -1,0 +1,36 @@
+﻿@inject IJSRuntime JSRuntime
+@inject NavigationManager Navigation
+@inject AppTranslate Translate
+
+
+<nav class="@nav">
+
+    <ul>
+        <li><a href="javascript:void(0)" title="">@Translate["Privacy Policy"]</a></li>
+        <li>
+            <a href="javascript:void(0)" title="">@Translate["Language"]</a>
+            <ul>
+                <li><a href="javascript:void(0)" @onclick="@(()=>TranslateLang("en"))" title="">English</a></li>
+                <li><a href="javascript:void(0)" @onclick="@(()=>TranslateLang("ar"))" title="">العربية</a></li>
+            </ul>
+        </li>
+        <li><a href="javascript:void(0)" title="">@Translate["About"]</a></li>
+    </ul>
+
+    @ChildContent
+
+    
+</nav>
+
+@code {
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+    [Parameter]
+    public string nav { get; set; }
+    private async Task TranslateLang(string lang)
+    {
+        await JSRuntime.InvokeVoidAsync("blazorExtensions.WriteCookie", "Translate", lang, 30);
+        Navigation.NavigateTo(Navigation.Uri, true);
+    }
+}

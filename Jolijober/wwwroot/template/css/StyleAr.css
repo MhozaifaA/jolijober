@@ -9,7 +9,7 @@
 
 
 
-body {
+body{
 	-moz-transform: scaleX(-1) !important;
 	-o-transform: scaleX(-1) !important;
 	-webkit-transform: scaleX(-1) !important;
@@ -61,6 +61,7 @@ input {
 	filter: FlipH-1 !important;
 	-ms-filter: "FlipH-1" !important;
 }
+
 
 
 .arAlign {

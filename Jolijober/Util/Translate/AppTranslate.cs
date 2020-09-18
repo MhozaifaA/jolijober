@@ -15,13 +15,13 @@ namespace Jolijober.Util.Translate
     public class AppTranslate //: IAppTranslate
     {
 
-        public IReadOnlyDictionary<string, string> Translate { get; }
+        public IReadOnlyDictionary<string, string> Translate { get;}
 
         protected string Language { get; set; }
 
         public string this[string i]
         {
-            get { return _httpContextAccessor.HttpContext.Request.Cookies[nameof(Translate)] == "ar" ? (Translate.GetValueOrDefault(i) ?? i) : i; }
+            get { return Language == "ar" ? (Translate.GetValueOrDefault(i) ?? i) : i; }
         }
 
         private readonly IHttpContextAccessor _httpContextAccessor;
@@ -44,7 +44,7 @@ namespace Jolijober.Util.Translate
             { "Get Started", "ابداء"},
             { "Jolijober, is a global freelancing platform and social networking where businesses and independent" +
             " professionals connect and collaborate remotely", "منصة توظيف ، هي عبارة عن منصة عالمية للعمل الحر وشبكات اجتماعية حيث تتواصل الشركات والمهنيون المستقلون ويتعاونون عن بُعد"},
-            { "Language", "اللغة"},
+            { "Language", ". اللغة ."},
             { "Login Via Social Account", "تسجيل الدخول عبر الحسابات"},
             { "Password", "كلمة المرور"},
             { "Privacy Policy", "سياسة الخصوصية"},
@@ -74,6 +74,7 @@ namespace Jolijober.Util.Translate
             { "Views", "مشاهدة"},
             { "Vote", "التصويت"},
             { "Copyright Policy", "سياسة حقوق النشر"},
+            { "Abut", "حول"},
             });
         }
 
@@ -93,6 +94,12 @@ namespace Jolijober.Util.Translate
                 Language = "en";
             }
 
+        }
+
+
+        public void Refresh()
+        {
+            Language = _httpContextAccessor.HttpContext.Request.Cookies[nameof(Translate)];
         }
 
     }

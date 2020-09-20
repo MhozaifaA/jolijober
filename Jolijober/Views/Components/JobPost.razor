@@ -1,20 +1,22 @@
-﻿<div class="post-bar">
+﻿@inject AppTranslate Translate
+
+<div class="post-bar @(IsOpenComment?"poster no-margin":"")">
     <div class="post_topbar">
         <div class="usy-dt">
             <img src="template/images/via/50x50.png" alt="">
-            <div class="usy-name">
-                <h3>John Doe</h3>
+            <div class="usy-name arFlip">
+                <h3 class="arFlip-1 arAlign">John Doe</h3>
                 <span><img src="template/images/clock.png" alt="">3 min ago</span>
             </div>
         </div>
         <div class="ed-opts">
             <a href="javascript:void(0)" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-            <ul class="ed-options">
-                <li><a href="javascript:void(0)" title="">Edit Post</a></li>
-                <li><a href="javascript:void(0)" title="">Unsaved</a></li>
-                <li><a href="javascript:void(0)" title="">Unbid</a></li>
-                <li><a href="javascript:void(0)" title="">Close</a></li>
-                <li><a href="javascript:void(0)" title="">Hide</a></li>
+            <ul class="ed-options arFlip arAlign">
+                <li><a href="javascript:void(0)" title="">@Translate["Edit Post"]</a></li>
+                <li><a href="javascript:void(0)" title="">@Translate["Unsaved"]</a></li>
+                <li><a href="javascript:void(0)" title="">@Translate["Unbid"]</a></li>
+                <li><a href="javascript:void(0)" title="">@Translate["Close"]</a></li>
+                <li><a href="javascript:void(0)" title="">@Translate["Hide"]</a></li>
             </ul>
         </div>
     </div>
@@ -29,12 +31,15 @@
         </ul>
     </div>
     <div class="job_descp">
-        <h3>Senior Wordpress Developer</h3>
+        <h3 class="arAlign">Senior Wordpress Developer</h3>
         <ul class="job-dt">
-            <li><a href="javascript:void(0)" title="">Full Time</a></li>
-            <li><span>$30 / hr</span></li>
+            <li><a href="javascript:void(0)" title="">@Translate["Full Time"]</a></li>
+            <li class="arFlip"><span>$30 / @Translate["hr"]</span></li>
         </ul>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="javascript:void(0)" title="">view more</a></p>
+        <p class="arAlign">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet...
+            <a href="javascript:void(0)" title="">@Translate["view more"]</a>
+        </p>
         <ul class="skill-tags">
             <li><a href="javascript:void(0)" title="">HTML</a></li>
             <li><a href="javascript:void(0)" title="">PHP</a></li>
@@ -46,15 +51,82 @@
     <div class="job-status-bar">
         <ul class="like-com">
             <li>
-                <a href="javascript:void(0)"><i class="la la-heart"></i> Like</a>
+                <a href="javascript:void(0)"><i class="la la-heart"></i> @Translate["Like"]</a>
                 <img src="template/images/liked-img.png" alt="">
                 <span>25</span>
             </li>
-            <li><a href="javascript:void(0)" title="" class="com"><img src="template/images/com.png" alt=""> Comment 15</a></li>
+            <li><a href="javascript:void(0)" title="" class="com"><img src="template/images/com.png" alt=""> @Translate["Comment"] 15</a></li>
         </ul>
-        <a><i class="la la-eye"></i>Views 50</a>
+        <a><i class="la la-eye"></i>@Translate["Views"] 50</a>
     </div>
 </div><!--post-bar end-->
-@code {
 
+@if (IsOpenComment)
+{
+<div class="comment-section">
+    <div class="plus-ic">
+        <i class="la la-plus"></i>
+    </div>
+    <div class="comment-sec arAlign">
+        <ul>
+            <li>
+                <div class="comment-list">
+                    <div class="bg-img">
+                        <img src="template/images/via/40x40.png" alt="">
+                    </div>
+                    <div class="comment">
+                        <h3>John Doe</h3>
+                        <span><img src="template/images/clock.png" alt=""> 3 min ago</span>
+                        <p>Lorem ipsum dolor sit amet, </p>
+                        <a href="javascript:void(0)" title="" class="active"><i class="fa fa-reply-all"></i>Reply</a>
+                    </div>
+                </div><!--comment-list end-->
+                <ul>
+                    <li>
+                        <div class="comment-list">
+                            <div class="bg-img">
+                                <img src="template/images/via/40x40.png" alt="">
+                            </div>
+                            <div class="comment">
+                                <h3>John Doe</h3>
+                                <span><img src="template/images/clock.png" alt=""> 3 min ago</span>
+                                <p>Hi John </p>
+                                <a href="javascript:void(0)" title=""><i class="fa fa-reply-all"></i>Reply</a>
+                            </div>
+                        </div><!--comment-list end-->
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <div class="comment-list">
+                    <div class="bg-img">
+                        <img src="template/images/via/40x40.png" alt="">
+                    </div>
+                    <div class="comment">
+                        <h3>John Doe</h3>
+                        <span><img src="template/images/clock.png" alt=""> 3 min ago</span>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at.</p>
+                        <a href="javascript:void(0)" title=""><i class="fa fa-reply-all"></i>Reply</a>
+                    </div>
+                </div><!--comment-list end-->
+            </li>
+        </ul>
+    </div><!--comment-sec end-->
+    <div class="post-comment">
+        <div class="cm_img">
+            <img src="template/images/via/40x40.png" alt="">
+        </div>
+        <div class="comment_box">
+            <form>
+                <input type="text" placeholder="@Translate["Post a comment"]">
+                <button type="button">@Translate["Send"]</button>
+            </form>
+        </div>
+    </div><!--post-comment end-->
+</div><!--comment-section end-->
+}
+
+
+@code {
+    [Parameter] public bool IsOpenComment { get; set; } = false;
 }

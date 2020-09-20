@@ -2,13 +2,14 @@
 @page "/Companies"
 
 @inject NavigationManager Navigation
+@inject AppTranslate Translate
 
 <CallJavascript />
 
 <section class="companies-info">
     <div class="container">
-        <div class="company-title">
-            <h3>See All</h3>
+        <div class="company-title arAlign">
+            <h3>@Translate["See All"]</h3>
         </div><!--company-title end-->
         <div class="companies-list">
             <div class="row">
@@ -22,12 +23,12 @@
                                 <h3>John Doe</h3>
                                 <h4>Graphic Designer</h4>
                                 <ul>
-                                    <li><a href="javascript:void(0)" title="" class="follow">Follow</a></li>
+                                    <li><a href="javascript:void(0)" title="" class="follow">@Translate["Follow"]</a></li>
                                     <li><a href="javascript:void(0)" title="" class="message-us"><i class="fa fa-envelope"></i></a></li>
-                                    <li><a href="javascript:void(0)" title="" class="hire-us">Hire</a></li>
+                                    <li><a href="javascript:void(0)" title="" class="hire-us">@Translate["Hire"]</a></li>
                                 </ul>
                             </div>
-                            <a href="/Profile" title="" class="view-more-pro">View Profile</a>
+                            <a href="/Profile" title="" class="view-more-pro">@Translate["View Profile"]</a>
                         </div><!--company_profile_info end-->
                     </div>
 
@@ -41,11 +42,11 @@
                                 <h3>Facebook Inc.</h3>
                                 <h4>Establish Feb, 2004</h4>
                                 <ul>
-                                    <li><a href="javascript:void(0)" title="" class="follow">Follow</a></li>
+                                    <li><a href="javascript:void(0)" title="" class="follow">@Translate["Follow"]</a></li>
                                     <li><a href="javascript:void(0)" title="" class="message-us"><i class="fa fa-envelope"></i></a></li>
                                 </ul>
                             </div>
-                            <a href="/Company" title="" class="view-more-pro">View Profile</a>
+                            <a href="/Company" title="" class="view-more-pro">@Translate["View Profile"]</a>
                         </div><!--company_profile_info end-->
                     </div>
                 }
@@ -61,12 +62,15 @@
     </div>
 </section><!--companies-info end-->
 
-@code {
+@code { 
 
     public bool IsProfiles { get; set; }
     protected override void OnAfterRender(bool firstRender)
     {
+        if (firstRender)
+        {
             IsProfiles = Navigation.Uri.Contains("Profiles");
             StateHasChanged();
+        }
     }
 }

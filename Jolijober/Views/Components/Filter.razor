@@ -1,55 +1,57 @@
-﻿<div class="filter-secs">
+﻿@inject AppTranslate Translate 
+
+<div class="filter-secs">
     <div class="filter-heading">
-        <h3>Filters</h3>
-        <a href="javascript:void(0)" title="">Clear all filters</a>
+        <h3>@Translate["Filters"]</h3>
+        <a href="javascript:void(0)" title="">@Translate["Clear all filters"]</a>
     </div><!--filter-heading end-->
     <div class="paddy">
         <div class="filter-dd">
             <div class="filter-ttl">
-                <h3>Skills</h3>
-                <a href="javascript:void(0)" title="">Clear</a>
+                <h3>@Translate["Skills"]</h3>
+                <a href="javascript:void(0)" title="">@Translate["Clear"]</a>
             </div>
             <form>
-                <input type="text" name="search-skills" placeholder="Search skills">
+                <input type="text" name="search-skills" placeholder="@Translate["Search skills"]">
             </form>
         </div>
         <div class="filter-dd">
             <div class="filter-ttl">
-                <h3>Availabilty</h3>
-                <a href="javascript:void(0)" title="">Clear</a>
+                <h3>@Translate["Availabilty"]</h3>
+                <a href="javascript:void(0)" title="">@Translate["Clear"]</a>
             </div>
-            <ul class="avail-checks">
+            <ul class="avail-checks arFlip arAlign">
                 <li>
                     <input type="radio" name="cc" id="c1">
                     <label for="c1">
                         <span></span>
                     </label>
-                    <small>Hourly</small>
+                    <small>@Translate["Hourly"]</small>
                 </li>
                 <li>
                     <input type="radio" name="cc" id="c2">
                     <label for="c2">
                         <span></span>
                     </label>
-                    <small>Part Time</small>
+                    <small>@Translate["Part Time"]</small>
                 </li>
                 <li>
                     <input type="radio" name="cc" id="c3">
                     <label for="c3">
                         <span></span>
                     </label>
-                    <small>Full Time</small>
+                    <small>@Translate["Full Time"]</small>
                 </li>
             </ul>
         </div>
         <div class="filter-dd">
             <div class="filter-ttl">
-                <h3>Job Type</h3>
-                <a href="javascript:void(0)" title="">Clear</a>
+                <h3>@Translate["Job Type"]</h3>
+                <a href="javascript:void(0)" title="">@Translate["Clear"]</a>
             </div>
             <form class="job-tp">
                 <select>
-                    <option>Select a job type</option>
+                    <option>@Translate["Select a job type"]</option>
                     <option>Select a job type</option>
                     <option>Select a job type</option>
                     <option>Select a job type</option>
@@ -59,10 +61,10 @@
         </div>
         <div class="filter-dd">
             <div class="filter-ttl">
-                <h3>Pay Rate / Hr ($)</h3>
-                <a href="javascript:void(0)" title="">Clear</a>
+                <h3>@Translate["Pay Rate"] / @Translate["Hr"] ($)</h3>
+                <a href="javascript:void(0)" title="">@Translate["Clear"]</a>
             </div>
-            <div class="rg-slider">
+            <div class="rg-slider arFlip ">
                 <input class="rn-slider slider-input" type="hidden" value="5,50" />
             </div>
             <div class="rg-limit">
@@ -72,12 +74,12 @@
         </div>
         <div class="filter-dd">
             <div class="filter-ttl">
-                <h3>Experience Level</h3>
-                <a href="javascript:void(0)" title="">Clear</a>
+                <h3>@Translate["Experience Level"]</h3>
+                <a href="javascript:void(0)" title="">@Translate["Clear"]</a>
             </div>
             <form class="job-tp">
                 <select>
-                    <option>Select a experience level</option>
+                    <option>@Translate["Select a experience level"]</option>
                     <option>3 years</option>
                     <option>4 years</option>
                     <option>5 years</option>
@@ -87,12 +89,12 @@
         </div>
         <div class="filter-dd">
             <div class="filter-ttl">
-                <h3>Countries</h3>
-                <a href="javascript:void(0)" title="">Clear</a>
+                <h3>@Translate["Countries"]</h3>
+                <a href="javascript:void(0)" title="">@Translate["Clear"]</a>
             </div>
             <form class="job-tp">
                 <select>
-                    <option>Select a country</option>
+                    <option>@Translate["Select a country"]</option>
                     <option>United Kingdom</option>
                     <option>United States</option>
                     <option>Russia</option>

@@ -9,7 +9,7 @@
 
 
 
-body{
+body {
 	-moz-transform: scaleX(-1) !important;
 	-o-transform: scaleX(-1) !important;
 	-webkit-transform: scaleX(-1) !important;
@@ -20,7 +20,7 @@ body{
 }
 
 
-p, a, h1, h2, span, h3, h4, h5, h6, text, i, form, img {
+p, a, h1, h2, span, h3, h4, h5, h6, text, i, form, img{
 	-moz-transform: scaleX(-1) !important;
 	-o-transform: scaleX(-1) !important;
 	-webkit-transform: scaleX(-1) !important;
@@ -40,7 +40,7 @@ p, a, h1, h2, span, h3, h4, h5, h6, text, i, form, img {
 }
 
 
-input {
+input , textarea {
 	text-align: right !important;
 }
 
@@ -102,3 +102,4 @@ input {
 	height: 100% !important;
 	border: 0 !important;
 }
+

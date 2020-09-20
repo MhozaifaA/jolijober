@@ -1,12 +1,13 @@
 ﻿@inherits LayoutComponentBase
 @inject NavigationManager Navigation
+@inject AppTranslate Translate
 @using JolijoberProject.Shared.SharedKernal.EnumClass;
 @using JolijoberProject.Shared.SharedKernal.ExtensionMethod;
 
 
 <AuthorizeView Roles="@(Navigation.Uri.IsContainRole(Roles.Company)?Roles.Company.ToString():Roles.User.ToString())">
     <Authorized>
-            <header>
+            <header style="position: relative;z-index: 3;">
                 <div class="container">
                     <div class="header-data">
                         <div class="logo">
@@ -14,8 +15,8 @@
                         </div><!--logo end-->
                         <div class="search-bar">
                             <form>
-                                <input type="text" name="search" placeholder="Search...">
-                                <button type="submit"><i class="la la-search"></i></button>
+                                <input type="text" name="search" placeholder="@Translate["Search..."]">
+                                <button type="button"><i class="la la-search"></i></button>
                             </form>
                         </div><!--search-bar end-->
                         <nav>
@@ -23,85 +24,67 @@
                                 <li class="arFlip">
                                     <a href="/Index" title="">
                                         <span><img src="template/images/icon1.png" alt=""></span>
-                                        Home
+                                       @Translate["Home"]
                                     </a>
                                 </li>
                                 <li class="arFlip">
                                     <a href="javascript:void(0)" title="">
                                         <span><img src="template/images/icon2.png" alt=""></span>
-                                        Companies
+                                        @Translate["Companies"]
                                     </a>
                                     <ul>
-                                        <li><a href="/Companies" title="">Companies</a></li>
-                                        <li><a href="/Company" title="">Company Profile</a></li>
+                                        <li class="arAlign"><a href="/Companies" title="">@Translate["Companies"]</a></li>
+                                        <li class="arAlign"><a href="/Company" title="">@Translate["Company Profile"]</a></li>
                                     </ul>
                                 </li>
                                 <li class="arFlip">
                                     <a href="/Projects" title="">
                                         <span><img src="template/images/icon3.png" alt=""></span>
-                                        Projects
+                                        @Translate["Projects"]
                                     </a>
                                 </li>
                                 <li class="arFlip">
                                     <a href="javascript:void(0)" title="">
                                         <span><img src="template/images/icon4.png" alt=""></span>
-                                        Profiles
+                                        @Translate["Profiles"]
                                     </a>
                                     <ul>
-                                        <li><a href="/Profile" title="">User Profile</a></li>
-                                        <li><a href="/MyProfile" title="">my-profile-feed</a></li>
-                                        <li><a href="/Profiles" title="">all-profile</a></li>
+                                        <li class="arAlign"><a href="/Profile" title="">@Translate["User Profile"]</a></li>
+                                        <li class="arAlign"><a href="/MyProfile" title="">@Translate["my-profile-feed"]</a></li>
+                                        <li class="arAlign"><a href="/Profiles" title="">@Translate["all-profile"]</a></li>
                                     </ul>
                                 </li>
                                 <li class="arFlip">
                                     <a href="/Jobs" title="">
                                         <span><img src="template/images/icon5.png" alt=""></span>
-                                        Jobs
+                                        @Translate["Jobs"]
                                     </a>
                                 </li>
                                 <li class="arFlip">
                                     <a href="javascript:void(0)" title="" class="not-box-open">
                                         <span><img src="template/images/icon6.png" alt=""></span>
-                                        Messages
+                                        @Translate["Messages"]
                                     </a>
-                                    <div class="notification-box msg">
+                                    <div class="notification-box msg arFlip">
                                         <div class="nt-title">
-                                            <h4>Setting</h4>
-                                            <a href="javascript:void(0)" title="">Clear all</a>
+                                            <h4>@Translate["Setting"]</h4>
+                                            <a href="javascript:void(0)" title="">@Translate["Clear all"]</a>
                                         </div>
                                         <div class="nott-list">
+
                                             <div class="notfication-details">
                                                 <div class="noty-user-img">
                                                     @*<img src="template/images/resources/ny-img1.png" alt="">*@
                                                 </div>
-                                                <div class="notification-info">
+                                                <div class="notification-info arFlip">
                                                     <h3><a href="javascript:void(0)" title="">Jassica William</a> </h3>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do.</p>
-                                                    <span>2 min ago</span>
+                                                    <p class="arFlip-1 arAlign">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do.</p>
+                                                    <span class="arFlip-1" style="right: auto;">2 min ago</span>
                                                 </div><!--notification-info -->
                                             </div>
-                                            <div class="notfication-details">
-                                                <div class="noty-user-img">
-                                                    @*<img src="template/images/resources/ny-img2.png" alt="">*@
-                                                </div>
-                                                <div class="notification-info">
-                                                    <h3><a href="javascript:void(0)" title="">Jassica William</a></h3>
-                                                    <p>Lorem ipsum dolor sit amet.</p>
-                                                    <span>2 min ago</span>
-                                                </div><!--notification-info -->
-                                            </div>
-                                            <div class="notfication-details">
-                                                <div class="noty-user-img">
-                                                    @*<img src="template/images/resources/ny-img3.png" alt="">*@
-                                                </div>
-                                                <div class="notification-info">
-                                                    <h3><a href="javascript:void(0)" title="">Jassica William</a></h3>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempo incididunt ut labore et dolore magna aliqua.</p>
-                                                    <span>2 min ago</span>
-                                                </div><!--notification-info -->
-                                            </div>
+
                                             <div class="view-all-nots">
-                                                <a href="javascript:void(0)" title="">View All Messsages</a>
+                                                <a href="javascript:void(0)" title="">@Translate["View All Messsages"]</a>
                                             </div>
                                         </div><!--nott-list end-->
                                     </div><!--notification-box end-->
@@ -109,52 +92,28 @@
                                 <li class="arFlip">
                                     <a href="javascript:void(0)" title="" class="not-box-open">
                                         <span><img src="template/images/icon7.png" alt=""></span>
-                                        Notification
+                                        @Translate["Notification"]
                                     </a>
-                                    <div class="notification-box">
+                                    <div class="notification-box arFlip">
                                         <div class="nt-title">
-                                            <h4>Setting</h4>
-                                            <a href="javascript:void(0)" title="">Clear all</a>
+                                            <h4>@Translate["Setting"]</h4>
+                                            <a href="javascript:void(0)" title="">@Translate["Clear all"]</a>
                                         </div>
-                                        <div class="nott-list">
+                                        <div class="nott-list arFlip" >
                                             <div class="notfication-details">
                                                 <div class="noty-user-img">
                                                     @*<img src="template/images/resources/ny-img1.png" alt="">*@
                                                 </div>
                                                 <div class="notification-info">
-                                                    <h3><a href="javascript:void(0)" title="">Jassica William</a> Comment on your project.</h3>
-                                                    <span>2 min ago</span>
+                                                    <h3>
+                                                        <a href="javascript:void(0)" title="">Jassica William</a>
+                                                        <p> @Translate["Comment on your project"]. </p>
+                                                    </h3>
+                                                    <span class="arFlip-1">2 min ago</span>
                                                 </div><!--notification-info -->
                                             </div>
-                                            <div class="notfication-details">
-                                                <div class="noty-user-img">
-                                                    @* <img src="template/images/resources/ny-img2.png" alt="">*@
-                                                </div>
-                                                <div class="notification-info">
-                                                    <h3><a href="javascript:void(0)" title="">Jassica William</a> Comment on your project.</h3>
-                                                    <span>2 min ago</span>
-                                                </div><!--notification-info -->
-                                            </div>
-                                            <div class="notfication-details">
-                                                <div class="noty-user-img">
-                                                    @* <img src="template/images/resources/ny-img3.png" alt="">*@
-                                                </div>
-                                                <div class="notification-info">
-                                                    <h3><a href="javascript:void(0)" title="">Jassica William</a> Comment on your project.</h3>
-                                                    <span>2 min ago</span>
-                                                </div><!--notification-info -->
-                                            </div>
-                                            <div class="notfication-details">
-                                                <div class="noty-user-img">
-                                                    @* <img src="template/images/resources/ny-img2.png" alt="">*@
-                                                </div>
-                                                <div class="notification-info">
-                                                    <h3><a href="javascript:void(0)" title="">Jassica William</a> Comment on your project.</h3>
-                                                    <span>2 min ago</span>
-                                                </div><!--notification-info -->
-                                            </div>
-                                            <div class="view-all-nots">
-                                                <a href="javascript:void(0)" title="">View All Notification</a>
+                                            <div class="view-all-nots arFlip">
+                                                <a href="javascript:void(0)" title="">@Translate["View All Notification"]</a>
                                             </div>
                                         </div><!--nott-list end-->
                                     </div><!--notification-box end-->
@@ -171,16 +130,16 @@
                                 <i class="la la-sort-down"></i>
                             </div>
                             <div class="user-account-settingss">
-                                <h3>Online Status</h3>
+                                <h3 class="arAlign">@Translate["Online Status"]</h3>
                                 <ul class="on-off-status">
                                     <li>
                                         <div class="fgt-sec">
-                                            <input type="radio" name="cc" id="c5">
+                                            <input checked type="radio" name="cc" id="c5">
                                             <label for="c5">
                                                 <span></span>
                                             </label>
-                                            <small>Online</small>
-                                        </div>
+                                            <small class="arFlip">@Translate["Online"]</small>
+                                     </div>
                                     </li>
                                     <li>
                                         <div class="fgt-sec">
@@ -188,25 +147,25 @@
                                             <label for="c6">
                                                 <span></span>
                                             </label>
-                                            <small>Offline</small>
-                                        </div>
+                                            <small class="arFlip">@Translate["Offline"]</small>
+                                     </div>
                                     </li>
                                 </ul>
-                                <h3>Custom Status</h3>
+                                <h3 class="arAlign">@Translate["Custom Status"]</h3>
                                 <div class="search_form">
                                     <form>
                                         <input type="text" name="search">
-                                        <button type="submit">Ok</button>
+                                        <button type="button">@Translate["Ok"]</button>
                                     </form>
                                 </div><!--search_form end-->
-                                <h3>Setting</h3>
+                                <h3 class="arAlign">@Translate["Setting"]</h3>
                                 <ul class="us-links">
-                                    <li><a href="javascript:void(0)" title="">Account Setting</a></li>
-                                    <li><a href="javascript:void(0)" title="">Privacy</a></li>
-                                    <li><a href="javascript:void(0)" title="">Faqs</a></li>
-                                    <li><a href="javascript:void(0)" title="">Terms & Conditions</a></li>
+                                    <li class="arAlign"><a href="javascript:void(0)" title="">@Translate["Account Setting"]</a></li>
+                                    <li class="arAlign"><a href="javascript:void(0)" title="">@Translate["Privacy"]</a></li>
+                                    <li class="arAlign"><a href="javascript:void(0)" title="">@Translate["Faqs"]</a></li>
+                                    <li class="arAlign"><a href="javascript:void(0)" title="">@Translate["Terms & Conditions"]</a></li>
                                 </ul>
-                                <h3 class="tc"><a href="/Account/Logout" title="">Logout</a></h3>
+                                <h3 class="tc"><a href="/Account/Logout" title="">@Translate["Logout"]</a></h3>
                             </div><!--user-account-settingss end-->
                         </div>
                     </div><!--header-data end-->

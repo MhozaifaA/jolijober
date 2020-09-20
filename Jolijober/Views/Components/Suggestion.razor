@@ -1,22 +1,22 @@
 ﻿
-
+@inject AppTranslate Translate
 <div class="suggestions full-width">
     <div class="sd-title">
-        <h3>@Title</h3>
+        <h3>@(Translate[Title??""])</h3>
         <i class="la la-ellipsis-v"></i>
     </div><!--sd-title end-->
 
     <div class="suggestions-list">
         <div class="suggestion-usd">
             <img src="template/images/via/35x35" alt="">
-            <div class="sgt-text">
-                <h4>Jessica William</h4>
+            <div class="sgt-text arFlip">
+                <h4 class="arFlip-1 arAlign">Jessica William</h4>
                 <span>Graphic Designer</span>
             </div>
             <span><i class="la la-plus"></i></span>
         </div>
-        <div class="view-more">
-            <a href="javascript:void(0)" title="">View More</a>
+        <div class="view-more arFlip">
+            <a href="javascript:void(0)" title="">@Translate["View More"]</a>
         </div>
     </div><!--suggestions-list end-->
 </div><!--suggestions end-->

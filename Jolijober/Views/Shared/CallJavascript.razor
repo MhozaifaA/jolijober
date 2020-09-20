@@ -1,10 +1,12 @@
 ﻿@inject IJSRuntime JsRuntime;
 
+
 @code {
+    public int MyProperty { get; set; } = 0;
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-      //  if (firstRender)
-            await InvokeJs("initscript", "initrange", "datepicker");
+      if (firstRender)
+        await InvokeJs("initscript", "initrange", "datepicker");
 
         //await TryCatch(async () =>
         //{
@@ -16,17 +18,23 @@
 
     private async Task InvokeJs(params string[] funs)
     {
-        foreach (var fun in funs)
+        bool loop = false;
+        do
         {
-            try
+            loop = false;
+            foreach (var fun in funs)
             {
-                await JsRuntime.InvokeVoidAsync(fun);
+                try
+                {
+                    await JsRuntime.InvokeVoidAsync(fun);
+                }
+                catch (Exception)
+                {
+                    loop = true;
+                    continue;
+                }
             }
-            catch (Exception)
-            {
-                continue;
-            }
-        }
+        } while (loop);
     }
 
 

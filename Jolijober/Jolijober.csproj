@@ -21,10 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\template\images\via\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <EmbeddedResource Update="Resources\LocalizationPage.ar.resx">
       <Generator></Generator>
     </EmbeddedResource>

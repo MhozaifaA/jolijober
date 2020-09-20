@@ -5,6 +5,7 @@
 @using JolijoberProject.Main.Repository.DataTransferObjects
 
 @inject IPostRepository _postRepository
+@inject AppTranslate Translate
 
 <section class="forum-page">
     <div class="container">
@@ -17,19 +18,19 @@
                                 <img src="template/images/via/60x60.png" alt="">
                             </div>
                             <div class="usr_quest">
-                                <h3>@post.Title</h3>
-                                <span><i class="fa fa-clock-o"></i>@post.Date</span>
+                                <h3 class="arAlign">@post?.Title</h3>
+                                <span><i class="fa fa-clock-o"></i>@post?.Date</span>
                                 <ul class="react-links">
-                                    <li><a href="javascript:void(0)" title=""><i class="fa fa-heart"></i>@post.Likes</a></li>
-                                    <li><a href="javascript:void(0)" title=""><i class="fa fa-share-alt"></i> Share</a></li>
+                                    <li><a href="javascript:void(0)" title=""><i class="fa fa-heart"></i>@post?.Likes</a></li>
+                                    <li><a href="javascript:void(0)" title=""><i class="fa fa-share-alt"></i>@Translate["Share"]</a></li>
                                 </ul>
 
                                 <Tags PostTags="post.Tags" />
 
-                                 <p>@post.Descreption</p>
+                                 <p class="arAlign">@post.Descreption</p>
 
-                                <div class="comment-section">
-                                    <h3>@post.Comments Comments</h3>
+                                <div class="comment-section arAlign">
+                                    <h3>@post?.Comments @Translate["Comments"]</h3>
                                     <div class="comment-sec">
                                         <ul>
                                             <li>
@@ -75,22 +76,22 @@
                         </div><!--usr-question end-->
                     </div><!--forum-post-view end-->
                     <div class="post-comment-box">
-                        <h3>@post.Comments Comments</h3>
+                        <h3 class="arAlign">@post?.Comments @Translate["Comments"]</h3>
                         <div class="user-poster">
                             <div class="usr-post-img">
                                 <img src="template/images/via/40x40.png" alt="">
                             </div>
                             <div class="post_comment_sec">
                                <form>
-                                    <textarea placeholder="Your Answer"></textarea>
-                                    <button type="button">Post Answer</button>
+                                    <textarea placeholder="@Translate["Your Answer"]"></textarea>
+                                    <button type="button">@Translate["Post Answer"]</button>
                                 </form>
                             </div><!--post_comment_sec end-->
                         </div><!--user-poster end-->
                     </div><!--post-comment-box end-->
                     <div class="next-prev">
-                        <a href="/ShowJob" title="" class="fl-left">Preview</a>
-                        <a href="javascript:void(0)" title="" class="fl-right">Next</a>
+                        <a href="/ShowJob" title="" class="fl-left">@Translate["Preview"]</a>
+                        <a href="javascript:void(0)" title="" class="fl-right">@Translate["Next"]</a>
                     </div><!--next-prev end-->
                 </div>
                 <div class="col-lg-4">
@@ -115,7 +116,7 @@
                         </ul>
                     </div><!--widget-feat end-->
                     <div class="widget widget-user">
-                        <h3 class="title-wd">Top User of the Week</h3>
+                        <h3 class="title-wd">@Translate["Top User of the Wee"]k</h3>
                         <ul>
                             <li>
                                 <div class="usr-msg-details">

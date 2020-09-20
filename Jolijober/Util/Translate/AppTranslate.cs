@@ -192,7 +192,6 @@ namespace Jolijober.Util.Translate
             { "Establish Since", "تأسست منذ"},
             { "Total Employees", "عدد الموظفين"},
             { "Select Date", "اختر تاريخ"},
-            { "Select Date", "اختر تاريخ"},
             { "John Doe", "محمد التجريبي"},
             });
         }

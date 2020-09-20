@@ -1,10 +1,10 @@
 ﻿@page "/MyProfile"
-
+@inject AppTranslate Translate
 
 <CallJavascript />
 
 
-<Cover/>
+<Cover />
 
 
 <main>
@@ -21,16 +21,16 @@
                                 </div><!--user-pro-img end-->
                                 <div class="user_pro_status">
                                     @*<ul class="flw-hr">
-                                        <li><a href="javascript:void(0)" title="" class="flww"><i class="la la-plus"></i> Follow</a></li>
-                                        <li><a href="javascript:void(0)" title="" class="hre">Hire</a></li>
-                                    </ul>*@
+                                            <li><a href="javascript:void(0)" title="" class="flww"><i class="la la-plus"></i> Follow</a></li>
+                                            <li><a href="javascript:void(0)" title="" class="hre">Hire</a></li>
+                                        </ul>*@
                                     <ul class="flw-status">
                                         <li>
-                                            <span>Following</span>
+                                            <span>@Translate["Following"]</span>
                                             <b>@(ProfileDto?.Following?.Length??0)</b>
                                         </li>
                                         <li>
-                                            <span>Followers</span>
+                                            <span>@Translate["Followers"]</span>
                                             <b>@(ProfileDto?.Followers?.Length??0)</b>
                                         </li>
                                     </ul>
@@ -48,7 +48,7 @@
                     <div class="col-lg-6">
                         <div class="main-ws-sec">
                             <div class="user-tab-sec">
-                                <h3>@ProfileDto?.FullName</h3>
+                                <h3 class="arAlign">@ProfileDto?.FullName</h3>
 
                                 <div class="star-descp">
                                     <span>@ProfileDto?.Headline</span>
@@ -64,37 +64,37 @@
                                         <li data-tab="feed-dd" class="active">
                                             <a href="javascript:void(0)" title="">
                                                 <img src="template/images/ic1.png" alt="">
-                                                <span>Feed</span>
+                                                <span>@Translate["Feed"]</span>
                                             </a>
                                         </li>
                                         <li data-tab="info-dd">
                                             <a href="javascript:void(0)" title="">
                                                 <img src="template/images/ic2.png" alt="">
-                                                <span>Info</span>
+                                                <span>@Translate["Info"]</span>
                                             </a>
                                         </li>
                                         <li data-tab="saved-jobs">
                                             <a href="javascript:void(0)" title="">
                                                 <img src="template/images/ic4.png" alt="">
-                                                <span>Saved Jobs</span>
+                                                <span>@Translate["Saved Jobs"]</span>
                                             </a>
                                         </li>
                                         <li data-tab="my-bids">
                                             <a href="javascript:void(0)" title="">
                                                 <img src="template/images/ic5.png" alt="">
-                                                <span>My Bids</span>
+                                                <span>@Translate["My Bids"]</span>
                                             </a>
                                         </li>
                                         <li data-tab="portfolio-dd">
                                             <a href="javascript:void(0)" title="">
                                                 <img src="template/images/ic3.png" alt="">
-                                                <span>Portfolio</span>
+                                                <span>@Translate["Portfolio"]</span>
                                             </a>
                                         </li>
                                         <li data-tab="payment-dd">
                                             <a href="javascript:void(0)" title="">
                                                 <img src="template/images/ic6.png" alt="">
-                                                <span>Payment</span>
+                                                <span>@Translate["Payment"]</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -103,7 +103,7 @@
 
                             </div><!--user-tab-sec end-->
 
-                        
+
 
                             <div class="product-feed-tab current" id="feed-dd">
 
@@ -117,45 +117,8 @@
                                 </div><!--posts-section end-->
                             </div><!--product-feed-tab end-->
 
-                            <div class="product-feed-tab" id="info-dd">
-                                <div class="user-profile-ov">
-                                    <h3><a href="javascript:void(0)" title="" class="overview-open">Overview</a> <a href="javascript:void(0)" title="" class="overview-open"><i class="fa fa-pencil"></i></a></h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra. Nunc eu augue nec arcu efficitur faucibus. Aliquam accumsan ac magna convallis bibendum. Quisque laoreet augue eget augue fermentum scelerisque. Vivamus dignissim mollis est dictum blandit. Nam porta auctor neque sed congue. Nullam rutrum eget ex at maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget vestibulum lorem.</p>
-                                </div><!--user-profile-ov end-->
-                                <div class="user-profile-ov st2">
-                                    <h3><a href="javascript:void(0)" title="" class="exp-bx-open">Experience </a><a href="javascript:void(0)" title="" class="exp-bx-open"><i class="fa fa-pencil"></i></a> <a href="javascript:void(0)" title="" class="exp-bx-open"><i class="fa fa-plus-square"></i></a></h3>
-                                    <h4>Web designer <a href="javascript:void(0)" title=""><i class="fa fa-pencil"></i></a></h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra. </p>
-                                    <h4>UI / UX Designer <a href="javascript:void(0)" title=""><i class="fa fa-pencil"></i></a></h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id.</p>
-                                    <h4>PHP developer <a href="javascript:void(0)" title=""><i class="fa fa-pencil"></i></a></h4>
-                                    <p class="no-margin">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra. </p>
-                                </div><!--user-profile-ov end-->
-                                <div class="user-profile-ov">
-                                    <h3><a href="javascript:void(0)" title="" class="ed-box-open">Education</a> <a href="javascript:void(0)" title="" class="ed-box-open"><i class="fa fa-pencil"></i></a> <a href="javascript:void(0)" title=""><i class="fa fa-plus-square"></i></a></h3>
-                                    <h4>Master of Computer Science</h4>
-                                    <span>2015 - 2018</span>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra. </p>
-                                </div><!--user-profile-ov end-->
-                                <div class="user-profile-ov">
-                                    <h3><a href="javascript:void(0)" title="" class="lct-box-open">Location</a> <a href="javascript:void(0)" title="" class="lct-box-open"><i class="fa fa-pencil"></i></a> <a href="javascript:void(0)" title=""><i class="fa fa-plus-square"></i></a></h3>
-                                    <h4>India</h4>
-                                    <p>151/4 BT Chownk, Delhi </p>
-                                </div><!--user-profile-ov end-->
-                                <div class="user-profile-ov">
-                                    <h3><a href="javascript:void(0)" title="" class="skills-open">Skills</a> <a href="javascript:void(0)" title="" class="skills-open"><i class="fa fa-pencil"></i></a> <a href="javascript:void(0)"><i class="fa fa-plus-square"></i></a></h3>
-                                    <ul>
-                                        <li><a href="javascript:void(0)" title="">HTML</a></li>
-                                        <li><a href="javascript:void(0)" title="">PHP</a></li>
-                                        <li><a href="javascript:void(0)" title="">CSS</a></li>
-                                        <li><a href="javascript:void(0)" title="">Javascript</a></li>
-                                        <li><a href="javascript:void(0)" title="">Wordpress</a></li>
-                                        <li><a href="javascript:void(0)" title="">Photoshop</a></li>
-                                        <li><a href="javascript:void(0)" title="">Illustrator</a></li>
-                                        <li><a href="javascript:void(0)" title="">Corel Draw</a></li>
-                                    </ul>
-                                </div><!--user-profile-ov end-->
-                            </div><!--product-feed-tab end-->
+                      
+                        <ProfileInfo/>
 
 
                             <div class="product-feed-tab" id="saved-jobs">
@@ -174,61 +137,42 @@
                                 </div><!--posts-section end-->
                             </div><!--product-feed-tab end-->
 
+                         <ProfileProtfolio/>
 
-                            <div class="product-feed-tab" id="portfolio-dd">
-                                <div class="portfolio-gallery-sec">
-                                    <h3>Portfolio</h3>
-                                    <div class="gallery_pf">
-                                        <div class="row">
-                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6">
-                                                <div class="gallery_pt">
-                                                    <img src="template/images/via/271x174.png" alt="">
-                                                    <a href="javascript:void(0)" title=""><img src="template/images/all-out.png" alt=""></a>
-                                                </div><!--gallery_pt end-->
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6">
-                                                <div class="gallery_pt">
-                                                    <img src="template/images/via/170x170.png" alt="">
-                                                    <a href="javascript:void(0)" title=""><img src="template/images/all-out.png" alt=""></a>
-                                                </div><!--gallery_pt end-->
-                                            </div>
-
-                                        </div>
-                                    </div><!--gallery_pf end-->
-                                </div><!--portfolio-gallery-sec end-->
-                            </div><!--product-feed-tab end-->
                             <div class="product-feed-tab" id="payment-dd">
                                 <div class="billing-method">
                                     <ul>
                                         <li>
-                                            <h3>Add Billing Method</h3>
+                                            <h3>@Translate["Add Billing Method"]</h3>
                                             <a href="javascript:void(0)" title=""><i class="fa fa-plus-circle"></i></a>
                                         </li>
                                         <li>
-                                            <h3>See Activity</h3>
-                                            <a href="javascript:void(0)" title="">View All</a>
+                                            <h3>@Translate["See Activity"]</h3>
+                                            <a href="javascript:void(0)" title="">@Translate["View All"]</a>
                                         </li>
                                         <li>
-                                            <h3>Total Money</h3>
+                                            <h3>@Translate["Total Money"]</h3>
                                             <span>$0.00</span>
                                         </li>
                                     </ul>
                                     <div class="lt-sec">
                                         <img src="template/images/lt-icon.png" alt="">
-                                        <h4>All your transactions are saved here</h4>
-                                        <a href="javascript:void(0)" title="">Click Here</a>
+                                        <h4>@Translate["All your transactions are saved here"]</h4>
+                                        <a href="javascript:void(0)" title="">@Translate["Click Here"]</a>
                                     </div>
                                 </div><!--billing-method end-->
-                                <div class="add-billing-method">
-                                    <h3>Add Billing Method</h3>
-                                    <h4><img src="template/images/dlr-icon.png" alt=""><span>With workwise payment protection , only pay for work delivered.</span></h4>
-                                    <div class="payment_methods">
-                                        <h4>Credit or Debit Cards</h4>
-                                        <form>
+                                <div class="add-billing-method arAlign">
+                                    <h3>@Translate["Add Billing Method"]</h3>
+                                    <h4 class="arFlip-1"><img src="template/images/dlr-icon.png" alt="">
+                                    <span>@Translate["With jolijober payment protection , only pay for work delivered"].</span></h4>
+                                   
+                                <div class="payment_methods">
+                                        <h4>@Translate["Credit or Debit Cards"]</h4>
+                                        <form >
                                             <div class="row">
                                                 <div class="col-lg-12">
-                                                    <div class="cc-head">
-                                                        <h5>Card Number</h5>
+                                                    <div class="cc-head arFlip">
+                                                        <h5>@Translate["Card Number"]</h5>
                                                         <ul>
                                                             <li><img src="template/images/cc-icon1.png" alt=""></li>
                                                             <li><img src="template/images/cc-icon2.png" alt=""></li>
@@ -242,24 +186,24 @@
                                                     </div><!--inpt-field end-->
                                                 </div>
                                                 <div class="col-lg-6">
-                                                    <div class="cc-head">
-                                                        <h5>First Name</h5>
+                                                    <div class="cc-head arFlip">
+                                                        <h5>@Translate["First Name"]</h5>
                                                     </div>
                                                     <div class="inpt-field">
                                                         <input type="text" name="f-name" placeholder="">
                                                     </div><!--inpt-field end-->
                                                 </div>
                                                 <div class="col-lg-6">
-                                                    <div class="cc-head">
-                                                        <h5>Last Name</h5>
+                                                    <div class="cc-head arFlip">
+                                                        <h5>@Translate["Last Name"]</h5>
                                                     </div>
                                                     <div class="inpt-field">
                                                         <input type="text" name="l-name" placeholder="">
                                                     </div><!--inpt-field end-->
                                                 </div>
                                                 <div class="col-lg-6">
-                                                    <div class="cc-head">
-                                                        <h5>Expiresons</h5>
+                                                    <div class="cc-head arFlip">
+                                                        <h5>@Translate["Expiresons"]</h5>
                                                     </div>
                                                     <div class="rowwy">
                                                         <div class="row">
@@ -277,19 +221,19 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
-                                                    <div class="cc-head">
-                                                        <h5>Cvv (Security Code) <i class="fa fa-question-circle"></i></h5>
+                                                    <div class="cc-head arFlip">
+                                                        <h5>Cvv (@Translate["Security Code"]) <i class="fa fa-question-circle"></i></h5>
                                                     </div>
                                                     <div class="inpt-field">
                                                         <input type="text" name="l-name" placeholder="">
                                                     </div><!--inpt-field end-->
                                                 </div>
-                                                <div class="col-lg-12">
-                                                    <button type="submit">Continue</button>
+                                                <div class="col-lg-12 arFlip">
+                                                    <button type="submit">@Translate["Continue"]</button>
                                                 </div>
                                             </div>
                                         </form>
-                                        <h4>Add Paypal Account</h4>
+                                        <h4>@Translate["Add Paypal Account"]</h4>
                                     </div>
                                 </div><!--add-billing-method end-->
                             </div><!--product-feed-tab end-->
@@ -299,11 +243,11 @@
                     <div class="col-lg-3">
                         <div class="right-sidebar">
                             <div class="message-btn">
-                                <a href="javascript:void(0)" title=""><i class="fa fa-envelope"></i> Message</a>
+                                <a href="javascript:void(0)" title=""><i class="fa fa-envelope"></i>@Translate["Message"]</a>
                             </div>
                             <div class="widget widget-portfolio">
                                 <div class="wd-heady">
-                                    <h3>Portfolio</h3>
+                                    <h3>@Translate["Portfolio"]</h3>
                                     <img src="template/images/photo-icon.png" alt="">
                                 </div>
                                 <div class="pf-gallery">
@@ -325,12 +269,12 @@
 
 <div class="overview-box" id="overview-box">
     <div class="overview-edit">
-        <h3>Overview</h3>
-        <span>5000 character left</span>
+        <h3 class="arAlign">@Translate["Overview"]</h3>
+        <span>5000 @Translate["character left"]</span>
         <form>
             <textarea></textarea>
-            <button type="submit" class="save">Save</button>
-            <button type="submit" class="cancel">Cancel</button>
+            <button type="button" class="save">@Translate["Save"]</button>
+            <button type="button" class="cancel">@Translate["Cancel"]</button>
         </form>
         <a href="javascript:void(0)" title="" class="close-box"><i class="la la-close"></i></a>
     </div><!--overview-edit end-->
@@ -339,13 +283,13 @@
 
 <div class="overview-box" id="experience-box">
     <div class="overview-edit">
-        <h3>Experience</h3>
+        <h3 class="arAlign">@Translate["Experience"]</h3>
         <form>
-            <input type="text" name="subject" placeholder="Subject">
+            <input type="text" name="subject" placeholder="@Translate["Subject"]">
             <textarea></textarea>
-            <button type="submit" class="save">Save</button>
-            <button type="submit" class="save-add">Save & Add More</button>
-            <button type="submit" class="cancel">Cancel</button>
+            <button type="button" class="save">@Translate["Save"]</button>
+            <button type="button" class="save-add">@Translate["Save & Add More"]</button>
+            <button type="button" class="cancel">@Translate["Cancel"]</button>
         </form>
         <a href="javascript:void(0)" title="" class="close-box"><i class="la la-close"></i></a>
     </div><!--overview-edit end-->
@@ -353,30 +297,30 @@
 
 <div class="overview-box" id="education-box">
     <div class="overview-edit">
-        <h3>Education</h3>
+        <h3 class="arAlign">@Translate["Education"]</h3>
         <form>
-            <input type="text" name="school" placeholder="School / University">
+            <input type="text" name="school" placeholder="@Translate["School / University"]">
             <div class="datepicky">
                 <div class="row">
                     <div class="col-lg-6 no-left-pd">
                         <div class="datefm">
-                            <input type="text" name="from" placeholder="From" class="datepicker">
+                            <input type="text" name="from" placeholder="@Translate["From"]" class="datepicker">
                             <i class="fa fa-calendar"></i>
                         </div>
                     </div>
                     <div class="col-lg-6 no-righ-pd">
                         <div class="datefm">
-                            <input type="text" name="to" placeholder="To" class="datepicker">
+                            <input type="text" name="to" placeholder="@Translate["To"]" class="datepicker">
                             <i class="fa fa-calendar"></i>
                         </div>
                     </div>
                 </div>
             </div>
-            <input type="text" name="degree" placeholder="Degree">
-            <textarea placeholder="Description"></textarea>
-            <button type="submit" class="save">Save</button>
-            <button type="submit" class="save-add">Save & Add More</button>
-            <button type="submit" class="cancel">Cancel</button>
+            <input type="text" name="degree" placeholder="@Translate["Degree"]">
+            <textarea placeholder="@Translate["Description"]"></textarea>
+            <button type="button" class="save">@Translate["Save"]</button>
+            <button type="button" class="save-add">@Translate["Save & Add More"]</button>
+            <button type="button" class="cancel">@Translate["Cancel"]</button>
         </form>
         <a href="javascript:void(0)" title="" class="close-box"><i class="la la-close"></i></a>
     </div><!--overview-edit end-->
@@ -384,11 +328,11 @@
 
 <div class="overview-box" id="location-box">
     <div class="overview-edit">
-        <h3>Location</h3>
+        <h3 class="arAlign">@Translate["Location"]</h3>
         <form>
             <div class="datefm">
                 <select>
-                    <option>Country</option>
+                    <option>@Translate["Country"]</option>
                     <option value="pakistan">Pakistan</option>
                     <option value="england">England</option>
                     <option value="india">India</option>
@@ -398,7 +342,7 @@
             </div>
             <div class="datefm">
                 <select>
-                    <option>City</option>
+                    <option>@Translate["City"]</option>
                     <option value="london">London</option>
                     <option value="new-york">New York</option>
                     <option value="sydney">Sydney</option>
@@ -406,8 +350,8 @@
                 </select>
                 <i class="fa fa-map-marker"></i>
             </div>
-            <button type="submit" class="save">Save</button>
-            <button type="submit" class="cancel">Cancel</button>
+            <button type="button" class="save">@Translate["Save"]</button>
+            <button type="button" class="cancel">@Translate["Cancel"]</button>
         </form>
         <a href="javascript:void(0)" title="" class="close-box"><i class="la la-close"></i></a>
     </div><!--overview-edit end-->
@@ -415,17 +359,17 @@
 
 <div class="overview-box" id="skills-box">
     <div class="overview-edit">
-        <h3>Skills</h3>
+        <h3>@Translate["Skills"]</h3>
         <ul>
             <li><a href="javascript:void(0)" title="" class="skl-name">HTML</a><a href="javascript:void(0)" title="" class="close-skl"><i class="la la-close"></i></a></li>
             <li><a href="javascript:void(0)" title="" class="skl-name">php</a><a href="javascript:void(0)" title="" class="close-skl"><i class="la la-close"></i></a></li>
             <li><a href="javascript:void(0)" title="" class="skl-name">css</a><a href="javascript:void(0)" title="" class="close-skl"><i class="la la-close"></i></a></li>
         </ul>
         <form>
-            <input type="text" name="skills" placeholder="Skills">
-            <button type="submit" class="save">Save</button>
-            <button type="submit" class="save-add">Save & Add More</button>
-            <button type="submit" class="cancel">Cancel</button>
+            <input type="text" name="skills" placeholder="@Translate["Skills"]">
+            <button type="button" class="save">@Translate["Save"]</button>
+            <button type="button" class="save-add">@Translate["Save & Add More"]</button>
+            <button type="button" class="cancel">@Translate["Cancel"]</button>
         </form>
         <a href="javascript:void(0)" title="" class="close-box"><i class="la la-close"></i></a>
     </div><!--overview-edit end-->
@@ -433,9 +377,9 @@
 
 <div class="overview-box" id="create-portfolio">
     <div class="overview-edit">
-        <h3>Create Portfolio</h3>
+        <h3 class="arAlign">@Translate["Create Portfolio"]</h3>
         <form>
-            <input type="text" name="pf-name" placeholder="Portfolio Name">
+            <input type="text" name="pf-name" placeholder="@Translate["Portfolio Name"]">
             <div class="file-submit">
                 <input type="file" name="file">
             </div>
@@ -443,10 +387,9 @@
                 <img src="template/images/via/60x60.png" alt="">
             </div>
             <input type="text" name="website-url" placeholder="htp://www.example.com">
-            <button type="submit" class="save">Save</button>
-            <button type="submit" class="cancel">Cancel</button>
+            <button type="button" class="save">@Translate["Save"]</button>
+            <button type="button" class="cancel">@Translate["Cancel"]</button>
         </form>
         <a href="javascript:void(0)" title="" class="close-box"><i class="la la-close"></i></a>
     </div><!--overview-edit end-->
 </div><!--overview-box end-->
-

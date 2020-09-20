@@ -1,12 +1,13 @@
 ﻿@using Tewr.Blazor.FileReader
 @using System.IO;
 @inject IFileReaderService fileReaderService;
+@inject AppTranslate Translate
 
 <section class="cover-sec">
     <img src="template/images/via/1600x400.png" alt="">
-    <input type="file" @ref=inputTypeFileElement @onchange="(x)=>CheckChanged(x)"/>
+    <input type="file" @ref=inputTypeFileElement @onchange="(x)=>CheckChanged(x)" />
     <a @onclick=ReadFile href="javascript:void(0)" title="">
-        <i class="fa fa-camera"></i> Change Image
+        <i class="fa fa-camera"></i> @Translate["Change Image"]
     </a>
 </section>
 

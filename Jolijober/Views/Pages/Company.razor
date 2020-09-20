@@ -1,4 +1,7 @@
 ﻿@page "/Company"
+
+@inject AppTranslate Translate
+
 <CallJavascript />
 
 
@@ -20,15 +23,15 @@
                                 </div><!--user-pro-img end-->
                                 <div class="user_pro_status">
                                     <ul class="flw-hr">
-                                        <li><a href="javascript:void(0)" title="" class="flww"><i class="la la-plus"></i> Follow</a></li>
+                                        <li><a href="javascript:void(0)" title="" class="flww"><i class="la la-plus"></i>@Translate["Follow"]</a></li>
                                     </ul>
                                     <ul class="flw-status">
-                                        <li>
-                                            <span>Following</span>
+                                        <li class="arFlip">
+                                            <span class="arFlip-1">@Translate["Following"]</span>
                                             <b>34</b>
                                         </li>
-                                        <li>
-                                            <span>Followers</span>
+                                        <li class="arFlip">
+                                            <span class="arFlip-1">@Translate["Followers"]</span>
                                             <b>155</b>
                                         </li>
                                     </ul>
@@ -45,7 +48,7 @@
                                 </ul>
                             </div><!--user_profile end-->
 
-                            <Suggestion Title="Suggestions"/>
+                            <Suggestion Title="Suggestions" />
 
 
                         </div><!--main-left-sidebar end-->
@@ -53,7 +56,7 @@
                     <div class="col-lg-6">
                         <div class="main-ws-sec">
                             <div class="user-tab-sec">
-                                <h3>Facebook Inc.</h3>
+                                <h3 class="arAlign">Facebook Inc.</h3>
                                 <div class="star-descp">
                                     <span>Established Since 2009</span>
                                     <ul>
@@ -69,19 +72,19 @@
                                         <li data-tab="feed-dd" class="active">
                                             <a href="javascript:void(0)" title="">
                                                 <img src="template/images/ic1.png" alt="">
-                                                <span>Feed</span>
+                                                <span>@Translate["Feed"]</span>
                                             </a>
                                         </li>
                                         <li data-tab="info-dd">
                                             <a href="javascript:void(0)" title="">
                                                 <img src="template/images/ic2.png" alt="">
-                                                <span>Info</span>
+                                                <span>@Translate["Info"]</span>
                                             </a>
                                         </li>
                                         <li data-tab="portfolio-dd">
                                             <a href="javascript:void(0)" title="">
                                                 <img src="template/images/ic3.png" alt="">
-                                                <span>Portfolio</span>
+                                                <span>@Translate["Portfolio"]</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -90,27 +93,31 @@
                             <div class="product-feed-tab current" id="feed-dd">
                                 <div class="posts-section">
 
-                                   <JobPost/>
-                                    <Bounce/>
+                                    <JobPost />
+                                    <Bounce />
 
                                 </div><!--posts-section end-->
                             </div><!--product-feed-tab end-->
 
-                            <div class="product-feed-tab" id="info-dd">
+                            <div class="product-feed-tab arAlign" id="info-dd">
                                 <div class="user-profile-ov">
-                                    <h3><a href="javascript:void(0)" title="" class="overview-open">Overview</a> <a href="javascript:void(0)" title="" class="overview-open"><i class="fa fa-pencil"></i></a></h3>
+                                    <h3><a href="javascript:void(0)" title="" class="overview-open">
+                                        @Translate["Overview"]</a> <a href="javascript:void(0)" title="" class="overview-open"><i class="fa fa-pencil"></i></a></h3>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra. Nunc eu augue nec arcu efficitur faucibus. Aliquam accumsan ac magna convallis bibendum. Quisque laoreet augue eget augue fermentum scelerisque. Vivamus dignissim mollis est dictum blandit. Nam porta auctor neque sed congue. Nullam rutrum eget ex at maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget vestibulum lorem.</p>
                                 </div><!--user-profile-ov end-->
                                 <div class="user-profile-ov st2">
-                                    <h3><a href="javascript:void(0)" title="" class="esp-bx-open">Establish Since </a><a href="javascript:void(0)" title="" class="esp-bx-open"><i class="fa fa-pencil"></i></a> <a href="javascript:void(0)" title="" class="esp-bx-open"><i class="fa fa-plus-square"></i></a></h3>
+                                    <h3><a href="javascript:void(0)" title="" class="esp-bx-open">
+                                        @Translate["Establish Since"] </a><a href="javascript:void(0)" title="" class="esp-bx-open"><i class="fa fa-pencil"></i></a> <a href="javascript:void(0)" title="" class="esp-bx-open"><i class="fa fa-plus-square"></i></a></h3>
                                     <span>February 2004</span>
                                 </div><!--user-profile-ov end-->
                                 <div class="user-profile-ov">
-                                    <h3><a href="javascript:void(0)" title="" class="emp-open">Total Employees</a> <a href="javascript:void(0)" title="" class="emp-open"><i class="fa fa-pencil"></i></a> <a href="javascript:void(0)" title="" class="emp-open"><i class="fa fa-plus-square"></i></a></h3>
+                                    <h3><a href="javascript:void(0)" title="" class="emp-open">
+                                        @Translate["Total Employees"]</a> <a href="javascript:void(0)" title="" class="emp-open"><i class="fa fa-pencil"></i></a> <a href="javascript:void(0)" title="" class="emp-open"><i class="fa fa-plus-square"></i></a></h3>
                                     <span>17,048</span>
                                 </div><!--user-profile-ov end-->
                                 <div class="user-profile-ov">
-                                    <h3><a href="javascript:void(0)" title="" class="lct-box-open">Location</a> <a href="javascript:void(0)" title="" class="lct-box-open"><i class="fa fa-pencil"></i></a> <a href="javascript:void(0)" title="" class="lct-box-open"><i class="fa fa-plus-square"></i></a></h3>
+                                    <h3><a href="javascript:void(0)" title="" class="lct-box-open">
+                                        @Translate["Location"]</a> <a href="javascript:void(0)" title="" class="lct-box-open"><i class="fa fa-pencil"></i></a> <a href="javascript:void(0)" title="" class="lct-box-open"><i class="fa fa-plus-square"></i></a></h3>
                                     <h4>USA</h4>
                                     <p> Menlo Park, California, United States</p>
                                 </div><!--user-profile-ov end-->
@@ -119,7 +126,7 @@
 
                             <div class="product-feed-tab" id="portfolio-dd">
                                 <div class="portfolio-gallery-sec">
-                                    <h3>Portfolio</h3>
+                                    <h3>@Translate["Portfolio"]</h3>
                                     <div class="gallery_pf">
                                         <div class="row">
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-6">
@@ -143,11 +150,11 @@
                     <div class="col-lg-3">
                         <div class="right-sidebar">
                             <div class="message-btn">
-                                <a href="javascript:void(0)" title=""><i class="fa fa-envelope"></i> Message</a>
+                                <a href="javascript:void(0)" title=""><i class="fa fa-envelope"></i>@Translate["Message"]</a>
                             </div>
                             <div class="widget widget-portfolio">
                                 <div class="wd-heady">
-                                    <h3>Portfolio</h3>
+                                    <h3 class="arAlign">@Translate["Portfolio"]</h3>
                                     <img src="template/images/photo-icon.png" alt="">
                                 </div>
                                 <div class="pf-gallery">
@@ -168,12 +175,12 @@
 
 <div class="overview-box" id="overview-box">
     <div class="overview-edit">
-        <h3>Overview</h3>
-        <span>5000 character left</span>
+        <h3 class="arAlign">@Translate["Overview"]</h3>
+        <span>5000 @Translate["character left"]</span>
         <form>
             <textarea></textarea>
-            <button type="submit" class="save">Save</button>
-            <button type="submit" class="cancel">Cancel</button>
+            <button type="button" class="save">@Translate["Save"]</button>
+            <button type="button" class="cancel">@Translate["Cancel"]</button>
         </form>
         <a href="javascript:void(0)" title="" class="close-box"><i class="la la-close"></i></a>
     </div><!--overview-edit end-->
@@ -182,13 +189,13 @@
 
 <div class="overview-box" id="experience-box">
     <div class="overview-edit">
-        <h3>Experience</h3>
+        <h3 class="arAlign">@Translate["Experience"]</h3>
         <form>
-            <input type="text" name="subject" placeholder="Subject">
+            <input type="text" name="subject" placeholder="@Translate["Subject"]">
             <textarea></textarea>
-            <button type="submit" class="save">Save</button>
-            <button type="submit" class="save-add">Save & Add More</button>
-            <button type="submit" class="cancel">Cancel</button>
+            <button type="button" class="save">@Translate["Save"]</button>
+            <button type="button" class="save-add">@Translate["Save & Add More"]</button>
+            <button type="button" class="cancel">@Translate["Cancel"]</button>
         </form>
         <a href="javascript:void(0)" title="" class="close-box"><i class="la la-close"></i></a>
     </div><!--overview-edit end-->
@@ -196,9 +203,9 @@
 
 <div class="overview-box" id="education-box">
     <div class="overview-edit">
-        <h3>Education</h3>
+        <h3 class="arAlign">@Translate["Education"]</h3>
         <form>
-            <input type="text" name="school" placeholder="School / University">
+            <input type="text" name="school" placeholder="@Translate["School / University"]">
             <div class="datepicky">
                 <div class="row">
                     <div class="col-lg-6 no-left-pd">
@@ -215,11 +222,11 @@
                     </div>
                 </div>
             </div>
-            <input type="text" name="degree" placeholder="Degree">
-            <textarea placeholder="Description"></textarea>
-            <button type="submit" class="save">Save</button>
-            <button type="submit" class="save-add">Save & Add More</button>
-            <button type="submit" class="cancel">Cancel</button>
+            <input type="text" name="degree" placeholder="@Translate["Degree"]">
+            <textarea placeholder="@Translate["Description"]"></textarea>
+            <button type="button" class="save">@Translate["Save"]</button>
+            <button type="button" class="save-add">@Translate["Save & Add More"]</button>
+            <button type="button" class="cancel">@Translate["Cancel"]</button>
         </form>
         <a href="javascript:void(0)" title="" class="close-box"><i class="la la-close"></i></a>
     </div><!--overview-edit end-->
@@ -227,11 +234,11 @@
 
 <div class="overview-box" id="location-box">
     <div class="overview-edit">
-        <h3>Location</h3>
+        <h3 class="arAlign">@Translate["Location"]</h3>
         <form>
             <div class="datefm">
                 <select>
-                    <option>Country</option>
+                    <option>@Translate["Country"]</option>
                     <option value="pakistan">Pakistan</option>
                     <option value="england">England</option>
                     <option value="india">India</option>
@@ -241,7 +248,7 @@
             </div>
             <div class="datefm">
                 <select>
-                    <option>City</option>
+                    <option>@Translate["City"]</option>
                     <option value="london">London</option>
                     <option value="new-york">New York</option>
                     <option value="sydney">Sydney</option>
@@ -249,8 +256,8 @@
                 </select>
                 <i class="fa fa-map-marker"></i>
             </div>
-            <button type="submit" class="save">Save</button>
-            <button type="submit" class="cancel">Cancel</button>
+            <button type="button" class="save">@Translate["Save"]</button>
+            <button type="button" class="cancel">@Translate["Cancel"]</button>
         </form>
         <a href="javascript:void(0)" title="" class="close-box"><i class="la la-close"></i></a>
     </div><!--overview-edit end-->
@@ -258,17 +265,17 @@
 
 <div class="overview-box" id="skills-box">
     <div class="overview-edit">
-        <h3>Skills</h3>
+        <h3 class="arAlign">@Translate["Skills"]</h3>
         <ul>
             <li><a href="javascript:void(0)" title="" class="skl-name">HTML</a><a href="javascript:void(0)" title="" class="close-skl"><i class="la la-close"></i></a></li>
             <li><a href="javascript:void(0)" title="" class="skl-name">php</a><a href="javascript:void(0)" title="" class="close-skl"><i class="la la-close"></i></a></li>
             <li><a href="javascript:void(0)" title="" class="skl-name">css</a><a href="javascript:void(0)" title="" class="close-skl"><i class="la la-close"></i></a></li>
         </ul>
         <form>
-            <input type="text" name="skills" placeholder="Skills">
-            <button type="submit" class="save">Save</button>
-            <button type="submit" class="save-add">Save & Add More</button>
-            <button type="submit" class="cancel">Cancel</button>
+            <input type="text" name="skills" placeholder="@Translate["Skills"]">
+            <button type="button" class="save">@Translate["Save"]</button>
+            <button type="button" class="save-add">@Translate["Save & Add More"]</button>
+            <button type="button" class="cancel">@Translate["Cancel"]</button>
         </form>
         <a href="javascript:void(0)" title="" class="close-box"><i class="la la-close"></i></a>
     </div><!--overview-edit end-->
@@ -276,9 +283,9 @@
 
 <div class="overview-box" id="create-portfolio">
     <div class="overview-edit">
-        <h3>Create Portfolio</h3>
+        <h3 class="arAlign">@Translate["Create Portfolio"]</h3>
         <form>
-            <input type="text" name="pf-name" placeholder="Portfolio Name">
+            <input type="text" name="pf-name" placeholder="@Translate["Portfolio Name"]">
             <div class="file-submit nomg">
                 <input type="file" name="file">
             </div>
@@ -286,8 +293,8 @@
                 <img src="template/images/via/60x60.png" alt="">
             </div>
             <input type="text" name="website-url" placeholder="htp://www.example.com">
-            <button type="submit" class="save">Save</button>
-            <button type="submit" class="cancel">Cancel</button>
+            <button type="button" class="save">@Translate["Save"]</button>
+            <button type="button" class="cancel">@Translate["Cancel"]</button>
         </form>
         <a href="javascript:void(0)" title="" class="close-box"><i class="la la-close"></i></a>
     </div><!--overview-edit end-->
@@ -295,14 +302,14 @@
 
 <div class="overview-box" id="establish-box">
     <div class="overview-edit">
-        <h3>Establish Since</h3>
+        <h3 class="arAlign">@Translate["Establish Since"]</h3>
         <form>
             <div class="daty">
-                <input type="text" name="establish" placeholder="Select Date" class="datepicker">
+                <input type="text" name="establish" placeholder="@Translate["Select Date"]" class="datepicker">
                 <i class="fa fa-calendar"></i>
             </div>
-            <button type="submit" class="save">Save</button>
-            <button type="submit" class="cancel">Cancel</button>
+            <button type="button" class="save">@Translate["Save"]</button>
+            <button type="button" class="cancel">@Translate["Cancel"]</button>
         </form>
         <a href="javascript:void(0)" title="" class="close-box"><i class="la la-close"></i></a>
     </div><!--overview-edit end-->
@@ -310,11 +317,11 @@
 
 <div class="overview-box" id="total-employes">
     <div class="overview-edit">
-        <h3>Total Employees</h3>
+        <h3>@Translate["Total Employees"]</h3>
         <form>
-            <input type="text" name="employes" placeholder="Type in numbers">
-            <button type="submit" class="save">Save</button>
-            <button type="submit" class="cancel">Cancel</button>
+            <input type="text" name="employes" placeholder="@Translate["Type in numbers"]">
+            <button type="button" class="save">@Translate["Save"]</button>
+            <button type="button" class="cancel">@Translate["Cancel"]</button>
         </form>
         <a href="javascript:void(0)" title="" class="close-box"><i class="la la-close"></i></a>
     </div><!--overview-edit end-->

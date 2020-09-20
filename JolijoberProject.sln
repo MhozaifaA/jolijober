@@ -49,12 +49,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hub", "Hub", "{22039B24-098
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JolijoberProject.Hub.SignalR", "JolijoberProject.Hub.SignalR\JolijoberProject.Hub.SignalR.csproj", "{FEAE3C70-0FB7-4E44-99BE-CA134D037090}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "الأطروحة", "الأطروحة", "{1C62BB6B-1EEF-48E1-B1C0-97B5AB967502}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\..\Desktop\أطروحة\1.pdf = ..\..\..\Desktop\أطروحة\1.pdf
-		..\..\..\Desktop\أطروحة\2.pdf = ..\..\..\Desktop\أطروحة\2.pdf
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -135,7 +129,6 @@ Global
 		{266E8FE6-5C30-4C01-BE4C-332766BBFB70} = {1711F860-412C-4CCE-9DBE-839A3B546BD6}
 		{22039B24-0982-4C01-86F5-9E218CDD0BE0} = {FFC83C20-2A76-41B4-83E6-DA2BA87CB3AB}
 		{FEAE3C70-0FB7-4E44-99BE-CA134D037090} = {22039B24-0982-4C01-86F5-9E218CDD0BE0}
-		{1C62BB6B-1EEF-48E1-B1C0-97B5AB967502} = {EE4AB16C-4FCA-4BA9-8E2B-8450BCBE6421}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C8D6A25C-69AD-40E2-B5DB-853C3D55CABD}

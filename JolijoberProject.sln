@@ -49,6 +49,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hub", "Hub", "{22039B24-098
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JolijoberProject.Hub.SignalR", "JolijoberProject.Hub.SignalR\JolijoberProject.Hub.SignalR.csproj", "{FEAE3C70-0FB7-4E44-99BE-CA134D037090}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "الأطروحة", "الأطروحة", "{1C62BB6B-1EEF-48E1-B1C0-97B5AB967502}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Desktop\أطروحة\1.pdf = ..\..\..\Desktop\أطروحة\1.pdf
+		..\..\..\Desktop\أطروحة\2.pdf = ..\..\..\Desktop\أطروحة\2.pdf
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

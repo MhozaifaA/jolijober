@@ -34,7 +34,7 @@ namespace Jolijober.Util.Translate
             WriteCookie();
 
             Translate = new ReadOnlyDictionary<string, string>(new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase) {
-            { "Jolijober", "منصة توظيف" },
+            { "Jolijober", "منصة بحث عن عمل" },
             { "Category", "نوع" },
             { "Company", "شركة"},
             { "Company Name", "اسم الشركة"},

@@ -1,8 +1,17 @@
 ﻿@page "/Jobs"
 
+
+@using Jolijober.Views.Components
+@using JolijoberProject.Main.Repository.Interfaces
+@using JolijoberProject.Main.Repository.DataTransferObjects
+
+@using Jolijober.ViewModel
+
+@inject IPostRepository _postRepository
+
 <CallJavascript />
 
-<Search />
+<Search OnSearch="SearchClick" />
 
 
 <main>
@@ -12,20 +21,20 @@
                 <div class="row">
                     <div class="col-lg-3">
 
-                     <Filter/>
+                        <Filter OnFilter="PassFilter" />
 
                     </div>
 
                     <div class="col-lg-6">
                         <div class="main-ws-sec">
+
                             <div class="posts-section">
-
-                                <JobPost/>
-                                <!--post   ..  no-margin-->
-                                <Bounce />
-
-                            </div><!--posts-section end-->
-                        </div><!--main-ws-sec end-->
+                                @foreach (var item in posts)
+                                {
+                                    <JobPost Post="item" />
+                                }
+                            </div>
+                        </div>
                     </div>
 
                     <div class="col-lg-3">
@@ -41,3 +50,23 @@
         </div>
     </div>
 </main>
+
+@code
+{
+    List<PostDto> posts = new List<PostDto>();
+    protected override async  Task OnInitializedAsync()
+    {
+        posts = await _postRepository.GetPostsAsync();
+    }
+
+    private async Task PassFilter(FilterDto filter)
+    {
+        posts = await _postRepository.GetPostsFilterAsync(filter);
+    }
+ 
+    private async Task SearchClick(string text)
+    {
+        posts = await _postRepository.GetPostsSearchAsync(text);
+    }
+
+}

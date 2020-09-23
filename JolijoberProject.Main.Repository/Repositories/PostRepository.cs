@@ -16,6 +16,8 @@ using JolijoberProject.BoundedContext.Extension;
 using JolijoberProject.Shared.SharedKernal.EnumClass;
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
+using JolijoberProject.Shared.SharedKernal.SharedModel;
+using JolijoberProject.Shared.SharedKernal.ExtensionMethod;
 
 namespace JolijoberProject.Main.Repository.Repositories
 {
@@ -171,6 +173,84 @@ namespace JolijoberProject.Main.Repository.Repositories
 
             post.Id = set.Id;
             return post;
+        }
+
+        public async Task<List<PostDto>> GetPostsFilterAsync(FilterDto filter)
+        {
+            List<PostDto> list = new List<PostDto>();
+            var filterBuilder = Builders<Post>.Filter;
+
+            var exfilter = filterBuilder.Eq(x => x.PostType, PostTypes.Job);
+
+            var exfilterd=
+            (filterBuilder.Eq(x => x.Title, filter.Title) | filterBuilder.ElemMatch(x => x.Tags, filter.Tag)|
+                filterBuilder.Eq(x => x.Region, filter.Region) | filterBuilder.ElemMatch(x => x.Specifications, filter.Specification)
+                | filterBuilder.Eq(x => x.Sallaries, new MinMax(filter.Min, filter.Max)) | filterBuilder.Eq(x => x.Availabilty, filter.Availabilty));
+
+
+            await Context1.Find(exfilter)
+                .SortByDescending(post => post.Date).ForEachAsync(post => list.Add(new PostDto()
+                {
+                    Id = post.Id,
+                    Date = post.Date,
+                    Title = post.Title,
+                    Tags = post.Tags,
+                    Views = post.Views,
+                    AccountId = post.AccountId,
+                    PostType = post.PostType,
+                    AccountName = post.AccountName,
+                    AccountType = post.AccountType,
+                    Availabilty = post.Availabilty,
+                    Categories = post.Categories,
+                    Comments = post.Comments,
+                    Descreption = post.Descreption,
+                    Hours = post.Hours,
+                    KindPay = post.KindPay,
+                    Likes = post.Likes,
+                    Region = post.Region,
+                    Sallaries = post.Sallaries,
+                    Skills = post.Skills,
+                    Specifications = post.Specifications
+                }));
+
+            list= list.Where(x =>  x.Availabilty == filter.Availabilty &&
+             x.Title.Contains(filter.Title??"")).ToList();
+
+            return list;
+        }
+
+        public async Task<List<PostDto>> GetPostsSearchAsync(string text)
+        {
+            List<PostDto> list = new List<PostDto>();
+
+            var AllPost = await Context1.AsQueryable().ToListAsync();
+            var QueryTuple = AllPost.Select(x => (x.Id, x.Descreption??"")).ToList();
+           var Ids = JolijoberExtensions.FuzzySearchLinq(text,QueryTuple, 0.7).Select(x=>x.Item1);
+            bool ifff = Ids.Any();
+          list= AllPost.Where(x => ifff?Ids.Contains(x.Id): x.Descreption?.Contains(text)??false).OrderByDescending(post => post.Date).Select(post=>new PostDto()
+            {
+                Id = post.Id,
+                Date = post.Date,
+                Title = post.Title,
+                Tags = post.Tags,
+                Views = post.Views,
+                AccountId = post.AccountId,
+                PostType = post.PostType,
+                AccountName = post.AccountName,
+                AccountType = post.AccountType,
+                Availabilty = post.Availabilty,
+                Categories = post.Categories,
+                Comments = post.Comments,
+                Descreption = post.Descreption,
+                Hours = post.Hours,
+                KindPay = post.KindPay,
+                Likes = post.Likes,
+                Region = post.Region,
+                Sallaries = post.Sallaries,
+                Skills = post.Skills,
+                Specifications = post.Specifications
+            }).ToList();
+            return list;
         }
     }
 }

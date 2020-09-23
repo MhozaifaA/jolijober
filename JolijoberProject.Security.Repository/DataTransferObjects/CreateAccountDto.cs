@@ -20,5 +20,7 @@ namespace JolijoberProject.Security.Repository.DataTransferObjects
         /// </summary>
         public string TextFaild { get; set; }
         public bool IsFaild => !bool.TryParse(TextFaild, out _);
+
+        public string FullName { get; set; }
     }
 }

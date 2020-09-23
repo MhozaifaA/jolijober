@@ -1,6 +1,13 @@
 ﻿@page "/Index"
-
+@using JolijoberProject.Main.Repository.Interfaces
 @inject AppTranslate Translate
+@using Microsoft.AspNetCore.Components;
+@using Microsoft.AspNetCore.Components.Authorization;
+
+@using System.Threading.Tasks;
+
+@using System.Security.Claims;
+
 
 <CallJavascript />
 
@@ -20,7 +27,7 @@
                                         </div>
                                     </div><!--username-dt end-->
                                     <div class="user-specs arFlip">
-                                        <h3 class="arFlip-1">@Translate["John Doe"]</h3>
+                                        <h3 class="arFlip-1">@FullName</h3>
                                         <span>Graphic Designer at Self Employed</span>
                                     </div>
                                 </div><!--user-profile end-->
@@ -56,9 +63,7 @@
                     </div>
 
                     <div class="col-lg-6 col-md-8 no-pd">
-                        <div class="main-ws-sec">
-                              <PostsSection IsSlider="true" IsAction="true"/>
-                        </div><!--main-ws-sec end-->
+                        <PostsSection IsSlider="true" IsAction="true" />
                     </div>
 
                     <div class="col-lg-3 pd-right-none no-pd">
@@ -75,7 +80,23 @@
     </div>
 </main>
 
+@code
+{
+    [Inject]
+    AuthenticationStateProvider AuthenticationStateProvider { get; set; }
 
 
 
-<ChatBox />
+    [Inject]
+    private IIdentityRepository identityRepository { get; set; }
+
+    public string FullName { get; set; }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        FullName = (await identityRepository.GetProfile(authState.User.FindFirstValue(ClaimTypes.NameIdentifier))).FullName;
+    }
+}
+

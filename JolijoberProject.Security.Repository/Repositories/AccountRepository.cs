@@ -94,7 +94,7 @@ namespace JolijoberProject.Security.Repository.Repositories
 
                 Identity identity = new Identity()
                 {
-                    FisrtName = accountUser.Email,
+                    FisrtName = createAccountDto.FullName,
                     SureName = string.Empty,
                     SecurId = accountUser.Id,
                     Type = accountUser.AccountType,

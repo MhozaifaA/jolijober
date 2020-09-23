@@ -5,13 +5,20 @@
     <div class="container">
         <div class="search-box">
             <form>
-                <input type="text" name="search" style="max-width:970px" placeholder="@Translate["Search keywords"]">
-                <button type="button">@Translate["Search"]</button>
+                <input type="text" @bind-value="Text" name="search" style="max-width:970px" placeholder="@Translate["Search keywords"]">
+                <button @onclick="SearchClick" type="button">@Translate["Search"]</button>
             </form>
         </div><!--search-box end-->
     </div>
 </div><!--search-sec end-->
 
 @code {
+    public string Text { get; set; }
 
+   [Parameter] public EventCallback<String> OnSearch { get; set; }
+
+    private async Task SearchClick() {
+
+        await OnSearch.InvokeAsync(Text);
+    }
 }

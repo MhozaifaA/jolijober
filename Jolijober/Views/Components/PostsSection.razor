@@ -6,6 +6,9 @@
 @using JolijoberProject.Shared.SharedKernal.ExtensionMethod
 @using JolijoberProject.Shared.SharedKernal.EnumClass
 @using Jolijober.Util.Translate
+@using Jolijober.ViewModel
+@using Microsoft.AspNetCore.SignalR.Client
+@using  Microsoft.Extensions.Logging.Console
 
 @inject IPostRepository _postRepository
 
@@ -14,35 +17,38 @@
     <PostActionBar PostSubmit="PostAction" />
 
 }
-<div class="posts-section">
+<div class="main-ws-sec">
 
-    @for (int i = BalanceFrom; i < BalanceTo; i++)
-    {
+    <div class="posts-section">
 
-        if (IsSlider && i == PostionSliderAfter + BalanceFrom)
+        @for (int i = BalanceFrom; i < BalanceTo; i++)
         {
-            <ProfilesSlider />
+
+            if (IsSlider && i == PostionSliderAfter + BalanceFrom)
+            {
+                <ProfilesSlider />
+            }
+
+            if (posts[i].PostType == PostTypes.Job)
+            {
+                <JobPost Post="posts[i]" />
+            }
+            else
+            {
+                <ProjectPost />
+            }
+
+
         }
 
-        if (posts[i].PostType == PostTypes.Job)
+        @if (IsBounce)
         {
-            <JobPost Post="posts[i]" />
-        }
-        else
-        {
-            <ProjectPost />
+            <Bounce BounceClick="BalancePost" />
         }
 
+    </div><!--posts-section end-->
+</div>
 
-    }
-
-    @if (IsBounce)
-    {
-        <Bounce BounceClick="BalancePost" />
-    }
-
-</div><!--posts-section end-->
-@*<JobPost IsOpenComment="true" />*@
 
 
 
@@ -60,6 +66,12 @@
     public const int Quantity = 6;
     List<PostDto> posts = new List<PostDto>();
 
+
+
+
+
+    //[Parameter] public FilterViewModel Filter{ get; set; }
+    //[Parameter] public EventCallback<FilterViewModel> FilterChanged { get; set; }
 
     protected override async Task OnParametersSetAsync()
     {
@@ -83,5 +95,45 @@
         posts = await _postRepository.GetPostsAsync();
         BalanceFrom = 0;
         BalanceTo = posts.Count > Quantity ? Quantity : posts.Count;
+
+        await Send(newPost.Id);
     }
+
+
+
+
+
+
+    private HubConnection hubConnection;
+
+    protected override async Task OnInitializedAsync()
+    {
+        hubConnection = new HubConnectionBuilder()
+            .WithUrl("https://localhost:44349/JolijoberHub/Notify").WithAutomaticReconnect()
+            .Build();
+
+        hubConnection.On<string>("OnNewPost", async (id) =>
+        {
+            posts =await _postRepository.GetPostsAsync();
+            BalanceFrom = 0;
+            BalanceTo = posts.Count > Quantity ? Quantity : posts.Count;
+            
+            StateHasChanged();
+        });
+
+        await hubConnection.StartAsync();
+    }
+
+    async Task Send(string id) =>
+      await hubConnection.InvokeAsync("NewPost", id);
+
+    public bool IsConnected =>
+        hubConnection.State == HubConnectionState.Connected;
+
+    public void Dispose()
+    {
+        _ = hubConnection.DisposeAsync();
+    }
+
+
 }

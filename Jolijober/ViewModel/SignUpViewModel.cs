@@ -24,6 +24,9 @@ namespace Jolijober.ViewModel
         [Required(ErrorMessage = "please confirm password")]
         public string ConfirmPassword { get; set; }
 
+        [Required(ErrorMessage = "please enter your name")]
+        public string FullName { get; set; }
+
         public bool IsConfirmPassword => Passward?.Equals(ConfirmPassword??string.Empty)??false;
 
         public string ErrorMessage => Validate(new ValidationContext(this)).Select(e => e.ErrorMessage).ToLineString(Environment.NewLine);

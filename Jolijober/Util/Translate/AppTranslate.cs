@@ -198,6 +198,9 @@ namespace Jolijober.Util.Translate
             { "To", "إلى"},
             { "Specification", "الإختصاص"},
             { "Region", "المنطقة"},
+            { "Search Jobs", "بحث بالوظائف"},
+            { "Job", "الوظيفة"},
+            { "FullName", "الإسم كاملا"},
             { "John Doe", "محمد التجريبي"},
             });
         }

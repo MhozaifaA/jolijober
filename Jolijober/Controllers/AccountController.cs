@@ -92,7 +92,8 @@ namespace Jolijober.Controllers
                 AccountType = account,
                 Country = signUp.Country,
                 Password = signUp.Passward,
-                UserName = signUp.UserName
+                UserName = signUp.UserName,
+                FullName= signUp.FullName
             });
 
             if (result.IsFaild)

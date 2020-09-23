@@ -1,4 +1,9 @@
-﻿@inject AppTranslate Translate 
+﻿@inject AppTranslate Translate
+@using Jolijober.ViewModel
+@using JolijoberProject.Shared.SharedKernal.EnumClass
+
+@using JolijoberProject.Main.Repository.DataTransferObjects
+
 
 <div class="filter-secs">
     <div class="filter-heading">
@@ -8,11 +13,11 @@
     <div class="paddy">
         <div class="filter-dd">
             <div class="filter-ttl">
-                <h3>@Translate["Skills"]</h3>
+                <h3>@Translate["Job"]</h3>
                 <a href="javascript:void(0)" title="">@Translate["Clear"]</a>
             </div>
             <form>
-                <input type="text" name="search-skills" placeholder="@Translate["Search skills"]">
+                <input type="text" @bind-value="FilterVm.Title" name="search-skills" placeholder="@Translate["Search Jobs"]">
             </form>
         </div>
         <div class="filter-dd">
@@ -22,25 +27,32 @@
             </div>
             <ul class="avail-checks arFlip arAlign">
                 <li>
-                    <input type="radio" name="cc" id="c1">
+                    <input type="radio" @onclick="()=>RadioButtonClicked(Availabilties.Hourly)" name="cc" id="c1">
                     <label for="c1">
                         <span></span>
                     </label>
                     <small>@Translate["Hourly"]</small>
                 </li>
                 <li>
-                    <input type="radio" name="cc" id="c2">
-                    <label for="c2">
-                        <span></span>
-                    </label>
-                    <small>@Translate["Part Time"]</small>
-                </li>
-                <li>
-                    <input type="radio" name="cc" id="c3">
+                    <input type="radio" @onclick="()=>RadioButtonClicked(Availabilties.HalfTime)" name="cc" id="c3">
                     <label for="c3">
                         <span></span>
                     </label>
-                    <small>@Translate["Full Time"]</small>
+                    <small>@Translate["HalfTime"]</small>
+                </li>
+                <li>
+                    <input type="radio" @onclick="()=>RadioButtonClicked(Availabilties.PartTime)" name="cc" id="c2">
+                    <label for="c2">
+                        <span></span>
+                    </label>
+                    <small>@Translate["PartTime"]</small>
+                </li>
+                <li>
+                    <input type="radio" @onclick="()=>RadioButtonClicked(Availabilties.FullTime)" name="cc" id="c3">
+                    <label for="c3">
+                        <span></span>
+                    </label>
+                    <small>@Translate["FullTime"]</small>
                 </li>
             </ul>
         </div>
@@ -50,11 +62,12 @@
                 <a href="javascript:void(0)" title="">@Translate["Clear"]</a>
             </div>
             <form class="job-tp">
-                <select>
-                    <option>@Translate["Select a job type"]</option>
-                    <option>Select a job type</option>
-                    <option>Select a job type</option>
-                    <option>Select a job type</option>
+                <select @bind="FilterVm.Specification">
+                    <option value="مطور">@Translate["Select a job type"]</option>
+                    <option value="مطور">مطور</option>
+                    <option value="مبرمج">مبرمج</option>
+                    <option value="مهندس">مهندس</option>
+                    <option value="هاوي">هاوي</option>
                 </select>
                 <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
             </form>
@@ -78,11 +91,14 @@
                 <a href="javascript:void(0)" title="">@Translate["Clear"]</a>
             </div>
             <form class="job-tp">
-                <select>
-                    <option>@Translate["Select a experience level"]</option>
-                    <option>3 years</option>
-                    <option>4 years</option>
-                    <option>5 years</option>
+                <select @bind="@FilterVm.Tag">
+                    @*<option>@Translate["Select a experience level"]</option>*@
+                    @foreach (var item in JolijoberExtensions.NewTagsSelect())
+                    {
+                        <option value="@item.Name">
+                            @item.Name
+                        </option>
+                    }
                 </select>
                 <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
             </form>
@@ -93,17 +109,47 @@
                 <a href="javascript:void(0)" title="">@Translate["Clear"]</a>
             </div>
             <form class="job-tp">
-                <select>
+                <select @bind="FilterVm.Region">
                     <option>@Translate["Select a country"]</option>
-                    <option>United Kingdom</option>
-                    <option>United States</option>
-                    <option>Russia</option>
+                    <option value="سوريا-حلب">سوريا-حلب</option>
+                    <option value="سوريا-دمشق">سوريا-حلب</option>
+                    <option value="سوريا">سوريا-حلب</option>
                 </select>
                 <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
             </form>
         </div>
     </div>
+
+    <div class="search-box">
+
+        <form>
+
+            <button @onclick="FilterClick" class="arAlign" style="position: relative;" type="button">@Translate["Filters"]</button>
+        </form>
+    </div>
 </div><!--filter-secs end-->
 @code {
+
+    public FilterViewModel FilterVm { get; set; } = new FilterViewModel();
+
+    [Parameter] public EventCallback<FilterDto> OnFilter { get; set; }
+
+    public void RadioButtonClicked(Availabilties value)
+    {
+        FilterVm.Availabilty = value;
+    }
+
+    private async Task FilterClick()
+    {
+        await OnFilter.InvokeAsync(new FilterDto { 
+        Availabilty=FilterVm.Availabilty,
+        Max=FilterVm.Max,
+        Min=FilterVm.Min,
+        Region=FilterVm.Region,
+        Specification=FilterVm.Specification,
+        Tag=FilterVm.Tag,
+        Title=FilterVm.Title
+        } );
+    }
 
 }

@@ -1,4 +1,10 @@
 ﻿@inject AppTranslate Translate
+@using Jolijober.ViewModel
+@using JolijoberProject.Shared.SharedKernal.EnumClass
+@using JolijoberProject.Main.Repository.DataTransferObjects
+@using JolijoberProject.Shared.SharedKernal.SharedModel
+@using JolijoberProject.Main.Repository.Interfaces
+@inject IPostRepository _postRepository
 
 <div class="post-topbar">
     <div class="user-picy">
@@ -43,7 +49,7 @@
                                 <input type="text" name="price1" placeholder="@Translate["Price"]">
                                 <i class="la la-dollar"></i>
                             </div>
-                            <span>To</span>
+                            <span>@Translate["To"]</span>
                             <div class="price-br">
                                 <input type="text" name="price1" placeholder="@Translate["Price"]">
                                 <i class="la la-dollar"></i>
@@ -70,49 +76,77 @@
     <div class="post-project">
         <h3>@Translate["Post a job"]</h3>
         <div class="post-project-fields">
-            <form>
+            <EditForm Model="postVM" OnValidSubmit="OnValidSubmitPost">
+                <DataAnnotationsValidator />
                 <div class="row">
                     <div class="col-lg-12">
-                        <input type="text" name="title" placeholder="@Translate["Title"]">
+                        <InputText @bind-Value="postVM.Title" placeholder="@Translate["Title"]" />
+                        <ValidationMessage For="()=>postVM.Title"></ValidationMessage>
                     </div>
+
+                    <div class="col-lg-6">
+                        <InputNumber @bind-Value="postVM.MinSallary" />
+                        <ValidationMessage For="()=>postVM.MinSallary"></ValidationMessage>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <InputNumber @bind-Value="postVM.MaxSallary" />
+                        <ValidationMessage For="()=>postVM.MaxSallary"></ValidationMessage>
+                    </div>
+
                     <div class="col-lg-12">
                         <div class="inp-field">
-                            <select>
-                                <option>Category</option>
-                                <option>Category 1</option>
-                                <option>Category 2</option>
-                                <option>Category 3</option>
-                            </select>
+                            <InputSelect @bind-Value="postVM.Availabilty">
+                                @foreach (var item in Enum.GetNames(typeof(Availabilties)))
+                                {
+                                    <option value="@item">@Translate[item]</option>
+                                }
+                                @*<option value="@Availabilties.FullTime">@Translate["FullTime"]</option>
+                                    <option value="@Availabilties.Hourly">@Translate["Hourly"]</option>
+                                    <option value="@Availabilties.HalfTime">@Translate["HalfTime"]</option>
+                                    <option value="@Availabilties.PartTime">@Translate["PartTime"]</option>*@
+                            </InputSelect>
                         </div>
                     </div>
+
                     <div class="col-lg-12">
-                        <input type="text" name="skills" placeholder="@Translate["Skills"]">
+                        <InputText @bind-Value="postVM.Region" placeholder="@Translate["Region"]" />
                     </div>
-                    <div class="col-lg-6">
-                        <div class="price-br">
-                            <input type="text" name="price1" placeholder="@Translate["Price"]">
-                            <i class="la la-dollar"></i>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="inp-field">
-                            <select>
-                                <option>@Translate["Full Time"]</option>
-                                <option>@Translate["Half time"]</option>
-                            </select>
-                        </div>
-                    </div>
+
                     <div class="col-lg-12">
-                        <textarea name="description" placeholder="@Translate["Description"]"></textarea>
+                        <InputText @bind-Value="postVM.Specification" placeholder="@Translate["Specification"]" />
                     </div>
+
+                    <div class="col-lg-12">
+                        <InputTextArea @bind-Value="postVM.Descreption" placeholder="@Translate["Description"]"></InputTextArea>
+                    </div>
+
+                    <div class="col-lg-12">
+
+                        <ul>
+
+                            @foreach (var item in postVM.Tags)
+                            {
+                                <li>
+                                    <label for="@item.Name">@item.Name  <InputCheckbox @bind-Value="item.IsSelect" id="@item.Name" /></label>
+                                </li>
+                            }
+                        </ul>
+
+
+
+                    </div>
+
+
+
                     <div class="col-lg-12">
                         <ul>
-                            <li><button class="active" type="button" value="post">@Translate["Post"]</button></li>
+                            <li><button class="active" type="submit" value="post">@Translate["Post"]</button></li>
                             <li class="arFlip"><a href="javascript:void(0)" title="">@Translate["Cancel"]</a></li>
                         </ul>
                     </div>
                 </div>
-            </form>
+            </EditForm>
         </div><!--post-project-fields end-->
         <a href="javascript:void(0)" title=""><i class="la la-times-circle-o"></i></a>
     </div><!--post-project end-->
@@ -120,5 +154,47 @@
 
 
 @code {
+
+    [Parameter] public EventCallback<PostDto> PostSubmit { get; set; }
+    public PostViewModel postVM = new PostViewModel();
+
+
+
+    private async Task OnValidSubmitPost()
+    {
+        var set = new PostDto()
+        {
+
+            Date = DateTime.Now,
+            Title = postVM.Title,
+            Tags = postVM.Tags.Where(x => x.IsSelect).Select(x => x.Name).ToArray(),
+            PostType = PostTypes.Job,
+            Availabilty = postVM.Availabilty,
+            Descreption = postVM.Descreption,
+            Region = postVM.Region,
+            Sallaries = new MinMax(postVM.MinSallary, postVM.MaxSallary),
+            Specifications = new[] { postVM.Specification },
+        };
+        set = await _postRepository.AddPostAsync(set);
+        await PostSubmit.InvokeAsync(set);
+
+        ResetVM();
+
+     
+    }
+
+    private void ResetVM()
+    {
+        postVM.Date = default;
+        postVM.Title = default;
+        postVM.Tags = JolijoberExtensions.NewTagsSelect();
+        postVM.MaxSallary = 0;
+        postVM.MinSallary = 0;
+        postVM.Availabilty = default;
+        postVM.Descreption = default;
+        postVM.Specification = default;
+        postVM.Region = default;
+        postVM.PostType = default;
+    }
 
 }

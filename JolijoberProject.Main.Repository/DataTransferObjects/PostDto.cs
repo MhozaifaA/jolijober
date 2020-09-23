@@ -8,11 +8,13 @@ namespace JolijoberProject.Main.Repository.DataTransferObjects
 {
     public class PostDto
     {
+        public string Id { get; set; }
         public DateTime Date { get; set; } ///used
         public string Title { get; set; } ///used
         public MinMax Sallaries { get; set; } = new MinMax(); ///used //object max min
         public Availabilties Availabilty { get; set; }
         public string Descreption { get; set; } ///used
+
 
         public string[] Tags { get; set; } = new string[] { }; ///used
         public string[] Specifications { get; set; } = new string[] { }; ///used  //Epic Coder

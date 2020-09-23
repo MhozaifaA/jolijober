@@ -8,6 +8,7 @@ namespace JolijoberProject.Shared.SharedKernal.EnumClass
     {
         Hourly,
         PartTime,
-        FullTime
+        HalfTime,
+        FullTime,
     }
 }

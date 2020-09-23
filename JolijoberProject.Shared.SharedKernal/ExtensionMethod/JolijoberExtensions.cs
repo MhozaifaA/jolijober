@@ -47,7 +47,7 @@ namespace JolijoberProject.Shared.SharedKernal.ExtensionMethod
 
         public static string Crop(this string s, int crop = 125)
         {
-            return s.Substring(0, Math.Min(crop, s.Length)) + " ... ";
+            return (s?.Substring(0, Math.Min(crop, s?.Length??0))??"") + " ... ";
         }
 
         //public static string LeftCrop(this string str, int length)
@@ -147,8 +147,19 @@ namespace JolijoberProject.Shared.SharedKernal.ExtensionMethod
 
         #endregion
 
-        #region -   Cookies   -
+
+        #region -   Seed   -
         
+        public static List<TagsSelect> NewTagsSelect()
+        {
+            return (from item in Enum.GetNames(typeof(Tags))
+                    select new TagsSelect(item)).ToList();
+        }
+
+        #endregion
+
+        #region -   Cookies   -
+
 
 
         #endregion

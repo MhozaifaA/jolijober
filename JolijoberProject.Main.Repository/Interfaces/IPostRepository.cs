@@ -12,5 +12,6 @@ namespace JolijoberProject.Main.Repository.Interfaces
         Task<List<PostMiniDto>> GetPostsMiniAsync();
         Task<List<PostDto>> GetPostsAsync(bool IsJob=true, bool IsProject = true);
         Task<PostMiniDto> GetPostByIdMiniAsync(string id);
+        Task<PostDto> AddPostAsync(PostDto post);
     }
 }

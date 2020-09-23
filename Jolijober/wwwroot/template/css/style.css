@@ -1807,7 +1807,7 @@ main {
 	width: 570px;
 	margin: 0 auto;
 	position: fixed;
-	top: 50%;
+	top: 500px;
 	left: 50%;
 	-webkit-transform: translateX(-50%) translateY(-50%) scale(0.65);
 	-moz-transform: translateX(-50%) translateY(-50%) scale(0.65);
@@ -5438,4 +5438,11 @@ a:hover {
 
 .default-btn:hover {
 	color: #ffffff;
+}
+
+
+.validation-message {
+	color: red !important; 
+	margin-bottom: 10px  !important;
+	text-align:right !important;
 }

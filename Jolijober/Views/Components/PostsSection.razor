@@ -9,44 +9,50 @@
 
 @inject IPostRepository _postRepository
 
-
-@for (int i = BalanceFrom; i < BalanceTo; i++)
+@if (IsAction)
 {
-
-    if (IsSlider && i == PostionSliderAfter + BalanceFrom)
-    {
-        <ProfilesSlider />
-    }
-
-    if (posts[i].PostType == PostTypes.Job)
-    {
-        <JobPost Post="posts[i]" />
-    }
-    else
-    {
-        <ProjectPost />
-    }
-
+    <PostActionBar PostSubmit="PostAction" />
 
 }
+<div class="posts-section">
 
-@if (IsBounce)
-{
-    <Bounce BounceClick="BalancePost" />
-}
+    @for (int i = BalanceFrom; i < BalanceTo; i++)
+    {
+
+        if (IsSlider && i == PostionSliderAfter + BalanceFrom)
+        {
+            <ProfilesSlider />
+        }
+
+        if (posts[i].PostType == PostTypes.Job)
+        {
+            <JobPost Post="posts[i]" />
+        }
+        else
+        {
+            <ProjectPost />
+        }
 
 
+    }
 
+    @if (IsBounce)
+    {
+        <Bounce BounceClick="BalancePost" />
+    }
+
+</div><!--posts-section end-->
 @*<JobPost IsOpenComment="true" />*@
 
 
 
 @code {
-        [Parameter] public bool IsSlider { get; set; } = false;
-        [Parameter] public int PostionSliderAfter { get; set; } = 1;
-        [Parameter] public bool IsJob { get; set; } = true;
-        [Parameter] public bool IsProject { get; set; } = true;
-        [Parameter] public bool IsBounce { get; set; } = true;
+    [Parameter] public bool IsSlider { get; set; } = false;
+    [Parameter] public bool IsAction { get; set; } = false;
+    [Parameter] public int PostionSliderAfter { get; set; } = 1;
+    [Parameter] public bool IsJob { get; set; } = true;
+    [Parameter] public bool IsProject { get; set; } = true;
+    [Parameter] public bool IsBounce { get; set; } = true;
 
 
     public int BalanceFrom { get; set; } = 0;
@@ -55,12 +61,11 @@
     List<PostDto> posts = new List<PostDto>();
 
 
-
     protected override async Task OnParametersSetAsync()
     {
         posts = await _postRepository.GetPostsAsync();
         BalanceFrom = 0;
-        BalanceTo = posts.Count> Quantity ? Quantity : posts.Count;
+        BalanceTo = posts.Count > Quantity ? Quantity : posts.Count;
     }
 
     private void BalancePost()
@@ -72,4 +77,11 @@
         BalanceTo = (BalanceTo + Quantity) > posts.Count ? posts.Count : (BalanceTo + Quantity);
     }
 
+
+    private async Task PostAction(PostDto newPost)
+    {
+        posts = await _postRepository.GetPostsAsync();
+        BalanceFrom = 0;
+        BalanceTo = posts.Count > Quantity ? Quantity : posts.Count;
+    }
 }

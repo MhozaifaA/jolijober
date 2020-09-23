@@ -195,6 +195,9 @@ namespace Jolijober.Util.Translate
             { "Select Date", "اختر تاريخ"},
             { "Bid Now", "المزايدة الآن"},
             { "Reply", "قم بالرد على التعليق"},
+            { "To", "إلى"},
+            { "Specification", "الإختصاص"},
+            { "Region", "المنطقة"},
             { "John Doe", "محمد التجريبي"},
             });
         }

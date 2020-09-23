@@ -14,4 +14,8 @@
     <ProjectReference Include="..\JolijoberProject.Shared.SharedKernal\JolijoberProject.Shared.SharedKernal.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Shared\" />
+  </ItemGroup>
+
 </Project>

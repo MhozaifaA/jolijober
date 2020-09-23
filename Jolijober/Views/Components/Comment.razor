@@ -1,0 +1,33 @@
+﻿@inject AppTranslate Translate
+
+
+
+
+
+@foreach (var comment in ChildComments)
+{
+<li>
+    <div class="comment-list">
+        <div class="bg-img">
+            <img src="template/images/via/40x40.png" alt="">
+        </div>
+        <div class="comment">
+            <h3>@comment.Commenter</h3>
+            <span><img src="template/images/clock.png" alt="">@comment.Date</span>
+            <p>@comment.Text</p>
+            <a href="javascript:void(0)" title=""><i class="fa fa-reply-all"></i>@Translate["Reply"]</a>
+        </div>
+    </div><!--comment-list end-->
+</li>
+<ul>
+
+    
+    <Comment  ChildComments="comment.ChildComments"/>
+   
+</ul>
+
+}
+@code {
+    [Parameter] public JolijoberProject.Shared.SharedKernal.SharedModel.Comment[] ChildComments { get; set; } = new JolijoberProject.Shared.SharedKernal.SharedModel.Comment[]{ };
+
+}

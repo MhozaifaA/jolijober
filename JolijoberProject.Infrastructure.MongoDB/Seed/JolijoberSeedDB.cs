@@ -1,6 +1,8 @@
 ﻿using JolijoberProject.Infrastructure.Model.Main;
-using JolijoberProject.Infrastructure.Model.Shared;
 using JolijoberProject.Infrastructure.MongoDB.DataBase;
+using JolijoberProject.Shared.SharedKernal.EnumClass;
+using JolijoberProject.Shared.SharedKernal.SharedModel;
+using MongoDB.Driver;
 using PluralizeService.Core;
 using System;
 using System.Collections.Generic;
@@ -15,20 +17,89 @@ namespace JolijoberProject.Infrastructure.MongoDB.Seed
         {
             var context = (JolijoberService)services.GetService(typeof(JolijoberService));
 
-          var  ContextPost = context.MongoService.GetCollection<Post>(PluralizationProvider.Pluralize(typeof(Post).Name));
-
+            var ContextPost = context.MongoService.GetCollection<Post>(PluralizationProvider.Pluralize(typeof(Post).Name));
+            long count = await ContextPost.CountAsync(x=>true);
             IEnumerable<Post> posts = new List<Post>()
             {
-                new Post(){ Title="offer for job in c# " ,Descreption="offer for job in c# offer for job in c# offer for job in c# offer for job in c# ", 
-                    Tags= new[]{"C#","wpf" }  ,  Date=DateTime.Now, Comments="108" , Likes="16k" ,Views="17k" , Hours= new MinMax(4,6), Sallaries=new MinMax(600,800) ,   },
+               new Post(){
+                Date=DateTime.Now,
+                Title="مطور تطبيقات ويب" ,
+                Sallaries=new MinMax(600,800) ,
+                Availabilty=Availabilties.FullTime,
+                Descreption="خبرة في مجال الويب شغف يعمل بجد يحتاج لإتمام إطارين عمل على الاقل يفضل ان يكون خريج والخبرة جيدة في الدوت نت",
+                Tags= new[]{"C#","dotNet" }  ,
+                Specifications=new[]{ "مطور ويب كامل" },
+                Region="سوريا-حلب" ,
+                //Likes= new Like[]{ },
+                //Comments= new Comment[]{ },
+                Views=0,
+                AccountId="894545456" ,
+                AccountName= "طيب الطيب",
+                AccountType=AccountTypes.User,
+                PostType=PostTypes.Job},
+
+                 new Post(){
+                Date=DateTime.Now,
+                Title="مطور تطبيقات اندرويد" ,
+                Sallaries=new MinMax(200,400) ,
+                Availabilty=Availabilties.PartTime,
+                Descreption="خبير في تطبيقات الاتدرويد يتقن استخلاص واجهات جميلة",
+                Tags= new[]{"Java","Android" }  ,
+                Specifications=new[]{ "مطور تطبيقات اندرويد" },
+                Region="سوريا-دمشق" ,
+                 Likes= new Like[]{ new Like() { Liker="طيب الطيب" ,LikerId= "asd8489" } },
+                Comments= new Comment[]{
+                    new Comment() { CommenterId= "asd8489", Commenter="طيب الطيب",Date=DateTime.Now,Text="asdad", },
+                   new Comment() { CommenterId= "asd8489", Commenter="طيب الطيب",Date=DateTime.Now,Text="asdad",
+                   ChildComments= new Comment[]{  new Comment() {
+                       CommenterId= "asd8489", Commenter="طيب الطيب",Date=DateTime.Now,Text="asdad",
+                       ChildComments  = new Comment[] {
+                           new Comment() {
+                               CommenterId = "asd8489", Commenter = "طيب الطيب", Date = DateTime.Now, Text = "asdad"},
+                           new Comment() { CommenterId = "asd8489", Commenter = "طيب الطيب", Date = DateTime.Now, Text = "asdad", }
+                       } }, new Comment() { CommenterId = "asd8489", Commenter = "طيب الطيب", Date = DateTime.Now, Text = "asdad", } }
+                   }
+                         ,new Comment() { CommenterId= "asd8489", Commenter="طيب الطيب",Date=DateTime.Now,Text="asdad", },
+                },
+                Views=0,
+                AccountId="86545112",
+                AccountName= "محمد حذيفة أصيل",
+                AccountType=AccountTypes.User,
+                PostType=PostTypes.Job},
 
 
-                   new Post(){ Title="offer for job in cphp " ,Descreption="offer for job in cphp offer for job in cphp offer for job in cphpoffer for job in cphp ",
-                    Tags= new[]{"php","laravl" , "mysql" ,"database" }  ,  Date=DateTime.Now, Comments="108" , Likes="16k" ,Views="17k" , Hours= new MinMax(4,6), Sallaries=new MinMax(600,800) ,   },
 
+                    new Post(){
+                Date=DateTime.Now,
+                Title="مطور تطبيقات اندرويد" ,
+                Sallaries=new MinMax(200,400) ,
+                Availabilty=Availabilties.PartTime,
+                Descreption="خبير في تطبيقات الاتدرويد يتقن استخلاص واجهات جميلة",
+                Tags= new[]{"Java","Android" }  ,
+                Specifications=new[]{ "مطور تطبيقات اندرويد" },
+                Region="سوريا-دمشق" ,
+                 Likes= new Like[]{ new Like() { Liker="طيب الطيب" ,LikerId= "asd8489" } },
+                Comments= new Comment[]{
+                    new Comment() { CommenterId= "asd8489", Commenter="طيب الطيب",Date=DateTime.Now,Text="asdad", },
+                   new Comment() { CommenterId= "asd8489", Commenter="طيب الطيب",Date=DateTime.Now,Text="asdad",
+                   ChildComments= new Comment[]{  new Comment() {
+                       CommenterId= "asd8489", Commenter="طيب الطيب",Date=DateTime.Now,Text="asdad",
+                       ChildComments  = new Comment[] {
+                           new Comment() {
+                               CommenterId = "asd8489", Commenter = "طيب الطيب", Date = DateTime.Now, Text = "asdad"},
+                           new Comment() { CommenterId = "asd8489", Commenter = "طيب الطيب", Date = DateTime.Now, Text = "asdad", }
+                       } }, new Comment() { CommenterId = "asd8489", Commenter = "طيب الطيب", Date = DateTime.Now, Text = "asdad", } }
+                   }
+                         ,new Comment() { CommenterId= "asd8489", Commenter="طيب الطيب",Date=DateTime.Now,Text="asdad", },
+                },
+                Views=0,
+                AccountId="86545112",
+                AccountName= "محمد حذيفة أصيل",
+                AccountType=AccountTypes.User,
+                PostType=PostTypes.Job},
             };
-
-          await  ContextPost.InsertManyAsync(posts);
+           if (count==0)
+            await ContextPost.InsertManyAsync(posts);
         }
     }
 }

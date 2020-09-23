@@ -1,12 +1,17 @@
-﻿@inject AppTranslate Translate
+﻿@using JolijoberProject.Main.Repository.DataTransferObjects
+@using JolijoberProject.Shared.SharedKernal.ExtensionMethod
 
-<div class="post-bar @(IsOpenComment?"poster no-margin":"")">
-    <div class="post_topbar">
+@inject AppTranslate Translate
+
+
+
+<div class="post-bar  @(IsOpenComment?"poster no-margin":"")">
+    <div class="post_topbar ">
         <div class="usy-dt">
             <img src="template/images/via/50x50.png" alt="">
             <div class="usy-name arFlip">
-                <h3 class="arFlip-1 arAlign">@Translate["John Doe"]</h3>
-                <span><img src="template/images/clock.png" alt="">3 min ago</span>
+                <h3 class="arFlip-1 arAlign">@Post.AccountName</h3>
+                <span><img src="template/images/clock.png" alt="">@Post.Date</span>
             </div>
         </div>
         <div class="ed-opts">
@@ -22,8 +27,8 @@
     </div>
     <div class="epi-sec">
         <ul class="descp">
-            <li><img src="template/images/icon8.png" alt=""><span>Epic Coder</span></li>
-            <li><img src="template/images/icon9.png" alt=""><span>India</span></li>
+            <li><img src="template/images/icon8.png" alt=""><span>@(Post.Specifications.ToLine())</span></li>
+            <li><img src="template/images/icon9.png" alt=""><span>@Post.Region</span></li>
         </ul>
         <ul class="bk-links">
             <li><a href="javascript:void(0)" title=""><i class="la la-bookmark"></i></a></li>
@@ -31,102 +36,87 @@
         </ul>
     </div>
     <div class="job_descp">
-        <h3 class="arAlign">Senior Wordpress Developer</h3>
+        <h3 class="arAlign">@Post.Title</h3>
         <ul class="job-dt">
-            <li><a href="javascript:void(0)" title="">@Translate["Full Time"]</a></li>
-            <li class="arFlip"><span>$30 / @Translate["hr"]</span></li>
+            <li><a href="javascript:void(0)" title="">@Translate[Post.Availabilty.ToString()]</a></li>
+            <li class="arFlip"><span>@Post.Sallaries.ToString() / @Translate["hr"]</span></li>
         </ul>
         <p class="arAlign">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet...
-            <a href="javascript:void(0)" title="">@Translate["view more"]</a>
+            @Descreption  <!-- Here  Descreption-->
+            <a href="javascript:void(0)" @onclick="ViewMoreClick" title=""> @(IsViewMore? Translate["Collapse"]:Translate["view more"])</a>
         </p>
-        <ul class="skill-tags">
-            <li><a href="javascript:void(0)" title="">HTML</a></li>
-            <li><a href="javascript:void(0)" title="">PHP</a></li>
-            <li><a href="javascript:void(0)" title="">CSS</a></li>
-            <li><a href="javascript:void(0)" title="">Javascript</a></li>
-            <li><a href="javascript:void(0)" title="">Wordpress</a></li>
-        </ul>
+
+        <Tags PostTags="Post.Tags" />
+
     </div>
     <div class="job-status-bar">
         <ul class="like-com">
             <li>
                 <a href="javascript:void(0)"><i class="la la-heart"></i> @Translate["Like"]</a>
                 <img src="template/images/liked-img.png" alt="">
-                <span>25</span>
+                <span>@Post.Likes.Length</span>
             </li>
-            <li><a href="javascript:void(0)" title="" class="com"><img src="template/images/com.png" alt=""> @Translate["Comment"] 15</a></li>
+            <li><a @onclick="CommentClick" href="javascript:void(0)" title="" class="com"><img src="template/images/com.png" alt=""> @Translate["Comment"] @Post.Comments.RecursiveLongCount()</a></li>
         </ul>
-        <a><i class="la la-eye"></i>@Translate["Views"] 50</a>
+        <a><i class="la la-eye"></i>@Translate["Views"] @Post.Views</a>
     </div>
 </div><!--post-bar end-->
 
 @if (IsOpenComment)
 {
-<div class="comment-section">
-    <div class="plus-ic">
-        <i class="la la-plus"></i>
-    </div>
-    <div class="comment-sec arAlign">
-        <ul>
-            <li>
-                <div class="comment-list">
-                    <div class="bg-img">
-                        <img src="template/images/via/40x40.png" alt="">
-                    </div>
-                    <div class="comment">
-                        <h3>@Translate["John Doe"]</h3>
-                        <span><img src="template/images/clock.png" alt=""> 3 min ago</span>
-                        <p>Lorem ipsum dolor sit amet, </p>
-                        <a href="javascript:void(0)" title="" class="active"><i class="fa fa-reply-all"></i>Reply</a>
-                    </div>
-                </div><!--comment-list end-->
-                <ul>
-                    <li>
-                        <div class="comment-list">
-                            <div class="bg-img">
-                                <img src="template/images/via/40x40.png" alt="">
-                            </div>
-                            <div class="comment">
-                                <h3>@Translate["John Doe"]</h3>
-                                <span><img src="template/images/clock.png" alt=""> 3 min ago</span>
-                                <p>Hi John </p>
-                                <a href="javascript:void(0)" title=""><i class="fa fa-reply-all"></i>Reply</a>
-                            </div>
-                        </div><!--comment-list end-->
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <div class="comment-list">
-                    <div class="bg-img">
-                        <img src="template/images/via/40x40.png" alt="">
-                    </div>
-                    <div class="comment">
-                        <h3>@Translate["John Doe"]</h3>
-                        <span><img src="template/images/clock.png" alt=""> 3 min ago</span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at.</p>
-                        <a href="javascript:void(0)" title=""><i class="fa fa-reply-all"></i>Reply</a>
-                    </div>
-                </div><!--comment-list end-->
-            </li>
-        </ul>
-    </div><!--comment-sec end-->
-    <div class="post-comment">
-        <div class="cm_img">
-            <img src="template/images/via/40x40.png" alt="">
+    <div class="comment-section mb-5">
+        <div class="plus-ic">
+            <i class="la la-plus"></i>
         </div>
-        <div class="comment_box">
-            <form>
-                <input type="text" placeholder="@Translate["Post a comment"]">
-                <button type="button">@Translate["Send"]</button>
-            </form>
-        </div>
-    </div><!--post-comment end-->
-</div><!--comment-section end-->
-}
 
+        <div class="comment-sec arAlign" style="height: 100% !important; overflow: auto !important">
+
+            <ul>
+                <Comment ChildComments="Post.Comments"></Comment>
+            </ul>
+
+        </div><!--comment-sec end-->
+
+
+        <div class="post-comment">
+            <div class="cm_img">
+                <img src="template/images/via/40x40.png" alt="">
+            </div>
+            <div class="comment_box">
+                <form>
+                    <input type="text" placeholder="@Translate["Post a comment"]">
+                    <button type="button">@Translate["Send"]</button>
+                </form>
+            </div>
+        </div><!--post-comment end-->
+    </div><!--comment-section end-->
+}
 
 @code {
     [Parameter] public bool IsOpenComment { get; set; } = false;
+
+    [Parameter] public PostDto Post { get; set; } = new PostDto();
+
+    public string Descreption { get; set; }
+    public bool IsViewMore { get; set; }
+    protected override void OnParametersSet()
+    {
+        Descreption =Post.Descreption.Crop();
+        base.OnParametersSet();
+    }
+
+    private void ViewMoreClick()
+    {
+        IsViewMore = !IsViewMore;
+        if (IsViewMore)
+            Descreption = Post.Descreption;
+        else
+            Descreption = Post.Descreption.Crop();
+
+    }
+
+    private void CommentClick()
+    {
+        IsOpenComment = !IsOpenComment;
+    }
 }

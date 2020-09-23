@@ -11,8 +11,8 @@ namespace JolijoberProject.Main.Repository.DataTransferObjects
         public DateTime Date { get; set; }
         public string Title { get; set; }
         public string[] Tags { get; set; }
-        public string Likes { get; set; }
-        public string Comments { get; set; }
-        public string Views { get; set; }
+        public long Likes { get; set; }
+        public long Views { get; set; }
+        public long Comments { get; set; }
     }
 }

@@ -12,6 +12,8 @@ using MongoDB.Entities;
 using MongoDB.Bson;
 using System.Linq;
 using JolijoberProject.Main.Repository.DataTransferObjects;
+using JolijoberProject.BoundedContext.Extension;
+using JolijoberProject.Shared.SharedKernal.EnumClass;
 
 namespace JolijoberProject.Main.Repository.Repositories
 {
@@ -29,10 +31,10 @@ namespace JolijoberProject.Main.Repository.Repositories
                 Title = post.Title,
                 Tags = post.Tags,
                 Views = post.Views,
-                Comments = post.Comments,
-                Likes = post.Likes,
+                Likes = post.Likes.LongCount(),
                 Descreption = post.Descreption,
-                Id = post.Id
+                Id = post.Id,
+                Comments= post.Comments.LongCount(),
             };
 
 
@@ -40,14 +42,30 @@ namespace JolijoberProject.Main.Repository.Repositories
 
         public async Task<List<PostMiniDto>> GetPostsMiniAsync()
         {
+           
+            List<PostMiniDto> list = new List<PostMiniDto>();
+            await Context.Find(post => true).SortByDescending(post=>post.Date).ForEachAsync(post => list.Add(new PostMiniDto()
+            {
+                Date = post.Date,
+                Title = post.Title,
+                Tags = post.Tags,
+                Views = post.Views,
+                Comments = post.Comments.HierarchyCount(),
+                Likes = post.Likes.LongCount(),
+                Descreption = post.Descreption,
+                Id = post.Id
+            }));
+            return list;
+
+
             return await Context.AsQueryable().Select(post => new PostMiniDto()
             {
                 Date = post.Date,
                 Title = post.Title,
                 Tags = post.Tags,
                 Views = post.Views,
-                Comments = post.Comments,
-                Likes = post.Likes,
+                Comments =post.Comments.HierarchyCount(),
+                Likes =post.Likes.LongCount(),
                 Descreption = post.Descreption,
                 Id = post.Id
             }).ToListAsync();
@@ -78,5 +96,38 @@ namespace JolijoberProject.Main.Repository.Repositories
             GC.SuppressFinalize(this);
         }
 
+        public async Task<List<PostDto>> GetPostsAsync(bool IsJob = true, bool IsProject = true)
+        {
+            List<PostDto> list = new List<PostDto>();
+            var filterBuilder = Builders<Post>.Filter;
+
+            var filter =IsJob&&IsProject?((filterBuilder.Eq(x=>x.PostType, PostTypes.Job) | filterBuilder.Eq(x => x.PostType, PostTypes.Project)))
+                :(IsJob? filterBuilder.Eq(x => x.PostType, PostTypes.Job): filterBuilder.Eq(x => x.PostType, PostTypes.Project))  ;
+
+            await Context.Find(filter)
+                .SortByDescending(post => post.Date).ForEachAsync(post => list.Add(new PostDto()
+            {
+                Date = post.Date,
+                Title = post.Title,
+                Tags = post.Tags,
+                Views = post.Views,
+                AccountId=post.AccountId,
+                PostType=post.PostType,
+                AccountName=post.AccountName,
+                AccountType=post.AccountType,
+                Availabilty=post.Availabilty,
+                Categories=post.Categories,
+                Comments=post.Comments,
+                Descreption=post.Descreption,
+                Hours=post.Hours,
+                KindPay=post.KindPay,
+                Likes=post.Likes,
+                Region=post.Region,
+                Sallaries=post.Sallaries,
+                Skills=post.Skills,
+                Specifications=post.Specifications
+            }));
+            return list;
+        }
     }
 }

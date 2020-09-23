@@ -49,6 +49,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hub", "Hub", "{22039B24-098
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JolijoberProject.Hub.SignalR", "JolijoberProject.Hub.SignalR\JolijoberProject.Hub.SignalR.csproj", "{FEAE3C70-0FB7-4E44-99BE-CA134D037090}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extension", "Extension", "{81F73FFA-A462-4984-9D7E-FE55EB85DADC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JolijoberProject.BoundedContext.Extension", "JolijoberProject.BoundedContext.Extension\JolijoberProject.BoundedContext.Extension.csproj", "{49DDDD32-316C-4DA1-A1A9-5F5E568BC607}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -103,6 +107,10 @@ Global
 		{FEAE3C70-0FB7-4E44-99BE-CA134D037090}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEAE3C70-0FB7-4E44-99BE-CA134D037090}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FEAE3C70-0FB7-4E44-99BE-CA134D037090}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49DDDD32-316C-4DA1-A1A9-5F5E568BC607}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49DDDD32-316C-4DA1-A1A9-5F5E568BC607}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49DDDD32-316C-4DA1-A1A9-5F5E568BC607}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49DDDD32-316C-4DA1-A1A9-5F5E568BC607}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -129,6 +137,8 @@ Global
 		{266E8FE6-5C30-4C01-BE4C-332766BBFB70} = {1711F860-412C-4CCE-9DBE-839A3B546BD6}
 		{22039B24-0982-4C01-86F5-9E218CDD0BE0} = {FFC83C20-2A76-41B4-83E6-DA2BA87CB3AB}
 		{FEAE3C70-0FB7-4E44-99BE-CA134D037090} = {22039B24-0982-4C01-86F5-9E218CDD0BE0}
+		{81F73FFA-A462-4984-9D7E-FE55EB85DADC} = {FFC83C20-2A76-41B4-83E6-DA2BA87CB3AB}
+		{49DDDD32-316C-4DA1-A1A9-5F5E568BC607} = {81F73FFA-A462-4984-9D7E-FE55EB85DADC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C8D6A25C-69AD-40E2-B5DB-853C3D55CABD}

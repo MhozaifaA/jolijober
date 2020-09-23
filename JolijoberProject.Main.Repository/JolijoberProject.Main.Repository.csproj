@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\JolijoberProject.Base.Context\JolijoberProject.Base.Context.csproj" />
+    <ProjectReference Include="..\JolijoberProject.BoundedContext.Extension\JolijoberProject.BoundedContext.Extension.csproj" />
     <ProjectReference Include="..\JolijoberProject.Infrastructure.Model\JolijoberProject.Infrastructure.Model.csproj" />
   </ItemGroup>
 

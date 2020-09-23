@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace JolijoberProject.Infrastructure.Model.Shared
+namespace JolijoberProject.Shared.SharedKernal.SharedModel
 {
     public class MinMax
     {
@@ -15,6 +15,12 @@ namespace JolijoberProject.Infrastructure.Model.Shared
 
         public double Min  {get; private set; }
         public double Max { get; private set; }
+
+
+        public override string ToString()
+        {
+            return $"{Min}-{Max}";
+        }
 
     }
 }

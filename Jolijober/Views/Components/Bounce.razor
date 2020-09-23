@@ -1,4 +1,4 @@
-﻿<div class="process-comm">
+﻿<div class="process-comm" @onclick="Clicked">
     <div class="spinner">
         <div class="bounce1"></div>
         <div class="bounce2"></div>
@@ -7,5 +7,10 @@
 </div><!--process-comm end-->
 
 @code {
+     [Parameter]  public EventCallback BounceClick { get; set; }
 
+    private async Task Clicked()
+    {
+        await BounceClick.InvokeAsync(default);
+    }
 }

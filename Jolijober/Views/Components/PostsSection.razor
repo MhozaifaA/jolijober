@@ -1,0 +1,75 @@
+﻿
+@using Jolijober.Views.Components
+@using JolijoberProject.Main.Repository.Interfaces
+@using JolijoberProject.Main.Repository.DataTransferObjects
+@using JolijoberProject.Shared.SharedKernal.SharedDto
+@using JolijoberProject.Shared.SharedKernal.ExtensionMethod
+@using JolijoberProject.Shared.SharedKernal.EnumClass
+@using Jolijober.Util.Translate
+
+@inject IPostRepository _postRepository
+
+
+@for (int i = BalanceFrom; i < BalanceTo; i++)
+{
+
+    if (IsSlider && i == PostionSliderAfter + BalanceFrom)
+    {
+        <ProfilesSlider />
+    }
+
+    if (posts[i].PostType == PostTypes.Job)
+    {
+        <JobPost Post="posts[i]" />
+    }
+    else
+    {
+        <ProjectPost />
+    }
+
+
+}
+
+@if (IsBounce)
+{
+    <Bounce BounceClick="BalancePost" />
+}
+
+
+
+@*<JobPost IsOpenComment="true" />*@
+
+
+
+@code {
+        [Parameter] public bool IsSlider { get; set; } = false;
+        [Parameter] public int PostionSliderAfter { get; set; } = 1;
+        [Parameter] public bool IsJob { get; set; } = true;
+        [Parameter] public bool IsProject { get; set; } = true;
+        [Parameter] public bool IsBounce { get; set; } = true;
+
+
+    public int BalanceFrom { get; set; } = 0;
+    public int BalanceTo { get; set; } = 0;
+    public const int Quantity = 6;
+    List<PostDto> posts = new List<PostDto>();
+
+
+
+    protected override async Task OnParametersSetAsync()
+    {
+        posts = await _postRepository.GetPostsAsync();
+        BalanceFrom = 0;
+        BalanceTo = posts.Count> Quantity ? Quantity : posts.Count;
+    }
+
+    private void BalancePost()
+    {
+        if (BalanceTo - BalanceFrom >= Quantity * 2)
+        {
+            BalanceFrom += Quantity;
+        }
+        BalanceTo = (BalanceTo + Quantity) > posts.Count ? posts.Count : (BalanceTo + Quantity);
+    }
+
+}

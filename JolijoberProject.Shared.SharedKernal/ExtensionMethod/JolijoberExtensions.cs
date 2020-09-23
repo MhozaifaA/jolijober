@@ -1,5 +1,6 @@
 ﻿using JolijoberProject.Shared.SharedKernal.EnumClass;
 using JolijoberProject.Shared.SharedKernal.SharedDto;
+using JolijoberProject.Shared.SharedKernal.SharedModel;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -38,6 +39,28 @@ namespace JolijoberProject.Shared.SharedKernal.ExtensionMethod
             }
         }
 
+        public static string ToLine(this string[] s, string separator=",")
+        {
+            return String.Join(separator,s);
+        }
+
+
+        public static string Crop(this string s, int crop = 125)
+        {
+            return s.Substring(0, Math.Min(crop, s.Length)) + " ... ";
+        }
+
+        //public static string LeftCrop(this string str, int length)
+        //{
+        //    return str.Substring(0, Math.Min(length, str.Length));
+        //}
+
+        //public static string RightCrop(this string str, int length)
+        //{
+        //    return str.Substring(str.Length - Math.Min(length, str.Length));
+        //}
+
+
         #endregion
 
         #region -   Math   -
@@ -62,6 +85,19 @@ namespace JolijoberProject.Shared.SharedKernal.ExtensionMethod
             return queryable
                 .Skip(skip)
                 .Take(pagination.Quantity);
+        }
+
+       
+        public static long RecursiveLongCount(this Comment[] list)
+        {
+            long iterator = 0;
+
+            foreach (var item in list)
+            {
+                iterator++;
+                iterator += RecursiveLongCount(item.ChildComments);
+            }
+            return iterator;
         }
 
 

@@ -19,6 +19,8 @@ namespace JolijoberProject.Base.Context.MongoDB
         {
             Context = context.MongoService.GetCollection<T>(PluralizationProvider.Pluralize(typeof(T).Name));
         }
+
+      
     }
 
 
@@ -52,11 +54,39 @@ namespace JolijoberProject.Base.Context.MongoDB
         protected readonly IMongoCollection<T1> Context1;
         protected readonly IMongoCollection<T2> Context2;
         protected readonly IMongoCollection<T3> Context3;
+
+        private JolijoberService Service;
+
         protected JolijoberRepository(JolijoberService context)
         {
+            Service = context;
+
             Context1 = context.MongoService.GetCollection<T1>(PluralizationProvider.Pluralize(typeof(T1).Name));
             Context2 = context.MongoService.GetCollection<T2>(PluralizationProvider.Pluralize(typeof(T2).Name));
             Context3 = context.MongoService.GetCollection<T3>(PluralizationProvider.Pluralize(typeof(T3).Name));
+        }
+
+        protected IMongoCollection<T> Contexts<T>(bool IsExtendEntity = false)
+        {
+            Type _type = typeof(T);
+
+            if (_type == typeof(T1))
+                return (IMongoCollection<T>)Context1;
+            else
+                    if (_type == typeof(T2))
+                return (IMongoCollection<T>)Context2;
+            else
+                    if (_type == typeof(T3))
+                return (IMongoCollection<T>)Context3;
+            else
+                return IsExtendEntity ? ExtendEntity()
+            : throw new Exception();
+
+            IMongoCollection<T> ExtendEntity()
+            {
+                // Service.CreateCollection(_type.Name);
+                return Service.MongoService.GetCollection<T>(PluralizationProvider.Pluralize(_type.Name));
+            }
         }
     }
 

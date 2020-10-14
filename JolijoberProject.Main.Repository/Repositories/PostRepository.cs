@@ -143,7 +143,7 @@ namespace JolijoberProject.Main.Repository.Repositories
           string Id=httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
            var Account=  await Context2.Find(x => x.SecurId == Id).SingleOrDefaultAsync();
-
+            Account = Account ?? new Identity();
             var set = new Post()
             {
                 Date = post.Date,

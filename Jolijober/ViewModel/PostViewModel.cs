@@ -6,9 +6,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using JolijoberProject.Shared.SharedKernal.ExtensionMethod;
+using System.Collections.Specialized;
+
 namespace Jolijober.ViewModel
 {
-    public class PostViewModel
+    public class PostViewModel : INotifyCollectionChanged
     {
         public DateTime Date { get; set; }///used
         [Required(ErrorMessage ="لايمكن للعنوان ان يكون فارغا")]
@@ -25,6 +27,9 @@ namespace Jolijober.ViewModel
         public string Descreption { get; set; } ///used
 
         public List<TagsSelect> Tags = JolijoberExtensions.NewTagsSelect();
+
+     
+
         public string Specification { get; set; } ///used  //Epic Coder
         public string Region { get; set; }///used 
 
@@ -32,7 +37,7 @@ namespace Jolijober.ViewModel
         public PostTypes PostType { get; set; } ///used
 
 
-
+        public event NotifyCollectionChangedEventHandler CollectionChanged;
 
         //public MinMax Hours { get; set; }//max min
         //public string KindPay { get; set; } //object max min

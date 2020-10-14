@@ -96,7 +96,7 @@
     protected override async Task OnInitializedAsync()
     {
         var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
-        FullName = (await identityRepository.GetProfile(authState.User.FindFirstValue(ClaimTypes.NameIdentifier))).FullName;
+        FullName = (await identityRepository.GetProfile(authState.User.FindFirstValue(ClaimTypes.NameIdentifier)))?.FullName??"تجريبي";
     }
 }
 

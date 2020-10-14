@@ -53,14 +53,15 @@ namespace JolijoberProject.Main.Repository.Repositories
             //    });
 
             var identity = await Context.AsQueryable().FirstOrDefaultAsync(identity => identity.SecurId == Id);
+            identity = identity ?? new Identity();
             return new ProfileDto()
             {
-                FirstName = identity.FisrtName,
-                SureName = identity.SureName,
-                CoverImagePath = identity.CoverImagePath,
-                ProfileImagePath = identity.ProfileImagePath,
-                Headline= identity.Headline,
-                Overview=identity.Overview,
+                FirstName = identity?.FisrtName??"",
+                SureName = identity?.SureName??"",
+                CoverImagePath = identity?.CoverImagePath??"",
+                ProfileImagePath = identity?.ProfileImagePath??"",
+                Headline= identity?.Headline??"",
+                Overview=identity?.Overview??"",
                 Following = identity.Following?.Select(x=>x.ToString()).ToArray(),
                 Followers= identity.Followers?.Select(x=>x.ToString()).ToArray(),
             };

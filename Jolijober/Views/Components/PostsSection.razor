@@ -8,7 +8,8 @@
 @using Jolijober.Util.Translate
 @using Jolijober.ViewModel
 @using Microsoft.AspNetCore.SignalR.Client
-@using  Microsoft.Extensions.Logging.Console
+@using Microsoft.Extensions.Logging.Console
+@using System.Collections.ObjectModel
 
 @inject IPostRepository _postRepository
 
@@ -64,7 +65,7 @@
     public int BalanceFrom { get; set; } = 0;
     public int BalanceTo { get; set; } = 0;
     public const int Quantity = 6;
-    List<PostDto> posts = new List<PostDto>();
+    ObservableCollection<PostDto> posts = new ObservableCollection<PostDto>();
 
 
 
@@ -75,7 +76,7 @@
 
     protected override async Task OnParametersSetAsync()
     {
-        posts = await _postRepository.GetPostsAsync();
+        posts = new ObservableCollection<PostDto> (await _postRepository.GetPostsAsync());
         BalanceFrom = 0;
         BalanceTo = posts.Count > Quantity ? Quantity : posts.Count;
     }
@@ -92,7 +93,7 @@
 
     private async Task PostAction(PostDto newPost)
     {
-        posts = await _postRepository.GetPostsAsync();
+        posts = new ObservableCollection<PostDto>( await _postRepository.GetPostsAsync());
         BalanceFrom = 0;
         BalanceTo = posts.Count > Quantity ? Quantity : posts.Count;
 
@@ -114,10 +115,10 @@
 
         hubConnection.On<string>("OnNewPost", async (id) =>
         {
-            posts =await _postRepository.GetPostsAsync();
+            posts =new ObservableCollection<PostDto>( await _postRepository.GetPostsAsync());
             BalanceFrom = 0;
             BalanceTo = posts.Count > Quantity ? Quantity : posts.Count;
-            
+
             StateHasChanged();
         });
 
